@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad Wiki</title>
+</head>
+
+<body>
+    <p>La base de datos relacional (BDR) es un tipo de <a href="#">base de datos (BD)</a> que cumple con el <a
+            href="#">modelo
+            relacional</a> (el modelo más utilizado actualmente para implementar las BD ya planificadas). Tras ser
+        postuladas
+        sus bases en 1970 por Edgar Frank Codd,​de los laboratorios IBM en San José (California), no tardó en
+        consolidarse
+        como un nuevo paradigma en los modelos de base de datos.
+
+        Un sistema de software utilizado para mantener las bases de datos relacionales es un relational database
+        management system (RDBMS) o sistema de gestión de bases de datos relacionales. Virtualmente, todos los sistemas
+        de bases de datos relacionales utilizan SQL (Structured Query Language) para consultar y mantener la base de
+        datos.</p>
+
+    <h3>Características comúnes</h3>
+
+    <ul>
+        <li>Una base de datos se compone de varias tablas, denominadas relaciones.</li>
+        <li>No pueden existir dos tablas con el mismo nombre ni registro.</li>
+        <li>Cada tabla es a su vez un conjunto de campos (columnas) y registros (filas).</li>
+        <li>La relación entre una tabla padre y un hijo se lleva a cabo por medio de las llaves primarias y llaves
+            foráneas (o ajenas).</li>
+        <li>Las llaves primarias son la clave principal de un registro dentro de una tabla y estas deben cumplir con la
+            integridad de datos.</li>
+        <li>Las llaves ajenas se colocan en la tabla hija, contienen el mismo valor que la llave primaria del registro
+            padre; por medio de estas se hacen las formas relacionales.</li>
+    </ul>
+
+
+    <details>
+        <summary>Elementos</summary>
+        <ul>
+            <li>Relaciones (características en común)
+                <ul>
+                    <li>Relaciones base</li>
+                    <li>Relaciones derivadas</li>
+                </ul>
+            </li>
+            <li>Dominios</li>
+            <li>Clasificación de Claves
+                <ul>
+                    <li>Clave primaria</li>
+                    <li>clave externa o foránea</li>
+                    <li>clave índice</li>
+                </ul>
+            </li>
+            <li>Procedimientos almacenados</li>
+        </ul>
+    </details>
+    <hr>
+    <table>
+        <caption>Estructura y definiciones</caption>
+        <thead>
+            <tr>
+                <th>Término SQL</th>
+                <th>Término de base de datos relacionales</th>
+                <th>Descripción</th>
+            </tr>
+        <tbody>
+            <tr>
+                <th>Fila</th>
+                <td>Tupla</td>
+                <td>Un conjunto</td>
+            </tr>
+            <tr>
+                <th>Columna</th>
+                <td>Atributo</td>
+                <td rowspan="2">Un elemento</td>
+            </tr>
+            <tr>
+                <th>Tabla</th>
+                <td>Relación</td>
+
+            </tr>
+
+            <tr>
+                <th>Vista</th>
+                <td>vista</td>
+                <td>Cualquier conjunto</td>
+            </tr>
+            </thead>
+        </tbody>
+    </table><br>
+
+    <form action="#" method="post">
+        <label for="username">Usuario</label>
+        <a href="#">Ayudame a elegir</a><br>
+        <input type="text" id="username" name="username" placeholder="Escribe tu nombre aquí" required><br>
+
+        <label for="Password">Contraseña</label><br>
+        <input type="contraseña" id="contraseña" name="contraseña" placeholder="Escribe una contraseña" required> <br>
+
+        <label for="confirm_password">Confirme contraseña</label><br>
+        <input type="confirme contraseña" id="confirme contraseña" name="confirme contraseña"
+            placeholder="Confirme contraseña"><br>
+
+        <label for="email">Dirección de correo electrónico</label><br>
+        <input type="email" id="email" name="email" placeholder="Dirección de correo electrónico" required> <br><br>
+
+
+        <label for="captcha">CAPTCHA/Comprobación de seguridad</label><br>
+        <img src="imagenes/captcha_placeholder.png" alt="captcha" width="150"><br>
+        <input type="text" id="captcha" name="captcha" placeholder="Escribe el texto que ves en la imagen" registro>
+        <br>
+        <a href="#">¿No ves la imagen?</a><br><br>
+        <button type="submit">Crea tu cuenta</button>
+
+    </form>
+</body>
+
+</html>

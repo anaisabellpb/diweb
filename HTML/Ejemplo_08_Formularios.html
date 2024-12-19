@@ -1,0 +1,52 @@
+<!--Ejemplo_08_formulario.html-->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tipos de Formularios</title>
+</head>
+
+<body>
+    <form action="grabaform.php" method="get">
+        <label for="modelo">Modelo móvil</label><br>
+        <input type="text" name="modelo" id="modelo">
+        <input type="submit" value="añadir al carrito"><br>
+        <!--todo input lleva su label-->
+
+        <label for="comentarios">Comentarios</label>
+        <textarea name="comentarios" id="comentarios" cols="30"
+            rows="10"></textarea><br><!--la etiqueta textarea=name es una variable-->
+        <!--la etiqueta hr lo que nos da es una línea en horizontal-->
+        <hr>
+        <!--los chebox van a la izquierda hay que poner el párrafo <p> antes-->
+        <p>Sexo:</p>
+        <input type="radio" name="sexo" id="mujer"
+            value="mujer"><!--el codigo es (input:radio+label) y le damos intro-->
+        <label for="mujer">Mujer</label><br><!--si la variable es la misma lo que cambia es el valor-->
+        <input type="radio" name="sexo" id="hombre" value="hombre" checked>
+        <label for="hombre">Hombre</label><br>
+        <hr>
+        <p>Cursos:</p><!--para hacer un array en html se pone los [] después de la variable en este caso es cursos-->
+        <input type="checkbox" name="cursos[]" id="html" value="html">
+        <label for="html">HTML</label><br>
+
+        <input type="checkbox" name="cursos[]" id="css" value="css">
+        <label for="css">CSS</label><br>
+
+        <input type="checkbox" name="cursos[]" id="js" value="js">
+        <label for="js">JS</label><br>
+
+<p>Elige ciudad:</p>
+<select name="ciudades" id="ciudades">
+    <option value="sevilla">Sevilla</option>
+    <option value="madrid">Madrid</option>
+    <option value="doshermanas">Dos Hermanas</option>
+</select><br>
+
+
+    </form>
+</body>
+
+</html>

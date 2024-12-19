@@ -1,0 +1,30 @@
+<!--Ejemplo_08_formulario.html-->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario</title>
+</head>
+
+<body>
+    <form action="grabaform.php" method="get">
+        <!--Hasta aqui es html y le sigue emmet-->
+
+        <!--el for el type y el name son atributos para evitar 
+        problemas lo que pongas en las comillas del label del for 
+        tiene que ser igual en las comillas del name y en las del id 
+        detrás del label siempre poner un salto de página <br>--> 
+        <label for="modelo">Modelo móvil</label><br>
+        <input type="text" name="modelo" id="modelo"><br> <!-- la etiqueta name en input type, es la variable,
+        y lo que va entre comillas despúes del igual del name es el valor de la variable, y la variable en informática
+        es un espacio de la RAM que yo cojo para mí, en este caso para los formularios, y dentro de ese espacio 
+        pongo el valor de la variable, y el valor se lo damos nosotros al igual que el nombre. Una variable y un valor
+        solo puede haber un valor, si en una variable se puede meter más de un valor hablamos de una array, xq deja 
+        de ser una variable xq tiene multivalor-->
+        <input type="submit" value="añadir al carrito">
+    
+</body>
+
+</html>

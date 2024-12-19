@@ -1,0 +1,74 @@
+<!--Ejemplo_03_Atributos.html-->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        form[method="post"] {
+            background-color: burlywood;
+
+        }
+
+        form[method="get"] {
+            background-color: cornflowerblue;
+        }
+
+        input[value] {
+            border: 2px solid blue;
+        }
+
+        /* quiero cambiar el color de fuente del submit azul (El borde del botón)*/
+        input[name="azul"]+br+input[value] {
+            border: 1px solid red;/* cambia color del border*/
+            color: mediumblue;/* cambia color de la letra*/
+        }
+
+        input[name="rojo"]+br+input[value] {
+            border: 1px solid blue;
+            background-color: pink; /* cambia color del fondo*/
+           
+        }
+
+        form{
+            width: 300px;
+            color: crimson;
+        }
+
+        input[value]{
+border: 2px solid blue;
+        }
+
+
+
+    </style>
+
+
+</head>
+
+<body>
+    <form action="#" method="get">
+        <fieldset>
+            <legend>Añadir a la cesta</legend>
+
+            <label for="azul">Café Azul</label><br>
+            <input type="number" name="azul" id="azul"><br>
+            <input type="submit" value="Ok"><br>
+        </fieldset>
+    </form>
+    <form action="#" method="post">
+        <fieldset>
+            <legend>Añadir a la cesta</legend>
+
+            <label for="rojo">Café Rojo</label><br>
+            <input type="number" name="rojo" id="rojo"><br>
+            <input type="submit" value="OK"><br>
+        </fieldset>
+    </form>
+
+</body>
+
+</html>

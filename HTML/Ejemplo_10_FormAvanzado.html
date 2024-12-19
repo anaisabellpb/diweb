@@ -1,0 +1,43 @@
+<!--Ejemplo_10_FormAvanzado-->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario Avanzado</title>
+</head>
+
+<body>
+    <form action="#" method="post">
+        <label for="correo">Correo:</label><br>
+        <input type="email" name="correo" id="correo" required="required" 
+        placeholder="Escribe correo"><br>
+
+        <label for="buscar"></label><br>
+        <input type="search" name="buscar" id="buscar"><br>
+
+        <label for="numero"></label><br>
+        <input type="number" name="number" id="number" min="1" max="10" 
+        step="1"><br>
+
+        <label form="rango">Rango</label><br>
+        <input type="range" name="rango" id="rango" min="1" max="10" 
+        step="2"><br>
+        <!--Para que salga los números en la barra se hace con JS-->
+        <hr>
+        <input type="color" name="color" id="color"><br>
+        <label for="color">Color</label><br>
+        <br>
+
+        <input type="date" name="fecha" id="fecha"><br>
+        <label for="fecha">Fecha</label><br>
+        <br>
+        
+        <hr>
+        <button type="submit">Enviar Formulario</button>
+        </input>
+    </form>
+</body>
+
+</html>

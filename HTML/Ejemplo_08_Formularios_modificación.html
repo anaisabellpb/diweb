@@ -1,0 +1,86 @@
+<!--Ejemplo_08_formulario.html-->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tipos de Formularios</title>
+</head>
+
+<body>
+
+    <!-- Lista multinivel-->
+   <ul>
+    <li>Población extranjera</li>
+    <li>Economía
+        <ul>
+            <li>Sector primario</li>
+            <li>Industria</li>
+            <li>Sector terciario</li>
+            <li>Evolución de la deuda viva municipal</li>
+        </ul>
+    </li>
+   </ul>
+
+    
+   <!-- Formulario sin encriptar-->
+    <form action="grabaform.php" method="get">
+        <label for="modelo">Modelo móvil</label><br>
+        <input type="text" name="modelo" id="modelo"><br>
+        
+        <label for="clave">Contraseña</label><br>
+        <input type="password" name="clave" id="clave"><br>
+
+        
+        <!-- todo input lleva su label -->
+
+        <label for="comentarios">Comentarios</label>
+        <textarea name="comentarios" id="comentarios" cols="30" rows="10"></textarea><br>
+        <!--el atributo name define la variable-->
+
+        <!--hr nos da una línea en horizontal-->
+        <hr>
+
+        <!-- En los checkbox y radio el label va a la derecha-->
+        <p>Sexo:</p>
+        <!--El emmet es (input:radio+label) + intro-->
+        <input type="radio" name="sexo" id="mujer" value="mujer">
+        <label for="mujer">Mujer</label><br>
+
+        <!--Para los radios, la variable es la misma, 
+            cambia el value (valor)-->
+        <input type="radio" name="sexo" id="hombre" value="hombre" checked>
+        <label for="hombre">Hombre</label><br>
+        <hr>
+
+        <fieldset>
+            <legend>Selector Cursos</legend>
+            <!-- Para los checkbox hay que mandar como 
+            variable un array, se pone los [] -->
+        <p>Cursos:</p>
+        <input type="checkbox" name="cursos[]" id="html" value="html">
+        <label for="html">HTML</label><br>
+        <input type="checkbox" name="cursos[]" id="css" value="css">
+        <label for="css">CSS</label><br>
+        <input type="checkbox" name="cursos[]" id="js" value="js">
+        <label for="js">JS</label><br>
+        </fieldset>
+
+        
+
+        <p>Elige ciudad:</p>
+        <select name="ciudades" id="ciudades">
+            <option disabled selected>Pon ciudad</option>
+            <option value="madrid">--Madrid</option>
+            <optgroup label="Andalucia">
+                <option value="sevilla">--Sevilla</option>
+                <option value="doshermanas" >--Dos Hermanas</option>
+            </optgroup>
+        </select><br>
+        <hr>
+        <input type="submit" value="añadir al carrito"><br>
+    </form>
+</body>
+
+</html>
