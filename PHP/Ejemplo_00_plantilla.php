@@ -1,6 +1,10 @@
 <!--para probar un archivo PHP debemos poner en el buscador: http://localhost/Curso/PHP/Ejemplo_00_plantilla.php-->
 <?php/*para una inyección de php*/
 /*Recogemos datos del formulario*/
+$alerta="Mensaje";
+if (isset($_REQUEST["enviar"])) {
+    $alerta=$_REQUEST["usuario"];
+}
 ?>
 
 <!DOCTYPE html>
@@ -14,13 +18,13 @@
 </head>
 <body>
     <header>
-        <p class="alert alert-primary m-3 w-50">Mensaje</p>
+        <p class="alert alert-primary m-3 w-50"><?php echo $alerta ?></p><!--esto en una inyección PHP-->
     </header>
 <form action="#" method="post" class="m-3 shadow-lg">
     <label for="usuario" class="form-label">Usuario</label>
     <input type="text" name="usuario" id="usuario" class="form-control w-50"><br>
     <hr class="border border-primary border-5 w w-50">
-    <button type="submit" class="btn btn-success">Enviar</button>
+    <button type="submit" class="btn btn-success" name="enviar">Enviar</button>
   </form> 
 </body>
 </html>
