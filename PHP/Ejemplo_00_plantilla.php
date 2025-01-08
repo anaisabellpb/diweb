@@ -1,9 +1,9 @@
 <!--para probar un archivo PHP debemos poner en el buscador: http://localhost/Curso/PHP/Ejemplo_00_plantilla.php-->
 <?php/*para una inyección de php*/
 /*Recogemos datos del formulario*/
-$alerta="Mensaje";
+$alerta = "Mensaje...";
 if (isset($_REQUEST["enviar"])) {
-    $alerta=$_REQUEST["usuario"];
+    $alerta = $_REQUEST["usuario"];
 }
 ?>
 
