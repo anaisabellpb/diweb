@@ -61,14 +61,53 @@ FROM city
 WHERE CountryCode IN ("ESP", "FRA", "PRT");
 
 -- 08b. Funciones de Agregación adicionales:
---- AVG (media), SUM(suma), MAX(máximo), MIN(mínimo)
+-- AVG (media), SUM(suma), MAX(máximo), MIN(mínimo)
 SELECT AVG(Population)
 FROM city
 WHERE District = "Andalusia";
 
 -- 09. Agrupación (para sacar más de un dato)
---- Cláusula GROUP BY -> Asociado a funciones de agregación
---- Ejercicio2: DIme la ciudad más grande entre Francia, España y Portugal
-SELECT MAX(Population), Name
+-- Cláusula GROUP BY -> Asociado a funciones de agregación
+-- Ejercicio2: DIme la ciudad más grande entre Francia, España y Portugal
+SELECT CountryCode, MAX(Population) AS MaxPopulation
 FROM city
-WHERE CountryCode IN ("ESP", "FRA", "PRT");
+WHERE CountryCode IN ("ESP", "FRA", "PRT")
+GROUP BY CountryCode;
+
+-- 10. Agrupación y filtrado (WHERE para los GROUP BY)
+-- wHERE -> HAVING
+SELECT CountryCode, COUNT(NAME)
+FROM city
+GROUP BY CountryCode;
+
+
+-- 10. Agrupación y filtrado (WHERE para los GROUP BY)
+-- wHERE -> HAVING
+-- Usamos Alias (este AS hace que podamos cambiar el nombre de la tabla de COUNT a NumCiudades)
+SELECT CountryCode, COUNT(NAME) AS NumCiudades
+FROM city
+GROUP BY CountryCode
+HAVING NumCiudades > 100
+ORDER BY  NumCiudades DESC
+LIMIT 3;
+
+-- 11. JOINS! Unir 2 tablas
+SELECT * FROM
+
+-- 12. JOINS! Unir 3 tablas
+
+-- Ejercicio:
+-- Sácame distrito, población (de la ciudad), continen,
+-- nombre del país, Idioma y porcentaje para ciudades llamadas Córdoba
+-- y donde se habla el español (Spanish)
+SELECT city.District, city.Population, 
+country.Continent, country.Name,
+countrylanguage.Language, countrylanguage.Percentage
+FROM city, country, countrylanguage
+WHERE city.Name = "Córdoba"
+AND countrylanguage.Language = "Spanish"
+AND city.CountryCode = Country.code
+AND Country.code = countrylanguage.CountryCode;
+
+
+
