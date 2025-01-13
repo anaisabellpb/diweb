@@ -1,6 +1,19 @@
 <!-- http://localhost/Curso/PHP/Ejemplo_00_Plantilla.php -->
 
 <?php
+// Llamar a errores y funciones
+require("errores.php");
+require("funciones.php");
+
+//Llamamos a la base de datos
+$conexion = conectarBBDD();
+
+//Hacemos la consulta
+$consulta = "SELECT * FROM productos";
+$filas = $conexion->query($consulta);
+
+
+
 /* Recogemos datos del formulario */
 $alerta = "Mensaje...";
 
@@ -13,6 +26,7 @@ if (isset($_REQUEST['enviar'])) {
 
     // En el caso del checkbox se envía un array
     $turno = $_REQUEST['turno'] ?? [];
+    // es un select
     $incidencia = $_REQUEST['incidencia'] ?? '';
 
     // ?? '' es para cuando NO se envía el dato...
