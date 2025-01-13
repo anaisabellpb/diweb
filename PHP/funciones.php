@@ -23,7 +23,7 @@ function conectar() {
     return $conexion;
 }
 
-function conectar() {
+function conectarBBDD() {
     // Variables de conexión
     $servidor = "localhost";
     $usuario = "root";
