@@ -6,6 +6,7 @@ require("errores.php");
 require("funciones.php");
 
 //Llamamos a la base de datos
+
 $conexion = conectar();
 
 
@@ -17,12 +18,17 @@ if (isset($_REQUEST['enviar'])) {
     $archivoSQL = "MiConexion_simplificando.sql";
     $contenidoSQL = file_get_contents($archivoSQL);
 
-/*Formato procedimental */
-$cargaBBD = mysqli_multi_query($conexion, $contenidoSQL);
+    /*Formato procedimental */
+    // $cargaBBD -> Funciona como Boleano xq funciona como: true (correcto), false (error)
+    // $cargaBBD = mysqli_multi_query($conexion, $contenidoSQL); --este es el código puesto en comentario la otra manera de hacer es el POO
 
-
-
-    $alerta = "Nº de Registros: " . $numfilas;
+    // FORMATO POO esta es la forma usada actual
+    $cargaBBD = $conexion->multi_query($contenidoSQL);
+    if ($cargaBBD) {
+        $alerta = "La carga es correcta";
+    } else {
+        $alerta = "ERROR, no se ha cargado la BBDD";
+    }
 }
 ?>
 
@@ -45,7 +51,7 @@ $cargaBBD = mysqli_multi_query($conexion, $contenidoSQL);
             <?php echo $alerta; ?>
         </p>
     </header>
-   
+
     <!-- Línea de separación -->
     <hr class="m-3 border border-primary border-5 w-50">
 
@@ -53,20 +59,20 @@ $cargaBBD = mysqli_multi_query($conexion, $contenidoSQL);
         <button type="submit" class="btn btn-success" name="enviar">Cargar BBDD</button>
     </form>
     <!-- Defino enlaces de navegación con estilo boostrap-->
-     <section class="row">
+    <section class="row">
         <nav class="col">
             <a href="02-consultar.php"
-            class="btn btn-sm btn-success w-100">Consultar productos</a>
+                class="btn btn-sm btn-success w-100">Consultar productos</a>
             <a href="03-insertar-bbdd.php"
-            class="btn btn-sm btn-warning w-100">Insertar producto</a>
+                class="btn btn-sm btn-warning w-100">Insertar producto</a>
         </nav>
         <nav class="col">
             <a href="04-actualizar-bbdd.php"
-            class="btn btn-sm btn-secondary w-100">Actualizar producto</a>
+                class="btn btn-sm btn-secondary w-100">Actualizar producto</a>
             <a href="05-eliminar-bbdd.php"
-            class="btn btn-sm btn-danger w-100">Eliminar producto</a>
+                class="btn btn-sm btn-danger w-100">Eliminar producto</a>
         </nav>
-     </section>
+    </section>
 </body>
 
 </html>
