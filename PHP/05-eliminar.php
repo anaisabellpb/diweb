@@ -18,8 +18,10 @@ $numfilas = $filas->num_rows;
 $alerta = "Nº de Registros: " . $numfilas;
 
 
-// Solo si se envía el formulario, se definen las variables del alert
-if (isset($_REQUEST['enviar'])) {
+//Si se pulsa Eliminar, se envía la referencia...
+if (isset($_REQUEST['Referencia'])) {
+    $consultaEliminar = "SELECT * FROM productos WHERE Referencia = " . $_REQUEST['Referencia'];
+    $fila = $conexion->query($consultaEliminar);
 }
 ?>
 
@@ -72,7 +74,7 @@ if (isset($_REQUEST['enviar'])) {
                         <td><?php echo $producto['Categorias']; ?></td>
                         <!-- En cada fila pongo un botón eliminar-->
                         <td><a href="05-eliminar.php?Referencia=<?php echo $producto['Referencia']; ?>"
-                        class="btn btn-outline-danger">Eliminar</a></td>
+                                class="btn btn-outline-danger">Eliminar</a></td>
                     </tr>
                 <?php
                 }
@@ -83,6 +85,17 @@ if (isset($_REQUEST['enviar'])) {
 
     <!-- Línea de separación -->
     <hr class="m-3 border border-primary border-5 w-50">
+
+    <?php
+    if (isset($_REQUEST['Referencia'])) {
+        $consultaEliminar = "SELECT * FROM productos WHERE Referencia = " . $_REQUEST['Referencia'];
+        $fila = $conexion->query($consultaEliminar);
+    ?>
+    <a href="05-eliminar.php?Referencia=<?php echo $fila['Referencia']; ?>"
+    class="btn btn-outline-danger">Eliminar</a>
+    <?php
+    }
+    ?>
 
     <form action="#" method="post" class="m-3 shadow-lg">
         <button type="submit" class="btn btn-success" name="enviar">Consultar</button>
