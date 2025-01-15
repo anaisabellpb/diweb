@@ -5,20 +5,17 @@
 require("errores.php");
 require("funciones.php");
 
-//Llamamos a la base de datos
-$conexion = conectarBBDD();
-
-
-//Hacemos la consulta
-$consulta = "SELECT * FROM productos";
-$filas = $conexion->query($consulta);
-$numfilas = $filas->num_rows;
-
 // Recogemos datos del formulario 
 $alerta = "Mensaje...";
 
 // Solo si se envía el formulario, se definen las variables del alert
 if (isset($_REQUEST['enviar'])) {
+    //Llamamos a la base de datos
+    $conexion = conectarBBDD();
+    //Hacemos la consulta
+    $consulta = "SELECT * FROM productos";
+    $filas = $conexion->query($consulta);
+    $numfilas = $filas->num_rows;
     $alerta = "Nº de Registros: " . $numfilas;
 }
 ?>
@@ -89,20 +86,20 @@ if (isset($_REQUEST['enviar'])) {
         <button type="submit" class="btn btn-success" name="enviar">Consultar</button>
     </form>
     <!-- Defino enlaces de navegación con estilo boostrap-->
-     <section class="row">
+    <section class="row">
         <nav class="col">
             <a href="01-cargar-bbdd.php"
-            class="btn btn-sm btn-success w-100">Cargar BBDD</a>
+                class="btn btn-sm btn-success w-100">Cargar BBDD</a>
             <a href="03-insertar-bbdd.php"
-            class="btn btn-sm btn-warning w-100">Insertar producto</a>
+                class="btn btn-sm btn-warning w-100">Insertar producto</a>
         </nav>
         <nav class="col">
             <a href="04-actualizar-bbdd.php"
-            class="btn btn-sm btn-secondary w-100">Actualizar producto</a>
+                class="btn btn-sm btn-secondary w-100">Actualizar producto</a>
             <a href="05-eliminar-bbdd.php"
-            class="btn btn-sm btn-danger w-100">Eliminar producto</a>
+                class="btn btn-sm btn-danger w-100">Eliminar producto</a>
         </nav>
-     </section>
+    </section>
 </body>
 
 </html>
