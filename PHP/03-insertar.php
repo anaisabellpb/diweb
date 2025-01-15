@@ -1,31 +1,50 @@
 <!-- http://localhost/Curso/PHP/03-insertar.php -->
 
 <?php
+// Llamar a errores y funciones
+require("errores.php");
+require("funciones.php");
+
 /* Recogemos datos del formulario */
 $alerta = "Mensaje...";
 
 // Solo si se envía el formulario, se definen las variables del alert
 if (isset($_REQUEST['enviar'])) {
+    //Llamamos a la base de datos
+    $conexion = conectarBBDD();
 
-    $comentario = $_REQUEST['comentario'] ?? '';
-    $numEmpleado = $_REQUEST['numEmpleado'] ?? '';
-    $entradaSalida = $_REQUEST['entradaSalida'] ?? '';
+    $referencia = $_REQUEST['Referencias'] ?? '';
+    $descripcion = $_REQUEST['Descripcion'] ?? '';
+    $precio = $_REQUEST['Precio'] ?? '';
+    $stock = $_REQUEST['Stock'] ?? '';
 
-    // En el caso del checkbox se envía un array
-    $turno = $_REQUEST['turno'] ?? [];
-    $incidencia = $_REQUEST['incidencia'] ?? '';
-
-    // ?? '' es para cuando NO se envía el dato...
-    $fecha = $_REQUEST['fecha'] ?? '';
+    // En el caso de categorias mando un array
+    $categorias = $_REQUEST['Categorias'] ?? [];
 
     // implode sirve para escribir los elementos del array
-    $turnoValores = implode(', ', $turno);
-    $alerta = " Comentarios: $comentario
-        NºEmpleado: $numEmpleado
-        Entrada/Salida: $entradaSalida
-        Turno: $turnoValores
-        Incidencia: $incidencia
-        Fecha: $fecha";
+    $categoriasValores = implode(', ', $categorias);
+    $alerta = " Referencia: $referencia
+        Descripcion: $descripcion
+        Precio: $precio
+        Stock: $stock
+        Categorias: $categoriasValores";  // valor array
+
+    // Ahora introducimos lo de arriba en la BBDD
+    // Defino una sentencia preparada para evitar hakeos, se encriptan poniendo ?, por cada valor y la sentencia
+    // la 1º encriptación es con el prepare y la 2º es con la sustitución de las letras, aqui es idis.
+    $sentenciaSQL = "INSERT INTO productos 
+                     (Referencia, Descripcion, Precio, Stock, Categorias)
+                    VALUES (?,?,?,?,?)";
+    $sentenciaPreparada = $conexion->prepare($sentenciaSQL);
+    // Encriptamos la sentencia (bind_param)
+    $sentenciaPreparada->bind_param("isdis", $referencia, $descripcion, $precio, $stock, $categoriasValores);
+    // ejecute es booleano; true (correcto) false (error)
+    $ejecutaSQL = $sentenciaPreparada->execute();
+    if ($ejecutaSQL) {
+        $alerta .= "<br> Producto insertado correctamente";
+    } else {
+        $alerta .= "<br> ERROR FATAL (explota!)";
+    }
 }
 ?>
 

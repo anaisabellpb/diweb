@@ -1,6 +1,10 @@
 <!-- http://localhost/Curso/PHP/Ejemplo_00_Plantilla.php -->
 
 <?php
+// Llamar a errores y funciones
+require("errores.php");
+require("funciones.php");
+
 /* Recogemos datos del formulario */
 $alerta = "Mensaje...";
 
@@ -93,5 +97,6 @@ if (isset($_REQUEST['enviar'])) {
         <hr class="border border-primary border-5 w-50">
         <button type="submit" class="btn btn-success" name="enviar">Enviar</button>
     </form>
+    
 </body>
 </html>
