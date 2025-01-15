@@ -63,7 +63,7 @@ if (isset($_REQUEST['enviar'])) {
         <nav class="col">
             <a href="02-consultar.php"
                 class="btn btn-sm btn-success w-100">Consultar productos</a>
-            <a href="03-insertar-bbdd.php"
+            <a href="03-insertar.php"
                 class="btn btn-sm btn-warning w-100">Insertar producto</a>
         </nav>
         <nav class="col">
