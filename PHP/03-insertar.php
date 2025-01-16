@@ -38,6 +38,7 @@ if (isset($_REQUEST['enviar'])) {
     $sentenciaPreparada = $conexion->prepare($sentenciaSQL);
     // Encriptamos la sentencia (bind_param)
     $sentenciaPreparada->bind_param("isdis", $referencia, $descripcion, $precio, $stock, $categoriasValores);
+    
     // ejecute es booleano; true (correcto) false (error)
     $ejecutaSQL = $sentenciaPreparada->execute();
     if ($ejecutaSQL) {
