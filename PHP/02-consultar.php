@@ -12,6 +12,7 @@ $alerta = "Mensaje...";
 if (isset($_REQUEST['enviar'])) {
     //Llamamos a la base de datos
     $conexion = conectarBBDD();
+    
     //Hacemos la consulta
     $consulta = "SELECT * FROM productos";
     $filas = $conexion->query($consulta);
@@ -90,13 +91,13 @@ if (isset($_REQUEST['enviar'])) {
         <nav class="col">
             <a href="01-cargar-bbdd.php"
                 class="btn btn-sm btn-success w-100">Cargar BBDD</a>
-            <a href="03-insertar-bbdd.php"
+            <a href="03-insertar.php"
                 class="btn btn-sm btn-warning w-100">Insertar producto</a>
         </nav>
         <nav class="col">
-            <a href="04-actualizar-bbdd.php"
+            <a href="04-actualizar.php"
                 class="btn btn-sm btn-secondary w-100">Actualizar producto</a>
-            <a href="05-eliminar-bbdd.php"
+            <a href="05-eliminar.php"
                 class="btn btn-sm btn-danger w-100">Eliminar producto</a>
         </nav>
     </section>

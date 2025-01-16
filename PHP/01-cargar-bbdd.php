@@ -67,9 +67,9 @@ if (isset($_REQUEST['enviar'])) {
                 class="btn btn-sm btn-warning w-100">Insertar producto</a>
         </nav>
         <nav class="col">
-            <a href="04-actualizar-bbdd.php"
+            <a href="04-actualizar.php"
                 class="btn btn-sm btn-secondary w-100">Actualizar producto</a>
-            <a href="05-eliminar-bbdd.php"
+            <a href="05-eliminar.php"
                 class="btn btn-sm btn-danger w-100">Eliminar producto</a>
         </nav>
     </section>

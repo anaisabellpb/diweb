@@ -1,4 +1,4 @@
-<!-- http://localhost/Curso/PHP/03-insertar.php -->
+<!-- http://localhost/Curso/PHP/04-actualizar.php -->
 
 <?php
 // Llamar a errores y funciones
@@ -7,6 +7,15 @@ require("funciones.php");
 
 /* Recogemos datos del formulario */
 $alerta = "Mensaje...";
+
+//Llamamos a la base de datos
+$conexion = conectarBBDD();
+
+//Hacemos la consulta
+$consulta = "SELECT * FROM productos";
+$filas = $conexion->query($consulta);
+$numfilas = $filas->num_rows;
+$alerta = "Nº de Registros: " . $numfilas;
 
 // Solo si se envía el formulario, se definen las variables del alert
 if (isset($_REQUEST['enviar'])) {
@@ -38,7 +47,7 @@ if (isset($_REQUEST['enviar'])) {
     $sentenciaPreparada = $conexion->prepare($sentenciaSQL);
     // Encriptamos la sentencia (bind_param)
     $sentenciaPreparada->bind_param("isdis", $referencia, $descripcion, $precio, $stock, $categoriasValores);
-    
+
     // ejecute es booleano; true (correcto) false (error)
     $ejecutaSQL = $sentenciaPreparada->execute();
     if ($ejecutaSQL) {
