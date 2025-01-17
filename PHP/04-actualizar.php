@@ -174,14 +174,17 @@ if (isset($_REQUEST['enviar'])) {
 
             <!-- Cargo con PHP las categorías marcadas-->
             <?php
-            // $misCategorias son TODAS las categorías de los checkbox
+            // $misCategorias son TODAS las categorías de los checkbox. 
+            // lo de ["papelería", "escolar", "oficina"] son cadenas
             $misCategorias = ["papelería", "escolar", "oficina"];
+            // implode da de resultado -> "papelería,escolar,oficina"
+
             foreach ($misCategorias as $categoria) {
                 $seleccionado = in_array($categoria, $categoriasElegidas) ? "checked" : "";
             ?>
                 <!-- Código HTML: Los checkbox + Label-->
                 <input type="checkbox" name="categorias[]"
-                    value="<?php $categoria ?>" id="<?php $categoria ?>" <?php echo $seleccionado?>>
+                    value="<?php $categoria ?>" id="<?php $categoria ?>" <?php echo $seleccionado ?>>
                 <label for="<?php $categoria ?>"><?php echo $categoria ?></label><br>
             <?php
             }
