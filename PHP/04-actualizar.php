@@ -19,9 +19,6 @@ $alerta = "Nº de Registros: " . $numfilas;
 
 // Solo si se envía el formulario, se definen las variables del alert
 if (isset($_REQUEST['enviar'])) {
-    //Llamamos a la base de datos
-    $conexion = conectarBBDD();
-
     $referencia = $_REQUEST['Referencias'] ?? '';
     $descripcion = $_REQUEST['Descripcion'] ?? '';
     $precio = $_REQUEST['Precio'] ?? '';
@@ -36,25 +33,32 @@ if (isset($_REQUEST['enviar'])) {
         Descripcion: $descripcion
         Precio: $precio
         Stock: $stock
-        Categorias: $categoriasValores";  // valor array
+        Categorias: $categoriasValores";  
 
     // Ahora introducimos lo de arriba en la BBDD
-    // Defino una sentencia preparada para evitar hakeos, se encriptan poniendo ?, por cada valor y la sentencia
-    // la 1º encriptación es con el prepare y la 2º es con la sustitución de las letras, aqui es idis.
-    $sentenciaSQL = "INSERT INTO productos 
-                     (Referencia, Descripcion, Precio, Stock, Categorias)
-                    VALUES (?,?,?,?,?)";
+    // Defino una sentencia preparada ( ? por cada campo)
+    $sentenciaSQL = "UPDATE productos SET Descripcion = ?,
+                     Precio = ?, Stock = ?, Categorias = ? WHERE Referencia = ?";
     $sentenciaPreparada = $conexion->prepare($sentenciaSQL);
     // Encriptamos la sentencia (bind_param)
-    $sentenciaPreparada->bind_param("isdis", $referencia, $descripcion, $precio, $stock, $categoriasValores);
+    $sentenciaPreparada->bind_param(
+        "sdisi", 
+        $descripcion, 
+        $precio, 
+        $stock, 
+        $categoriasValores, 
+        $referencia
+    );
 
     // ejecute es booleano; true (correcto) false (error)
     $ejecutaSQL = $sentenciaPreparada->execute();
     if ($ejecutaSQL) {
-        $alerta .= "<br> Producto insertado correctamente";
+        $alerta .= "<br> Producto actualizado correctamente";
     } else {
         $alerta .= "<br> ERROR FATAL (explota!)";
     }
+
+    $filas = $conexion->query($consulta);
 }
 ?>
 
@@ -184,8 +188,11 @@ if (isset($_REQUEST['enviar'])) {
             ?>
                 <!-- Código HTML: Los checkbox + Label-->
                 <input type="checkbox" name="categorias[]"
-                    value="<?php $categoria ?>" id="<?php $categoria ?>" <?php echo $seleccionado ?>>
-                <label for="<?php $categoria ?>"><?php echo $categoria ?></label><br>
+                    value="<?php echo $categoria ?>" 
+                    id="<?php echo $categoria ?>" 
+                    <?php echo $seleccionado ?>>
+                <label for="<?php echo $categoria ?>">
+                    <?php echo $categoria ?></label><br>
             <?php
             }
             ?>
