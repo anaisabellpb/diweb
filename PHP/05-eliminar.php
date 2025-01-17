@@ -126,7 +126,9 @@ if (isset($_REQUEST['descartar'])) {
     <?php
     }
     ?>
-    <hr class="m-3 border border-primary border-5 w-50">
+    <form action="#" method="post" class="m-3 shadow-lg">
+        <button type="submit" class="btn btn-success" name="enviar">Consultar</button>
+    </form>
     <section class="row">
         <nav class="col">
             <a href="01-cargar-bbdd.php"
