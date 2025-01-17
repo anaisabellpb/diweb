@@ -96,7 +96,7 @@ if (isset($_REQUEST['descartar'])) {
                         <td><?php echo $producto['Categorias']; ?></td>
                         <!-- En cada fila pongo un botón Eliminar -->
                         <td>
-                            <form action="05-eliminar.php" method="post" style="display:inline;">
+                            <form action="#" method="post" style="display:inline;">
                                 <input type="hidden" name="Referencia"
                                     value="<?php echo $producto['Referencia']; ?>">
                                 <input type="hidden" name="Descripcion"

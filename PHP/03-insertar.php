@@ -22,7 +22,7 @@ if (isset($_REQUEST['enviar'])) {
     $categorias = $_REQUEST['Categorias'] ?? [];
 
     // implode sirve para escribir los elementos del array
-    $categoriasValores = implode(', ', $categorias);
+    $categoriasValores = implode(',', $categorias);
     $alerta = " Referencia: $referencia
         Descripcion: $descripcion
         Precio: $precio
