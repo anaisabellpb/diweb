@@ -46,6 +46,7 @@ if (isset($_REQUEST['enviar'])) {
     <title>Plantilla</title>
     <link rel="stylesheet" href="bootstrap.min.css">
     <script src="bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="estilos.css">
 </head>
 
 <body>

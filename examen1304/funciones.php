@@ -1,7 +1,8 @@
 <?php
 // funciones.php
 
-function conectar() {
+function conectar()
+{
     // Variables de conexión
     $servidor = "localhost";
     $usuario = "root";
@@ -14,8 +15,8 @@ function conectar() {
     // new -> Constructor, para crear objetos
     $conexion = new mysqli($servidor, $usuario, $clave);
 
-    if($conexion->connect_error) {
-        die("ERROR!,".$conexion->connect_errno);
+    if ($conexion->connect_error) {
+        die("ERROR!," . $conexion->connect_errno);
     } else {
         echo "La conexión es correcta";
     }
@@ -24,7 +25,8 @@ function conectar() {
 }
 
 
-function conectarBBDD() {
+function conectarBBDD()
+{
     // Variables de conexión
     $servidor = "localhost";
     $usuario = "root";
@@ -38,8 +40,8 @@ function conectarBBDD() {
     // new -> Constructor, para crear objetos
     $conexion = new mysqli($servidor, $usuario, $clave, $bbdd);
 
-    if($conexion->connect_error) {
-        die("ERROR!,".$conexion->connect_errno);
+    if ($conexion->connect_error) {
+        die("ERROR!," . $conexion->connect_errno);
     } else {
         echo "La conexión es correcta";
     }
@@ -50,12 +52,12 @@ function conectarBBDD() {
 
 
 // errores.php
-ini_set('display_errors',1);            // Muestra errores por pantalla
-ini_set('display_startup_errors',1);    // Muestra al inicio
+ini_set('display_errors', 1);            // Muestra errores por pantalla
+ini_set('display_startup_errors', 1);    // Muestra al inicio
 error_reporting(E_ALL);                 // Muestra TODOS los errores
 
-ini_set('error_log','errores.log');     // Graba errores en archivo
-ini_set('log_errors',1);                // Activa el grabado errores
+ini_set('error_log', 'errores.log');     // Graba errores en archivo
+ini_set('log_errors', 1);                // Activa el grabado errores
 
 /**
  * Comentario Multilínea

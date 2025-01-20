@@ -1,4 +1,4 @@
-<!-- http://localhost/Curso/PHP/05-eliminar.php -->
+<!-- http://localhost/Curso/PHP/borrar-eliminar.php -->
 
 <?php
 // Llamar a errores y funciones
@@ -19,14 +19,14 @@ if (isset($_REQUEST['eliminar'])) {
     mysqli_report(MYSQLI_REPORT_OFF);
 
     // Borramos el registro con una SENTENCIA PREPARADA
-    $referencia = $_REQUEST['Referencia'];
-    $sql = "DELETE FROM productos WHERE Referencia = ?";
+    $nif = $_REQUEST['nif'];
+    $sql = "DELETE FROM alumnos WHERE nif = ?";
     $sentenciaPreparada = $conexion->prepare($sql);
-    $sentenciaPreparada->bind_param("i", $referencia);
+    $sentenciaPreparada->bind_param("s", $nif);
 
     $ejecutaSQL = $sentenciaPreparada->execute();
     if($ejecutaSQL) {
-        $alerta .= "<br> Fila borrada!";
+        $alerta .= "<br> Registro eliminado!";
     } else {
         $alerta .= "<br> ERROR en el borrado: " . $conexion->error;
     }
@@ -39,7 +39,7 @@ if (isset($_REQUEST['volver'])) {
 }
 
 // Hacemos la consulta
-$consulta = "SELECT * FROM productos";
+$consulta = "SELECT * FROM alumnos";
 $filas = $conexion->query($consulta);
 $numFilas = $filas->num_rows;
 $alerta .= "<br> Nº de Registros: " . $numFilas;
@@ -76,33 +76,33 @@ $alerta .= "<br> Nº de Registros: " . $numFilas;
         <table class="table">
             <thead>
                 <tr>
-                    <th>Referencia</th>
-                    <th>Descripción</th>
-                    <th>Precio</th>
-                    <th>Stock</th>
-                    <th>Categorías</th>
+                    <th>Nif</th>
+                    <th>Nombre</th>
+                    <th>Fecha nacimiento</th>
+                    <th>Pagado</th>
+                    <th>Importe</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
                 <?php       // Asocio la salida a su campo
-                $productos = $filas->fetch_all(MYSQLI_ASSOC);
-                foreach ($productos as $producto) {
+                $alumnos = $filas->fetch_all(MYSQLI_ASSOC);
+                foreach ($alumnos as $alumno) {
                 ?>
                     <!-- tr>td*5  -->
                     <tr>
-                        <td><?php echo $producto['Referencia']; ?></td>
-                        <td><?php echo $producto['Descripcion']; ?></td>
-                        <td><?php echo $producto['Precio']; ?></td>
-                        <td><?php echo $producto['Stock']; ?></td>
-                        <td><?php echo $producto['Categorias']; ?></td>
+                        <td><?php echo $alumno['nif']; ?></td>
+                        <td><?php echo $alumno['nombre']; ?></td>
+                        <td><?php echo $alumno['fechanac']; ?></td>
+                        <td><?php echo $alumno['pagado']; ?></td>
+                        <td><?php echo $alumno['importe']; ?></td>
                         <!-- En cada fila pongo un botón Eliminar -->
                         <td>
                             <form action="#" method="post">
-                                <input type="hidden" name="Referencia"
-                                    value="<?php echo $producto['Referencia']; ?>">
-                                <input type="hidden" name="Descripcion"
-                                    value="<?php echo $producto['Descripcion']; ?>">
+                                <input type="hidden" name="nif"
+                                    value="<?php echo $alumno['nif']; ?>">
+                                <input type="hidden" name="nombre"
+                                    value="<?php echo $alumno['nombre']; ?>">
                                 <button type="submit" name="confirmar" class="btn btn-outline-danger">Eliminar</button>
                             </form>
                         </td>
@@ -118,10 +118,10 @@ $alerta .= "<br> Nº de Registros: " . $numFilas;
     <?php
     if (isset($_REQUEST['confirmar'])) {
     ?>
-        <p>¿Desea eliminar <?php echo $_REQUEST['Descripcion']; ?>?</p>
+        <p>¿Desea eliminar <?php echo $_REQUEST['nombre']; ?>?</p>
         <form action="#" method="post">
-            <input type="hidden" name="Referencia"
-                value="<?php echo $_REQUEST['Referencia']; ?>">
+            <input type="hidden" name="nif"
+                value="<?php echo $_REQUEST['nif']; ?>">
             <button type="submit" name="eliminar"
                 class="btn btn-outline-danger">SI</button>
             <button type="submit" name="volver"
@@ -132,20 +132,13 @@ $alerta .= "<br> Nº de Registros: " . $numFilas;
     ?>
 
     <form action="#" method="post" class="m-3 shadow-lg">
-        <button type="submit" class="btn btn-success" name="enviar">Consultar</button>
+        <button type="submit" class="btn btn-success" name="enviar">Eliminar</button>
     </form>
+     <!-- Defino enlaces de navegación -->
     <section class="row">
         <nav class="col">
-            <a href="01-cargar-bbdd.php"
-                class="btn btn-sm btn-success w-100">Cargar BBDD</a>
-            <a href="03-insertar.php"
-                class="btn btn-sm btn-warning w-100">Insertar Producto</a>
-        </nav>
-        <nav class="col">
-            <a href="04-actualizar.php"
-                class="btn btn-sm btn-secondary w-100">Actualizar Producto</a>
-            <a href="05-eliminar.php"
-                class="btn btn-sm btn-danger w-100">Eliminar Producto</a>
+            <a href="index.php"
+                class="btn btn-sm btn-success w-100">Volver al inicio</a>
         </nav>
     </section>
 </body>

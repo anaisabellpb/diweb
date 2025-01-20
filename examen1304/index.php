@@ -10,6 +10,7 @@
     <title>index</title>
     <link rel="stylesheet" href="bootstrap.min.css">
     <script src="bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="estilos.css">
 </head>
 
 <body>
@@ -40,7 +41,7 @@
                 class="btn btn-sm btn-secondary w-100">Consulta Docentes</a>
 
             <a href="consultar-alumnos.php"
-                class="btn btn-sm btn-danger w-100">Consulta Alumnos/Docente</a>
+                class="btn btn-sm btn-danger w-100">Consultar Alumnos/Docente</a>
 
             <a href="actualizar-alumnos.php"
                 class="btn btn-sm btn-secondary w-100">Actualizar Alumnos</a>
