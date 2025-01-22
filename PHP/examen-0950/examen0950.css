@@ -1,0 +1,50 @@
+body {
+    background-color: lavender;
+}
+
+* {
+    font-size: 20px;
+}
+
+header {
+    background: linear-gradient(to right, lightblue, lightcoral);
+    text-align: right;
+    padding: 20px;
+    border-radius: 40px;
+}
+
+header p {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    letter-spacing: 0.05ex;
+}
+
+table thead {
+    font-variant: small-caps;
+    text-decoration: underline;
+}
+
+table tbody {
+    position: 50px;
+    border-bottom: 1px solid blue;
+}
+
+hr.m-3 {
+    position: relative;
+    bottom: 15px;
+    border-width: none;
+}
+
+form.m-3 {
+    box-shadow: 2px 2px 10px white;
+}
+
+.row {
+    margin-top: 10px;
+    padding: 15px;
+    font-style: italic;
+}
+
+.row a:hover {
+    color: black;
+    background-color: cyan;
+}
