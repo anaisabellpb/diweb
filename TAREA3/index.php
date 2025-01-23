@@ -70,7 +70,7 @@
                         <legend class="d-flex justify-content-between align-items-center fs-5 fw-bold">
                             soy autónomo o empresa
                             <div class="form-check form-switch">
-                                <input class="form-check-input" type="checkbox" id=>
+                                <input class="form-check-input" type="checkbox">
                                 <label class="form-check-label" for="toggleSwitch"></label>
                             </div>
                         </legend>
