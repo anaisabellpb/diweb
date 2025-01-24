@@ -1,0 +1,48 @@
+<!--Ejemplo_05_OperadorIgual.html-->
+<!--localhost/Curso/JS/Ejemplo_07_OperadoresMat.html-->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <script>
+        /*Esto se llama modularizar, separar el código en funciones (fragmentos), 
+        funciona como una calculadora*/
+        function suma() {
+            let num1 = parseInt(prompt("Dame Nº1"));
+            let num2 = parseInt(prompt("Dame Nº2"));
+            let resultado = num1 + num2;
+            alert(`La suma es: ${resultado}`);
+        }
+        // Módulo: Resto de la división entera
+        // Ej: 11 % 2 = 1 (cociente es 5 y el resto es 1)
+        function division() {
+            let num1 = parseInt(prompt("Dame Nº1"));
+            let num2 = parseInt(prompt("Dame Nº2"));
+            let resultado = num1 / num2;
+            alert(`La division es: ${resultado}`);
+        }
+
+        function modulo() {
+            let num1 = parseInt(prompt("Dame Nº1"));
+            let num2 = parseInt(prompt("Dame Nº2"));
+            let resultado = num1 % num2;
+            alert(`El mòdulo es: ${resultado}`);
+        } 
+    </script>
+</head>
+
+<body>
+    <main class="m-3 p-3">
+        <form action="#" method="post">
+            <button type="submit" class="btn btn-primary" onclick="suma();">Suma</button>
+            <button type="submit" class="btn btn-primary" onclick="división();">División</button>
+            <button type="submit" class="btn btn-primary" onclick="modulo();">Módulo</button>
+        </form>
+    </main>
+</body>
+
+</html>
