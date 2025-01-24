@@ -1,0 +1,39 @@
+<!--localhost/Curso/JS/Ejemplo_10_CondicionalF.html-->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <script>
+
+        function iniciar() {
+            let num1 = parseInt(prompt("Dame Edad"));
+            if (num1 >= 18) {
+                alert(`Puedes Votar y conducir!`);
+                if (num1 >= 67) {
+                    alert(`Te puedes jubilar`);
+                } else {
+                    alert(`Te toca currar`);
+                }
+            } else {
+                alert(`Te comes los mocos, como Alejandro`);
+            }
+
+        }
+
+
+    </script>
+</head>
+
+<body>
+    <main class="m-3 p-3">
+        <form action="#" method="post">
+            <button type="submit" class="btn btn-primary" onclick="iniciar();">Iniciar</button>
+        </form>
+    </main>
+</body>
+
+</html>
