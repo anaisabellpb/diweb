@@ -1,0 +1,40 @@
+<!--Ejemplo_02_Suma.html-->
+<!--localhost/Curso/JS/Ejemplo_02_Suma.html-->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <script>
+        function iniciar() {
+            let num1 = prompt("Dame Nº1");
+            num1 = parseInt(num1);
+
+            let num2 = parseInt(prompt("Dame Nº2"));
+            /*CONVERSIONES EXPLÍCITAS
+            parsenInt -> Convierte a entero
+            parseFloat -> Convierte a decimal
+            Boolean -> Convierte a Booleano (1,0)
+            */
+            let resultado = num1 + num2;
+            // Usamos literales de plantilla -> ` ${variable} `
+            window.alert(`La suma de ${num1}+ ${num2} = ${resultado}`);
+            
+            // ERROR! Para verlo, pulsar F12 > [consola]
+            // Window.alert ("La suma de 10 + 20 = " + resultado);
+        } 
+    </script>
+</head>
+
+<body>
+    <main class="m-3 p-3">
+        <form action="#" method="post">
+            <button type="submit" class="btn btn-primary" onclick="iniciar();">Sumar</button>
+        </form>
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+<!--Ejemplo_05_OperadorIgual.html-->
+<!--localhost/Curso/JS/Ejemplo_06_IncrementoDecremento.html-->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <script>
+        function iniciar() {
+           // ++ es el operador de incremento
+           // -- es el operador de decremento
+           // === es comparación estricta (igual con tipos)
+           let num1 = "5";
+           alert(`El valor de num1 = ${num1}`);
+
+           num1++;// Equivale a: num1 = num1 +1;
+           alert(`El valor de num1 = ${num1}`);
+           num1--;// Equivale a: num1 = num1 -1;
+           alert(`El valor de num1 = ${num1}`);
+
+           //Acortar incrementos/decrementos
+           // (num1 0 num1 + 1) ~ (num1 += 1)
+           num += 1;
+           alert(`El valor de num1 = ${num1}`);
+        } 
+    </script>
+</head>
+
+<body>
+    <main class="m-3 p-3">
+        <form action="#" method="post">
+            <button type="submit" class="btn btn-primary" onclick="iniciar();">Incremento - Decremento</button>
+        </form>
+    </main>
+</body>
+
+</html>

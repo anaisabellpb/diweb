@@ -1,0 +1,31 @@
+<!--Ejemplo_04_Arrays.html-->
+<!--localhost/Curso/JS/Ejemplo_04_Arrays.html-->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <script>
+        function iniciar() {
+           // Definimos un array de días de la semana, para sacarle el valor de la array
+           let dias = ["Lunes","Martes","Miércoles","Jueves","Viernes","Sábado","Domingo",];
+
+            window.alert(`Hoy es ${dias[3]}`);
+            dias[3] = "Ofu, es jueves!";
+            window.alert(`${dias[3]}`); 
+        } 
+    </script>
+</head>
+
+<body>
+    <main class="m-3 p-3">
+        <form action="#" method="post">
+            <button type="submit" class="btn btn-primary" onclick="iniciar();">Hoy</button>
+        </form>
+    </main>
+</body>
+
+</html>
