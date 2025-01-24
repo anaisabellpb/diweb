@@ -1,0 +1,49 @@
+<!--localhost/Curso/JS/Ejemplo_08_OperadoresLogicos-->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <script>
+        /*Me creo mi propia función de conversión de booleano
+        1 -> true y 0 -> false */
+        function booleano (num) {
+            return num === "1";
+        }
+
+        function or() {
+            let num1 = booleano(prompt("Dame Entrada1"));
+            let num2 = booleano(prompt("Dame Entrada2"));
+            let resultado = num1 || num2;
+            alert(`Salida OR: ${resultado}`);
+        }
+
+        function and() {
+            let num1 = booleano(prompt("Dame Entrada1"));
+            let num2 = booleano(prompt("Dame Entrada2"));
+            let resultado = num1 && num2;
+            alert(`Salida AND: ${resultado}`);
+        }
+
+        function not() {
+            let num1 = booleano(prompt("Dame Nº1"));
+            let resultado = !num1;
+            alert(`Salida NOT: ${resultado}`);
+        }
+    </script>
+</head>
+
+<body>
+    <main class="m-3 p-3">
+        <form action="#" method="post">
+            <button type="submit" class="btn btn-primary" onclick="or();">OR</button>
+            <button type="submit" class="btn btn-success" onclick="and();">AND</button>
+            <button type="submit" class="btn btn-danger" onclick="not();">NOT</button>
+        </form>
+    </main>
+</body>
+
+</html>
