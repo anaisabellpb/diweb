@@ -1,0 +1,62 @@
+<!--localhost/Curso/JS/Ejemplo_13_Ivan_2_BUCLE FOR PIRAMIDE.html-->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <script>
+
+        /* 2. Escribir la siguiente pirámide pide el número de niveles de la pirámide*/
+
+        function iniciar() {
+            // A. Pedir niveles
+            let niveles = parseInt(prompt("Dame niveles"));
+            let piramide = "";
+
+            // B. Pasar de un nivel a otro
+            for (let i = 1; i <= niveles; i++) {
+                // C. Pintar tantos asteriscos como el nivel actual
+                // indices: 1º ->i;  2º -> j; 3º-> k
+                for (let j = 1; j <= i; j++) {
+                    piramide += "*";
+                }
+                piramide += "\n";
+            }
+            alert(`${piramide}`);
+        }
+
+
+
+
+        /**let altura = 5;
+        let piramide = "";
+
+
+        for (let i = 1; i <= altura; i++) {
+            let espacios = "".repeat(altura - i);
+            let asteriscos = "*".repeat(i * 2 - 1);
+            piramide += espacios + asteriscos + "\n";
+
+        }
+        console.log(piramide);
+        alert(piramide);
+    }*/
+
+
+
+
+    </script>
+</head>
+
+<body>
+    <main class="m-3 p-3">
+        <form action="#" method="post">
+            <button type="submit" class="btn btn-primary" onclick="iniciar()">Iniciar</button>
+        </form>
+    </main>
+</body>
+
+</html>
