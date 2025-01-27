@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imagen Responsiva</title>
+    <style>
+        /* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  line-height: 1.6;
+}
+
+/* Header */
+header {
+  background-color: #f8f8f8;
+  padding: 10px 20px;
+  border-bottom: 1px solid #ddd;
+}
+
+header h1 {
+  font-size: 24px;
+  display: inline-block;
+}
+
+form {
+  display: inline-block;
+  margin-left: 20px;
+}
+
+form input {
+  padding: 5px;
+  font-size: 16px;
+}
+
+form button {
+  padding: 5px 10px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.user-actions {
+  display: inline-block;
+  float: right;
+  list-style: none;
+}
+
+.user-actions li {
+  display: inline;
+  margin-left: 15px;
+}
+
+/* Main Categories */
+main .categories {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 20px;
+  text-align: center;
+}
+
+main .categories article {
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+main .categories img {
+  width: 100%;
+  height: auto;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 10px;
+}
+
+main .categories h2 {
+  font-size: 18px;
+}
+
+/* Footer */
+footer {
+  background-color: #f8f8f8;
+  padding: 20px;
+  text-align: center;
+  border-top: 1px solid #ddd;
+}
+
+footer .services {
+  list-style: none;
+}
+
+footer .services li {
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+    </style>
+</head>
+<body>
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>El Corte Inglés</title>
+      <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+      <!-- Encabezado -->
+      <header>
+        <nav>
+          <h1>El Corte Inglés</h1>
+          <form action="#" method="get">
+            <label for="search" class="visually-hidden">Buscar</label>
+            <input type="text" id="search" name="search" placeholder="¿Qué estás buscando?">
+            <button type="submit">🔍</button>
+          </form>
+          <ul class="user-actions">
+            <li><a href="#">👤</a></li>
+            <li><a href="#">❤️</a></li>
+            <li><a href="#">🛒</a></li>
+          </ul>
+        </nav>
+      </header>
+    
+      <!-- Contenido Principal -->
+      <main>
+        <!-- Lista de Categorías -->
+        <section class="categories">
+          <article>
+            <img src="imagen1.jpg" alt="Moda Mujer">
+            <h2>Moda mujer</h2>
+          </article>
+          <article>
+            <img src="imagen2.jpg" alt="Moda Hombre">
+            <h2>Moda hombre</h2>
+          </article>
+          <article>
+            <img src="imagen3.jpg" alt="Moda Infantil">
+            <h2>Moda infantil</h2>
+          </article>
+          <article>
+            <img src="imagen4.jpg" alt="Hogar">
+            <h2>Hogar</h2>
+          </article>
+          <article>
+            <img src="imagen5.jpg" alt="Deportes">
+            <h2>Deportes</h2>
+          </article>
+          <article>
+            <img src="imagen6.jpg" alt="Electrónica">
+            <h2>Electrónica</h2>
+          </article>
+        </section>
+      </main>
+    
+      <!-- Footer -->
+      <footer>
+        <ul class="services">
+          <li>Recogida en tienda <strong>gratis</strong></li>
+          <li>Envío a domicilio</li>
+          <li>Devolución <strong>gratis</strong> en tienda</li>
+          <li>Click & Car</li>
+        </ul>
+      </footer>
+    </body>
+    </html>
+    
+</body>
+</html>

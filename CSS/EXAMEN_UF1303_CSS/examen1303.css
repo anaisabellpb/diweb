@@ -1,0 +1,354 @@
+ /* Nombre: Ana Isabel Pozo Baena*/
+
+ /* Reglas Generales */
+ /* ############################################# */
+ /*01. */
+ body {
+     font-size: 0.7em;
+     background-color: rgb(241, 241, 241);
+ }
+
+ /*02. */
+ @font-face {
+     font-family: inter;
+     src: url(font/Inter.ttf);
+ }
+
+ body {
+     font-family: inter;
+ }
+
+ /*03. */
+ body>header:nth-child(1) {
+     height: 80px;
+     width: 100%;
+     background-color: white;
+     border-radius: 20px;
+ }
+
+ /*04. */
+ body>aside:nth-child(3),
+ aside:nth-child(5) {
+     border-color: white;
+     border-width: 5px;
+     border-radius: 20px;
+     border-top: dashed;
+
+ }
+
+ /* Reglas Header (Cabecera)*/
+ /* ############################################# */
+ /*05. */
+ header>figure img,
+ header:nth-child(1)>nav:nth-child(3) {
+     float: left;
+     position: absolute;
+     padding-top: 20px;
+ }
+
+ /*05 (opcional). */
+ header>figure img {
+     border-radius: 10%;
+     filter: blur(0.2px);
+     width: 150px;
+     height: 50px;
+ }
+
+ /*06. */
+ header:nth-child(1)>nav:nth-child(2) {
+     margin-top: 15px;
+     width: 45%;
+     text-align: right;
+     margin-left: 200px;
+ }
+
+ /*07. */
+ body>header>nav>form>input#buscar,
+ input[type="submit"] {
+     border-color: #DF5521;
+     border-width: 1px;
+     padding-top: 5px;
+     padding-bottom: 5px;
+     padding-left: 15px;
+     padding-right: 15px;
+     box-shadow: 5px 5px 10px #DF5521;
+     border-radius: 10px;
+ }
+
+ /*08. */
+ body>header>nav>form>img {
+     vertical-align: middle;
+ }
+
+ /*09. */
+ body>header>nav {
+     position: absolute;
+     left: 40px;
+     top: 40px;
+ }
+
+ /*10.*/
+ body>header>nav>a {
+     text-decoration: none;
+     color: gray;
+     opacity: 0.9;
+     margin-left: 10px;
+     margin-right: 10px;
+     font-size: 15px;
+     position: relative;
+     left: 1300px;
+ }
+
+ /* Reglas Section Mensaje (Banner)  */
+ /* ############################################# */
+ /*11. */
+ body>section#primeranuncio.anuncio {
+     padding: 5px;
+     width: 280px;
+     height: 80px;
+     background: #f9b49b;
+     border: 1px solid #DF5521;
+     border-radius: 1em;
+     display: block;
+     position: absolute;
+     top: 100px;
+     left: 550px;
+     z-index: 30;
+ }
+
+ /*12. */
+ .boton {
+     position: relative;
+     bottom: 30px;
+     right: 10px;
+     float: right;
+     display: inline;
+ }
+
+ /* Reglas Aside (Laterales)*/
+ /* ############################################# */
+ /*13. */
+ aside {
+     position: absolute;
+     width: 18%;
+     margin-right: 30px;
+     padding: 10px;
+     z-index: 10;
+ }
+
+ /*14. */
+ body>aside:nth-child(3)>section>h2 {
+     color: #DF5521;
+ }
+
+ /* Reglas Aside Izquierdo (Lateral Izquierdo)*/
+ /* ############################################# */
+ /*15. */
+
+ body>aside:nth-child(3) {
+     top: 100px;
+     margin-left: 10px;
+ }
+
+ /*16. */
+ body>aside:nth-child(3) {
+     display: block;
+ }
+
+ /*17. */
+
+ body>aside>section>form [type="text"] {
+     border: 1px solid #DF5521;
+     padding: 2px;
+     box-shadow: 10px 10px 10px #DF5521;
+     width: 60%;
+     margin-top: 10px;
+     margin-bottom: 10px;
+
+ }
+
+
+ /*18. */
+
+ body>aside>section>form [type="text"]:hover {
+     background: azure;
+
+ }
+
+
+
+ /*19. */
+
+ aside:nth-child(3)>form>input[type="submit"] {
+     border-width: 1px;
+     border-color: #DF5521;
+     border-radius: 5px;
+     display: block;
+     margin-top: 15px;
+     padding-top: 5px;
+     padding-bottom: 5px;
+     padding-left: 10px;
+     padding-right: 10px;
+ }
+
+ /*20. */
+ body>aside:nth-child(3)>section:nth-child(2)>h2:nth-child(1) {
+     text-decoration: underline;
+     text-transform: capitalize;
+     color: #DF5521;
+ }
+
+ /*21. */
+ body>aside:nth-child(3)>section:nth-child(2) a {
+     color: grey;
+     opacity: 0.8;
+     font-size: 14px;
+     text-decoration: none;
+ }
+
+ /*22. */
+
+ /* Reglas Main */
+ /* ############################################# */
+ /*23. */
+ body>main:nth-child(4) {
+     position: absolute;
+     top: 100px;
+     left: 26%;
+     padding: 10px;
+     width: 45%;
+
+ }
+
+ /*24. */
+ body>main:nth-child(4)>h1 {
+     color: #DF5521;
+ }
+
+ /*25. */
+
+ body>main:nth-child(4)>article>section>figure:nth-child(2)>img {
+     float: right;
+     margin-top: -10px;
+     margin-right: -15px;
+     margin-bottom: 10px;
+     margin-left: 40px;
+     width: 30%;
+ }
+
+
+
+ /*26. */
+ body>main:nth-child(4)>article>header>h2>a {
+     border: 1px solid #DF5521;
+     border-radius: 5px;
+     padding: 5px;
+     margin-right: 15px;
+ }
+
+ /*27. */
+ body>main:nth-child(4)>article>header>h2>a {
+     text-decoration: none;
+     color: #DF5521;
+ }
+
+ body>main:nth-child(4)>article>section:nth-child(2)>h4:nth-child(1)>a {
+     text-decoration: none;
+     color: #DF5521;
+ }
+
+ /*28. */
+ 
+ 
+
+ /*29. */
+ body>main:nth-child(4)>article:nth-child(2)>header:nth-child(1)>h3 {
+     width: 70%;
+ }
+
+
+ /* Reglas Aside Derecho*/
+ /* ############################################# */
+ /*30. */
+
+ body>aside:nth-child(5) {
+     top: 100px;
+     right: 10px;
+     margin-right: 10px;
+ }
+
+ /*31. */
+ body>aside:nth-child(5)>h2:nth-child(1) {
+     color: #DF5521;
+ }
+
+ /*32. */
+ body>aside:nth-child(5)>table:nth-child(2) caption {
+     caption-side: bottom;
+     color: #DF5521;
+     font-size: 20px;
+ }
+
+ /*33. */
+ body>aside:nth-child(5)>table:nth-child(2) td {
+     color: #DF5521;
+     font-weight: bold;
+ }
+
+ /*34. */
+ body>aside:nth-child(5)>table:nth-child(2) td a {
+     color: grey;
+     text-decoration: none;
+ }
+
+ /*35. */
+ body>aside:nth-child(5)>table:nth-child(2) td span {
+     text-decoration: underline;
+     font-weight: bold;
+     color: black;
+ }
+
+ /* Reglas Footer*/
+ /* ############################################# */
+ /*36. */
+ footer {
+     position: relative;
+     top: 750px;
+     width: 100%;
+     padding: 20px;
+
+ }
+
+ /*37. */
+ footer>table {
+     margin-left: 40%;
+     border-spacing: 40px;
+ }
+
+ /*38. */
+ footer>table>tbody>tr>td>a {
+     display: inline;
+     text-decoration: underline;
+     color: #DF5521;
+ }
+
+ /*39. */
+ body {
+     height: 850px;
+     background: linear-gradient(0deg, white 20%, white 60%);
+     background-image: url(img/meneame.png);
+     background-repeat: repeat-x;
+     background-position: bottom;
+     background-size: auto;
+ }
+
+ /*40. */
+ body>footer:nth-child(6)>table:nth-child(1)>tbody:nth-child(1)>tr:nth-child(1)>td::first-letter {
+     font-weight: bold;
+ }
+
+
+
+ /* ############################################# */
+ /* FIN SECCIÓN CSS */
+ /* ############################################# */

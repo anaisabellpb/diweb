@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bordes</title>
+    <style>
+        p {
+            /*Esto afecta a todos los párrafos*/
+            width: 25%;
+            height: 30px;
+            background: cyan;
+            color: white;
+            border: 5px solid black;
+        }
+
+        article p:first-child {
+            /* primer párrafo*/
+            border-width: 5px;
+        }
+
+        article p:nth-child(2) {
+            /*indicamos de todos los párrafos el segundo(segundo hijo) de la parte article, de la parte section no afecta, el grosor ya se indica arriba que es para todos los párrafos, con border*/
+            border-color: blue;
+        }
+
+        
+/*Segundo hijo de article contando empezando por abajo, en este caso sería el 3*/
+article p:nth-last-child(2){
+border-style: double; /* Doble línea*/
+}
+
+section p:last-child { 
+border-style: outset; /*Grabado con las sombras en otra dirección*/
+}
+
+section p:nth-last-child(1){
+    border-style: groove; /*Grabado*/
+}
+
+section p:nth-child(2) {
+border-style: ridge;/*Relieve*/
+
+}
+
+section p:nth-child(3) {
+    border-style: inset;/*Grabado con las sombras en una dirección*/
+}
+
+main p:nth-child(3){
+    border-style: dashed; /* Rayas discontinuas*/
+}
+
+main p:nth-child(2){
+    border-style: dotted; /* Punteado*/
+}
+
+    </style>
+</head>
+
+<body>
+    <article>
+        <p>Párrafo 1</p>
+        <p>Párrafo 2</p>
+        <p>Párrafo 3</p>
+        <p>Párrafo 4</p>
+    </article>
+    <section>
+        <p>Párrafo 1</p>
+        <p>Párrafo 2</p>
+        <p>Párrafo 3</p>
+        <p>Párrafo 4</p>
+    </section>
+    <main>
+        <p>Párrafo 1</p>
+        <p>Párrafo 2</p>
+        <p>Párrafo 3</p>
+        <p>Párrafo 4</p>
+    </main>
+</body>
+
+</html>

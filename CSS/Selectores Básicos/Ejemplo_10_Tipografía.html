@@ -1,0 +1,89 @@
+<!--Ejemplo_10_Tipografía.html-->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tipografía</title>
+    <style>
+        p {
+            /*Propiedades de fuentes*/
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 1.2em;
+            /* el 1 es el 100% y 1.2 -> es 20% mayor  al tamaño base, es el tamaño de la letra*/
+            font-weight: 100;
+            /*Grosor*/
+            font-style: italic;
+            /* tipo de letra, esta puesto cursiva*/
+            font-variant: small-caps;
+            /* Tiene dos opciones básicas, son Versalitas, esto significa que lo que 
+            esta en mayúscula sale en mayúscula pero más grande, y lo que estaba en minuscula se pone en mayúscula, 
+            "ENTRA EN EL EXAMEN FIJO"*/
+            font-stretch: 120%;
+            /* Va con porcentaje, "ES UNA SEPARACIÓN DE FUENTE", el efecto es que haya más 
+            espaciado entre las letras, si el porcentaje es alto al 100%, y si es bajo del 100% se pone más 
+            concentrado, hay todos estos tipos:
+            <--------------------------------->
+            font-stretch: ultra-condensed;
+            font-stretch: extra-condensed;
+            font-stretch: condensed;
+            font-stretch: semi-condensed;
+            font-stretch: normal;
+            font-stretch: semi-expanded;
+            font-stretch: expanded;
+            font-stretch: extra-expanded;
+            font-stretch: ultra-expanded;
+            font-stretch: 50%;
+            font-stretch: 100%;
+            font-stretch: 200%;*/
+
+        }
+
+        p:nth-of-type(2) {
+            /*El "text-align" sigtnifica alineación. Se usa mucho para linear tablas, listas, imágenes,... no solo texto.*/
+            text-align: center;/*Centrado, en medio*/
+            text-align: justify;/* justificado, sale como en bloque, cogiendo todo es parecido al justificado del word*/
+            text-align: left;/*justificado a la izquierda*/
+            text-align: right;/*justificado a la derecha*/
+            line-height: 15px;/*Interlineado*/
+            text-decoration: underline;/*subrayado, sobrerayado, tachado */
+            text-decoration-color:blue;/*Entra en el examen, para dar color a la rallita*/
+            text-decoration-style: dotted;/*Entra en el examen, para darle forma a la rallita, si de rayas cortas, puntitos...*/
+            text-transform: capitalize ;/*Te pone en mayúscula la letra de cada primera palabra,*/
+            text-transform: lowercase;/*Lo pone todo en minúscula*/
+            text-transform: uppercase;/*Lo pone todo en mayúscula*/
+            text-indent: 20px;/*Sangría en la primera línea, igual que en el word*/
+            letter-spacing: 3px;/*Espacio entre letras*/
+            word-spacing: 10px;/*Espacio entre las palabras*/
+            text-shadow: 2px 2px 5px red;/*Es similar al box-shadow, el 1º número es el dezplazamiento horizontal, 
+            el 2º número es el dezplazamiento vertical, y el 3º número es el difuminado*/
+            text-align-last: right;/*Alinea la última línea*/
+            text-emphasis: circle;/*sale encima de cada letra de cada palabra un enfásis, que en este caso es un circulo*/
+            text-emphasis-position: under;/*debajo de cada letra de cada palabra sale un enfasis*/
+        }
+    </style>
+</head>
+
+<body>
+    <p>
+        El font La propiedad de tatar encubrimiento CSS establece todas las diferentes propiedades
+        de la fuente de un elemento. Alternativamente, establece la fuente de un elemento a una
+        fuente del sistema. El font la propiedad puede ser especificada como una sola palabra clave,
+        que seleccionará una fuente del sistema, o como abreviatura para varias propiedades relacionadas
+        con la fuente. Si font se especifica como una palabra clave del sistema, debe ser una de: caption,
+        icon, menu, message-box, small-caption, status-bar.
+    </p>
+    <p>
+        Todas las propiedades que se utilizan en CSS tienen un valor o un conjunto de valores que esa
+        propiedad admite, y echar un vistazo a cualquier página de propiedades en MDN te ayudará a
+        comprender qué valores admite una propiedad en particular. En este artículo veremos algunos
+        de los valores y unidades más comunes en uso.
+        Todas las propiedades que se utilizan en CSS tienen un valor o un conjunto de valores que esa
+        propiedad admite, y echar un vistazo a cualquier página de propiedades en MDN te ayudará a
+        comprender qué valores admite una propiedad en particular. En este artículo veremos algunos
+        de los valores y unidades más comunes en uso.
+    </p>
+</body>
+
+</html>

@@ -1,0 +1,91 @@
+   /* Estilo general */
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: white;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Logo */
+.Logo img {
+    height: 50px;
+}
+
+/* Barra de búsqueda */
+
+form {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    padding: 5px 10px;
+    background-color: white;
+}
+
+input[type="text"] {
+    border: none;
+    outline: none;
+    padding: 10px;
+    font-size: 16px;
+    flex: 1;
+}
+
+button {
+    background: none;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+}
+
+button img {
+    width: 20px;
+    height: 20px;
+}
+
+/* Íconos */
+.icons a {
+    margin-left: 15px;
+}
+
+.icons img {
+    height: 50px;
+    cursor: pointer;
+}
+
+ /* En la sección Navegación, centrado y sin los puntitos*/ 
+ nav li { float: left; width: 100px; text-align:center; padding: 10px; }
+ nav ul { list-style:none; overflow:hidden; padding:0; margin:0; 
+}
+
+ /*tabla*/
+ table {
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+.category-image {
+    width: 150px;
+    height: auto;
+}
+
+td {
+    padding: 10px;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    color: #333;
+}
+
+tbody tr td {
+    padding-top: 15px;
+    font-weight: bold;
+}

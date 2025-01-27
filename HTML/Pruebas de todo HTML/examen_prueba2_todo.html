@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examen prueba 2</title>
+</head>
+
+<body> 
+    <header>
+        <h1> Índice</h1>
+        <nav>
+            <details>
+                <summary>Contenidos</summary>
+                <ul>
+                    <li>Relaciones</li>
+                    <li>Dominios</li>
+                    <li>Clasificación de claves</li>
+                    <li>Procedimientos almacenados</li>
+                </ul>
+            </details>
+        </nav>
+   
+        <nav>
+            
+            <details>
+                <summary>Elementos</summary>
+                <ul>
+                    <li>Relaciones</li>
+                    <li>Clasificación de claves</li>
+                    <li>Procedimientos</li>
+                </ul>
+            </details>
+        </nav>
+    </header>
+
+    <!--Niveles de encabezados-->
+    <h1>Base de Datos Relacionales</h1>
+    <h2>Introducción</h2>
+    <h3>Historia</h3>
+    <h4>Conceptos Básicos</h4>
+    <h5>Definiciones Técnicas </h5>
+    <h6>Ejemplos Avanzados</h6>
+
+
+    <!--Enlaces en párrafos-->
+    <p> Una <a href="#">base de datos relacional</a>
+        es un tipo de base de datos que almacena y organiza los datos en
+        <a href="#">relaciones</a>,
+        que son conjuntos de datos organizados en tablas. Este modelo fue formalizado por
+        <a href="#">Edgar F. Codd</a> en 1970.
+    </p>
+    <p> Las bases de datos relacionales utilizan un lenguaje específico para gestionar y
+        consultar los datos, conocido como SQL (Structured Query Language). Este modelo es
+        ampliamente utilizado debido a su flexibilidad, precisión y capacidad para manejar
+        grandes volúmenes de datos. </p>
+
+    <!--Tabla con rowspan y colspan-->
+    <table>
+        <thead>
+            <tr>
+                <th style="background-color: aquamarine;">Estructura</th>
+                <th>Definición</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td rowspan="2">Relación</td>
+                <td style="background-color: brown;">Relación Base: Tabla almacenada directamente.</td>
+            </tr>
+            <tr>
+                <td>Relación Derivada: Vista creada a partir de otras tablas.</td>
+            </tr>
+            <tr>
+                <td colspan="2">Dominios: Conjunto de valores permitidos para una columna.</td>
+            </tr>
+        </tbody>
+    </table><br><br>
+
+    <form action="/php/insertar_cv.php" method="post">
+        <fieldset style="background-color: darkgray;">
+            <legend> <strong>CREAR UNA CUENTA</strong></legend>
+
+            <label for="nombre_de_usuario">Nombre:</label><br>
+            <input type="text" id="nombre_de_usuario" name="nombre_de_usuario" 
+            maxlength="20" required> <br><br>
+
+            <label for="contraseña">Contraseña:</label><br>
+            <input type="password" name="contraseña" id="contraseña" 
+            maxlength="10" required> <br><br>
+
+            <label for="email">Dirección de correo electrónico</label><br>
+            <input type="email" id="email" name="email" required> <br><br>
+
+            <button type="submit">Crear Cuenta</button>
+        </fieldset>
+    </form>
+</body>
+
+</html>

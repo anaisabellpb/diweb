@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <title>HTML</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilo.css">
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid grey;
+        }
+
+        th,
+        td {
+            padding: 5px;
+        }
+
+        fieldset {
+            width: 30%;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Comentario! OJO a las estiquetas semánticas -->
+
+    <h1>Ecuador-Wikipedia</h1>
+    <P>Articulo editado a las
+        <time datetime="2024-11-25 12:00">12h del 25/11/24</time>
+    </P>
+    <!--Listas desordenadas y ordenadas-->
+    <h2>Índice</h2>
+    <ul>
+        <li><a href="#ban">Bandera y Escudo</a></li>
+        <li><a href="#himno">Himno</a>
+            <ol>
+                <li><a href="#1">Toponimia</a></li>
+                <li><a href="#2">Historia</a></li>
+                <li><a href="#3">Estado y política</a>
+                    <ol>
+                        <li><a href="#ejecutiva">Función Ejecutiva</a></li>
+                        <li> <a href="#legislativa">Función Legislativa</a></li>
+                    </ol>
+                </li>
+                <li><a href="#4">Organización Territorial</a>
+                    <ol>
+                        <li><a href="#division">División Administrativa</a>
+                            <ol>
+                                <li><a href="#parroquias">Parroquias</a></li>
+                                <li><a href="#cantones">Cantones</a></li>
+                                <li><a href="#provincias">Provincias</a></li>
+                            </ol>
+                        </li>
+                    </ol>
+                </li>
+            </ol>
+        </li>
+    </ul>
+    <br>
+    <!--Párrafo introductorio antes de las imágenes con enlaces en algunas partes del texto-->
+    <p>Ecuador (en <a href="#">quichua</a> , Ecuador; en <a href="#">shuar</a>, Ekuatur), oficialmente República
+        del Ecuador (en quichua, Ecuadorpi Ripuwlika; en shuar, Ekuatur Nunka),
+        es un país soberano constituido en un Estado social, democrático,
+        de derecho y plurinacional, cuya forma de gobierno es la de una
+        república presidencialista, unitaria y descentralizada.
+        Está ubicado en la región noroccidental de América del Sur.
+        Su capital es Quito, y la ciudad más poblada del país es <a href="#">Guayaquil</a>.
+        Es miembro de la <a href="#">Comunidad Andina</a> y está organizado en veinticuatro
+        provincias que a su vez se subdividen en cantones.</p>
+
+    <!--Imágenes con su título y encabezados incluyendo Bandera y escudo-->
+    <h2>Republica de ecuador</h2>
+    <h3 id="ban">Bandera y Escudo</h3>
+    <main>
+        <section>
+            <a href="#">
+                <figure><img src="Bandera_Ecuador.png" alt="Bandera" width="200"></figure>
+            </a>
+            <figcaption>Bandera Ecuador</figcaption>
+            <br>
+            <a href="#">
+                <figure><img src="Escudo_Ecuador.png" alt="Escudo" width="200"></figure>
+            </a>
+            <figcaption>Escudo de Ecuador</figcaption>
+        </section>
+    </main>
+    <!--Himno de ecuador,aplicación de etiqueta semánticas-->
+    <h3 id="himno">Himno de ecuador</h3>
+    <details>
+        <summary>Himno</summary>
+        <cite><strong>CORO</strong><br>Salve oh patria mil veces oh patria
+            <br><ins>¡Gloria a ti!</ins> <sup>(2 veces)</sup><br>
+            Ya tu pecho, tu pecho rebosa,<br> gozo y paz ya tu pecho rebosa,<br>y tu frente, tu frente radiosa<br>más
+            que el sol contemplamos lucir.</cite>
+    </details>
+    <!--encabezados con las anclas (en algunas son una palabra para que no haya problemas)-->
+    <h3 id="1">Toponimia</h3>
+    <p>La primera referencia que se tiene de este país con relación al Ecuador terrestre está registrada en Noticias
+        secretas de América en 1826, una publicación donde se recopila estudios realizados durante el transcurso del
+        siglo XVIII, además de incluir los de la misión geodésica francesa; en esa obra se menciona por primera vez a
+        los territorios de Ecuador como jurisdicción de la Real Audiencia de Quito.30​ El nombre de la República del
+        Ecuador
+        hace alusión a la línea ecuatorial de la <a href="#">Tierra</a> que recorre sobre territorio ecuatoriano, de
+        este a oeste.</p>
+
+    <h3 id="2">Historia</h3>
+    <p>Llegaron inmigrantes amerindios del norte y se mezclaron con el pueblos amazónicos de ascendencia oceaníanico.32​
+        Los primeros asentamientos registrados en el actual territorio ecuatoriano datan 13 500 años,33​ en El Inga,
+        cultura Las Vegas, Chobshi, Cubilán y pinturas rupestres amazónicas del Paleoindio. La época prehispánica
+        comprende cuatro períodos: Paleoindio, Formativo, de Desarrollo Regional y de Integración o Periodo Incaico.</p>
+
+    <h3 id="3">Estado y política</h3>
+    <p>El actual Estado ecuatoriano está conformado por cinco funciones estatales: Función Ejecutiva, Función
+        Legislativa, Función Judicial, Función Electoral y Función de Transparencia y Control Social.</p>
+    <!--Encabezados con el ancla con una palabra-->
+    <h4 id="ejecutiva">Función Ejecutiva</h4>
+    La función ejecutiva está delegada al presidente de la República, actualmente ejercida por Guillermo Lasso,
+    acompañado de su vicepresidente, Alfredo Borrero. El presidente es el jefe de Estado y de Gobierno, máximo
+    responsable de la administración pública.
+
+    <h4 id="legislativa">Función Legislativa</h4>
+    <p>La Función Legislativa se ejerce por la Asamblea Nacional únicamente, que tiene su sede en la ciudad de Quito en
+        el Palacio Legislativo, y está conformada por 137 asambleístas, repartidos en diez comisiones, elegidos para un
+        período de cuatro años. Quince asambleístas elegidos en circunscripción nacional, dos asambleístas elegidos por
+        cada provincia, y uno más por cada doscientos mil habitantes o fracción que supere los ciento cincuenta mil, de
+        acuerdo con el último censo nacional de la población.</p>
+
+    <h3 id="4">Organización Territorial</h3>
+    <h4 id="division">División Administrativa</h4>
+    <p>El territorio de Ecuador se divide en: Parroquias (urbanas o rurales), que conforman los Cantones, estos las
+        Provincias, y a su vez las Regiones Administrativas. </p>
+
+    <!--Tabla con los lugares de ecuador-->
+    <table>
+        <caption>Lugares de Ecuador</caption>
+        <thead>
+            <tr>
+                <th>Región Norte</th>
+                <th>Región Centro Norte</th>
+                <th>Región Centro</th>
+                <th>Región Pacífico</th>
+                <th>Región Litoral</th>
+                <th>Región Centro Sur</th>
+                <th>Región Sur</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Carchi</td>
+                <td>Napo</td>
+                <td>Chimborazo</td>
+                <td>Manabí</td>
+                <td>Bolívar</td>
+                <td>Azuay</td>
+                <td>El Oro</td>
+            </tr>
+            <tr>
+                <td>Esmeraldas</td>
+                <td>Pichincha</td>
+                <td>Cotopaxi</td>
+                <td>Santo Domingo de los Tsáchilas</td>
+                <td>Guayas</td>
+                <td>Cañar</td>
+                <td>Loja</td>
+            </tr>
+            <tr>
+                <td>Imbabura</td>
+                <td>Orellana</td>
+                <td>Pastaza</td>
+                <td rowspan="2"></td>
+                <td>Los Ríos</td>
+                <td>Morona Santiago</td>
+                <td>Zamora Chinchipe</td>
+            </tr>
+            <tr>
+                <td>Sucumbios</td>
+                <td></td>
+                <td>Tumgurahua</td>
+                <td>Santa Elena</td>
+                <td colspan="2"></td>
+            </tr>
+        </tbody>
+    </table>
+    <!--Encabezados cuyas anclas son palabras específicas del índice-->
+    <h5 id="parroquias">Parroquias</h5>
+    <h5 id="cantones">Cantones</h5>
+    <h5 id="provincias">Provincias</h5>
+    <!--Comienzo del Formulario-->
+    <form action="#" method="post">
+        <fieldset>
+            <legend>Alta usuario</legend>
+
+            <label for="usuario">Usuario:</label><br>
+            <input type="text" name="usuario" id="usuario" placeholder="usuario" required><br>
+
+            <label for="clave">Clave:</label><br>
+            <input type="password" name="clave" id="clave" maxlength="10" required><br>
+
+            <label for="correo">Correo Electrónico:</label><br>
+            <input type="email" name="correo" id="correp" placeholder="email" required><br>
+
+            <label for="edad">Edad:</label><br>
+            <input type="number" name="edad" id="edad"><br>
+            <hr>
+
+            <p>Sexo:</p><!--está puesto para que salga por defecto mujer-->
+            <input type="radio" name="sex" id="mujer" value="mujer" checked>
+            <label for="mujer">Mujer</label><br>
+            <input type="radio" name="sexo" id="hombre" value="hombre">
+            <label for="hombre">hombre</label><br>
+            <p>Tipo:</p>
+            <input type="checkbox" name="tipo[]" id="editor" value="editor">
+            <label for="editor">Editor</label><br>
+            <input type="checkbox" name="tipo[]" id="revisor" value="revisor">
+            <label for="revisor">Revisor</label>
+            <hr>
+            <p>País de Nacimiento:</p>
+            <select name="nacimiento" id="nacimiento">
+                <option value="ecuador">Ecuador</option>
+                <option value="brasil">Brasil</option>
+            </select>
+            <hr><!--Tiene un máximo de caracteres-->
+            <label for="comentarios">Referencia:</label><br>
+            <textarea name="comentarios" id="comentarios" cols="30" rows="10" maxlength="150">Sobre mi...</textarea><br>
+
+            <label for="color">Etiqueta:</label><br>
+            <input type="color" name="color" id="color">
+            <hr>
+
+            <label for="rango">Artículo por mes(1-50):</label><br>
+            <input type="range" name="rango" id="rango" min="1" maxlength="50"><br>
+
+
+            <hr>
+            <button type="submit" style="background-color: grey;">Acceder</button>
+            <button type="reset" style="background-color: grey;">Cancelar</button>
+
+        </fieldset>
+
+    </form>
+
+</body>
+
+</html>

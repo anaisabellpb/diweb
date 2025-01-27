@@ -1,0 +1,61 @@
+<!--Ejemplo_14_Tablas.html-->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tablas</title>
+    <style>
+        table {
+            border: 2px solid blue;
+            border-collapse: separate;/*Probar collapse*/
+            border-spacing: 10px;
+            empty-cells: hide;/*Hace desaparecer las celdas que están totalmente vacías en la tabla */
+            caption-side: bottom;/*Pone el título de la tabla que va en el caption, abajo, sale por defecto arriba de la tabla*/
+        }
+
+        td {
+            border: 2px dashed red;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <caption>Titulo de tabla</caption>
+        <tr>
+            <th>cabecera1</th>
+            <th>cabecera2</th>
+            <th>cabecera3</th>
+            <th>cabecera4</th>
+        </tr>
+        <tr>
+            <td>celdas1</td>
+            <td></td>
+            <td>celdas3</td>
+            <td>celdas4</td>
+        </tr>
+        <tr>
+            <td>celdas1</td>
+            <td>celdas2</td>
+            <td>celdas3</td>
+            <td>celdas4</td>
+        </tr>
+        <tr>
+            <td>celdas1</td>
+            <td>celdas2</td>
+            <td>celdas3</td>
+            <td>celdas4</td>
+        </tr>
+        <tr>
+            <td>celdas1</td>
+            <td>celdas2</td>
+            <td>celdas3</td>
+            <td>celdas4</td>
+        </tr>
+    </table>
+</body>
+
+</html>

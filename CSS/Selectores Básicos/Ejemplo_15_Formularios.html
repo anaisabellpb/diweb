@@ -1,0 +1,223 @@
+<!--Ejemplo_15_Formularios-->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear cuenta</title>
+    <!--Vamos a añadir FontAwesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+        crossorigin="anonymous" referrerpolicy="no-referrer"><!--esto hay que ponerlo para el fontawesonw, que 
+        son los iconos del formulario, es la librería de fontawesone es una forma de cargar una fuente externa-->
+    <style>
+        /*es la fuente de google, otra forma de cargar uan fuente externa*/
+        @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+    </style>
+    <style>
+        /*(esto seguro en el examen práctico de CSS entra) Para poner una fuente local descargada, 
+        debemos poner lo siguiente:*/
+        @font-face {
+            font-family: Lato;
+            src: url("Lato/Lato-Regular.ttf");
+        }
+
+        /*Lo primero de todo es formatear la página En el examen vendra: 1. Formatea la 
+        página con la fuente Lato, grosor de fuente de 200, margen de 10px y relleno de 10px, 
+        lo que hay que poner es lo siguiente: lo de body....*/
+        body {
+            font-family: Lato, Roboto, "open Sans";
+            margin: 10px;
+            padding: 10px;
+            font-weight: 200;
+        }
+
+        /*Otra pregunta de examen del Css es: , altura 300px y el 
+        centrado horizontalmente, lo que hay que poner es lo de abajo de form:*/
+        form {
+            width: 100%;
+            height: 300px;
+            margin: auto;
+        }
+        /*2.Para el formulario, poner una sombra de 5px en horizantal, 5px en vertical, 
+        10px de difuminado y color gris, ancho del formulario del 100%*/
+        fieldset {
+            border: 1px solid #ddd;
+            border-radius: 15px;
+            box-shadow: 5px 5px 10px grey;
+            background-color: #f9f9f9;
+            padding: 20px;
+            width: 40%;
+            height: 270px;
+            float: left;
+            margin-bottom: 20px;
+        }
+
+        /*Ortra preegunta sería: 4. El título del fielset va centrado, con fuente de 15px en negrita, 
+        margen inferior de 10px y color gris oscuro, se tendría que poner lo de abajo:*/
+        legend {
+            margin: 0 auto;/* título del form sale centrado*/
+            font-size: 15px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        section {
+            position: relative;
+            margin-bottom: 15px;
+        }
+
+        label {
+            position: absolute;
+            top: 20%;
+            left: 10px;
+        }
+
+        label[for="nacimiento"] {
+            left: 150px;
+            
+        }
+
+        input:not([type="radio"]):not([type="submit"]):not([type="reset"]) {
+            /* otra forma de ponerlo es esta: input[type="text"],
+        input[type="password"]*/
+
+            font-size: 16px;
+            width: 80%;
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid #747775;
+            
+            
+        }
+
+        input:not([type="radio"]):not([type="submit"]):not([type="reset"]):focus {
+            border-color: #0b57b0;
+            background-color: beige;
+            outline: none;
+            
+        }
+
+        /*El selector NOT de arriba es lo mismo que este de abajo*/
+        /* input[type="text"]:focus,
+        input[type="password"]:focus, 
+        input[type="date"] {
+            border-radius: 10px;
+            border: 1px solid #747775;
+        }*/
+
+        section[aria-label="crear"],
+        section[aria-label="usar"]{
+         margin-bottom: 20px;
+         display: flex;
+        }
+        section[aria-label="crear"] label:hover,/*el efecto que produce que al pasar el puntero se inclina*/
+        section[aria-label="usar"] label:hover{
+         transform: skew(5deg,5deg);
+        }
+        input[type="radio"]{
+            margin:auto;
+            width: auto;
+            margin-top: 10px;
+            
+        }
+
+        i{
+            margin-right: 20px;
+            color: blue;
+            text-shadow: 5px 5px 5px grey;
+        }
+        
+
+
+       input[type="submit"],
+       input[type="reset"]{
+            clear:both;
+            display: block;
+            margin: 10px auto;
+            padding: 10px 20px;
+            cursor: pointer;
+       
+        }
+        /*Aplicamos transciciones a los label*/
+        label {
+          transform: translateY(-50%);
+          transition: all 0.5s ease;
+          pointer-events: none;
+        }
+
+        input:focus+label,
+        input:not(:placeholder-shown)+label{
+            top:0;
+            font-size: 12px;
+            color: #0b57b0;
+        }
+
+        /*Transformación*/
+        input[type="radio"]:hover{
+            transform: scale(2);
+            
+        }
+    </style>
+</head>
+
+<body>
+    <form action="#" method="post">
+        <fieldset>
+            <legend>Información personal</legend>
+            <section aria-label="nombre">
+                <input type="text" name="nombre" id="nombre"><br><!--para la transcición hay que cambiar de 
+                posición los input y los label, 1º se supone que va los label-->
+                <label for="nombre">Nombre</label>
+            </section>
+            <section aria-label="apellidos">
+                <input type="text" name="apellidos" id="apellidos"><br>
+                <label for="apellidos">Apellidos (opcional)</label>
+            </section>
+            <section aria-label="nacimiento">
+                
+                <input type="date" name="nacimiento" id="nacimiento">
+                <label for="nacimiento">Fecha de Nacimiento</label>
+            </section>
+            <section aria-label="genero">
+                <select name="genero" id="genero">
+                    <option disabled selected>Seleccionar</option>
+                    <option value="mujer">Mujer</option>
+                    <option value="hombre">Hombre</option>
+                    <option value="noquiero">Prefiero no decirlo</option>
+                </select>
+            </section>
+        </fieldset>
+
+        <fieldset>
+            <legend>Opciones de cuenta</legend>
+
+            <section aria-label="crear">
+                <input type="radio" name="dirección" id="crear" value="crear"><br>
+                <label for="crear"><i class="fa-solid fa-bounce fa-m"></i>Crear dirección Gmail</label> 
+            </section>
+            <section aria-label="usar">
+                <input type="radio" name="direccion" id="usar" value="usar"><br>
+                <label for="usar"><i class="fa-solid fa-envelope"></i>Usar tu correo</label> 
+            </section>
+            <hr>
+            <section aria-label="usuario">
+                <input type="text" name="usuario" id="usuario"><br>
+                <label for="usuario">Usuario</label>  
+            </section>
+            <section aria-label="clave">
+                <input type="password" name="clave" id="clave"><br>
+                <label for="clave">Contraseña</label>  
+            </section>
+            <section aria-label="clave2">
+                <input type="password" name="clave2" id="clave2"><br>
+                <label for="clave2">Repetir Contraseña</label>  
+            </section>
+        </fieldset>
+        <input type="submit" value="Crear cuenta">
+        <input type="reset" value="Borrar datos">
+    </form>
+</body>
+
+</html>

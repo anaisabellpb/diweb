@@ -1,0 +1,11 @@
+p {
+    color:blue;
+}
+
+p a {
+    color: green;
+}
+
+p a span {
+    color: red;
+}

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El corte Inglés</title>
+    <style>
+    /* Estilo general */
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: white;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Logo */
+.Logo img {
+    height: 50px;
+}
+
+/* Barra de búsqueda */
+
+form {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    padding: 5px 10px;
+    background-color: white;
+}
+
+input[type="text"] {
+    border: none;
+    outline: none;
+    padding: 10px;
+    font-size: 16px;
+    flex: 1;
+}
+
+button {
+    background: none;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+}
+
+button img {
+    width: 20px;
+    height: 20px;
+}
+
+/* Íconos */
+.icons a {
+    margin-left: 15px;
+}
+
+.icons img {
+    height: 50px;
+    cursor: pointer;
+}
+
+ /* En la sección Navegación, la lista, centrado y sin los puntitos,*/ 
+ nav li { float: left; width: 200px; text-align:center; padding: 10px; }
+ nav ul { list-style:none; overflow:hidden; padding:10px; margin:10px; 
+
+
+}
+
+ /*tabla*/
+ table {
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+.category-image {
+    width: 150px;
+    height: auto;
+}
+
+td {
+    padding: 10px;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+
+}
+
+tbody tr td {
+    padding-top: 15px;
+    font-weight: bold;
+}
+
+
+    </style>
+
+</head>
+
+<body>
+    <!--Inicio de etiqueta semántica solo puede haber un header-->
+    <header>
+        <figure>
+            <img src="IMG/logocorteingles.png" width="200" alt="Logo El Corte Inglés">
+        </figure>
+
+        <nav>
+            <form action="#" method="get" role="search">
+                <label for="buscar" class="visually-hidden"></label>
+                <input type="text" name="buscar" id="buscar" placeholder="¿Qué estás buscando?" aria-label="buscar" >
+                <button type="submit"></button>
+                <img src="IMG/lupa_buscador.png"  width="40" alt="bot">
+            </form>
+        </nav>
+    <div class="icons"><!--NO USO DIV-->
+        <a href="#"><img src="IMG/usuario.png" width="50" alt="Usuario"></a>
+        <a href="#"><img src="IMG/me-gusta.png" width="45" alt="Favoritos"></a>
+        <a href="#"><img src="IMG/bolsa-de-la-compra.png" width="42" alt="Carrito"></a>
+    </div><!--NO USO DIV-->
+    </header>
+  <!--sección navegación-->
+    <nav>
+        <ul>
+            <li><a href="https://www.elcorteingles.es/moda-mujer">Moda mujer</a></li>
+            <li><a href="https://www.elcorteingles.es/deportes/">Deportes</a></li>
+            <li><a href="https://www.elcorteingles.es/electronica/">Electrónica</a></li>
+            <li><a href="https://www.elcorteingles.es/hogar/">Hogar</a></li>
+            <li><a href="https://tinyurl.com/43ad2v6e">Supermercado</a></li>
+        </ul>
+    </nav>
+
+    <section>
+        <h2>Categorías</h2>
+        <table>
+            <thead>
+                <tr>
+                    
+                    <td> <a href="https://www.elcorteingles.es/moda-mujer/"><img src="IMG/img1.png" alt="Moda Mujer" width="200"></a></td>
+                    <td><img src="IMG/img2.png" alt="Moda Hombre" width="200"></td>
+                    <td><img src="IMG/img3.png" alt="Moda Infantil" width="200"></td>
+                    <td><img src="IMG/img4.png" alt="Hogar" width="200"></td>
+                    <td><img src="IMG/img5.png" alt="Deportes" width="200"></td>
+                    <td><img src="IMG/img6.png" alt="Electrónica" width="200"></td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Moda mujer</td>
+                    <td>Moda hombre</td>
+                    <td>Moda Infantil</td>
+                    <td>Hogar</td>
+                    <td>Deportes</td>
+                    <td>Eletrónica</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+</body>
+
+</html>

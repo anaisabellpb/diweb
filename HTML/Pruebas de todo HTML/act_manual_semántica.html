@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+   
+    <title>Ejemplo de HTML5</title>
+    <meta charset="UTF-8">
+    <style>
+        body { margin: 0 auto; width: 600px; font: 75% Lucida Grande, Trebuchet MS}
+        /* La sección se muestra como un bloque, a la izquierda y con margen interno 10px*/ section { display: block; }
+        section#articles { width: 440px; float: left; padding: 10px; background-color: #ffc; }
+        
+        /* La cabecera del artículo se subraya; margen inferior: 10px */ article > header { text-decoration: underline; margin-bottom: 10px; }
+        /* Columna Derecha, alineado a la izquierda, ancho 100px y margen interno 10px*/ aside { float: left; width: 100px; padding: 10px;}
+        
+        /*overflow: hidden; clear: both -> No se permiten elementos flotantes laterales*/ footer { overflow: hidden; clear: both; text-align: center; padding: 20px; }
+        
+        /* En la sección Navegación, fondo gris oscuro, centrado y sin los puntitos*/ nav li { float: left; width: 100px; text-align:center; padding: 10px; }
+        nav ul { list-style:none; overflow:hidden; padding:0; margin:0; background-color:#444; }
+        
+        /* Coloreando enlaces para nav en blanco con subrayado en rojo*/ nav a {text-decoration:none; border-bottom: 1px solid red}
+        nav li a { color: #fff; }
+        /* Coloreando enlaces para aside en verde*/
+        aside ul a {text-decoration:none; color: #65ac1c; border-bottom: 1px solid red}
+        </style>
+</head>
+
+<body>
+    <!--incio etiqueta semántica-->
+    <header>
+        <hgroup>
+            <h1>Ejemplo de página semántica</h1>
+            <h2>Usando HTML5...</h2>
+        </hgroup>
+    </header>
+<!--Le sigue un nav xq solo puede haber un header-->
+    <nav>
+        <ul>
+            <li><a href="#">Portada</a></li>
+            <li><a href="#">Tutoriales</a></li>
+            <li><a href="#">Sobre mi</a></li>
+            <li><a href="#">Contacto</a></li>
+        </ul>
+    </nav>
+<!--primera sección-->
+    <section id="articles">
+        <article>
+            <header>
+                <h2><a href="#">Article Title</a></h2>
+            </header>
+            <section>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                deserunt mollit anim id est laborum.
+            </section>
+        </article>
+
+        <article>
+            <header>
+                <h2><a href="#">Article Title</a></h2>
+            </header>
+            <section>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                deserunt mollit anim id est laborum.
+            </section>
+        </article>
+   </section>
+   
+    <aside><!--lateral-->
+        <h2>Enlaces Principales</h2>
+        <ul>
+            <li><a ref="external" href="#">Enlace 1</a></li>
+            <li><a ref="external" href="#">Enlace 2</a></li>
+            <li><a ref="external" href="#">Enlace 3</a></li>
+            <li><a ref="external" href="#">Enlace 4</a></li>
+            <li><a ref="external" href="#">Enlace 5</a></li>
+        </ul>
+    </aside>
+
+    <footer>
+        <small>Derechos Reservados &copy; 2013 Iván Rodríguez</small><br />
+        <address>
+            Mas info: <a href="http://http://www.ivanrguez.es/">ivanrguez.es</a>
+        </address>
+    </footer>
+</body>
+
+</html>
+
+</html>
