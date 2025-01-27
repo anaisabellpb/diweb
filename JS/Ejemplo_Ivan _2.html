@@ -1,4 +1,4 @@
-<!--localhost/Curso/JS/Ejemplo_11_BucleFor.html-->
+<!--localhost/Curso/JS/Ejemplo_Ivan_2.html-->
 <!DOCTYPE html>
 <html lang="es">
 
@@ -9,16 +9,24 @@
     <link rel="stylesheet" href="bootstrap.min.css">
     <script>
 
+        /* 2. Escribir la siguiente pirámide*/
+
         function iniciar() {
-            /* Mostrar el texto "Hola Mundo" 10 veces en  1 alert y además, en la consola*/
-            let mensaje = "";
-            for (let i = 1; i <= 10; i++) {
-               mensaje += "Hola mundo \n"; /* Otra forma de decirlo es -> mensaje = mensaje + "Hola mundo \n"; */
-                
+            let altura = 5;
+            let piramide = "";
+
+
+            for (let i = 1; i <= altura; i++) {
+                let espacios = "".repeat(altura - i);
+                let asteriscos = "*".repeat(i * 2 - 1);
+                piramide += espacios + asteriscos + "\n";
+
             }
-            console.log(mensaje); // Escribe por consola
-                alert(`${mensaje}`);
+            console.log(piramide);
+            alert(piramide);
         }
+
+
 
 
     </script>
