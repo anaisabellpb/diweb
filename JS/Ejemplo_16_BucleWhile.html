@@ -8,18 +8,73 @@
     <title>Document</title>
     <link rel="stylesheet" href="bootstrap.min.css">
     <script>
+        // ------ DECLARACIONES FUNCIONES ------
+
+        // Función suma (0E1S). lo que esta entre paréntesis aquí son las entradas, y esta vacío, no hay.
+        function suma() {
+            let num1 = paserInt(prompt("Dame Nº1"));
+            let num2 = paserInt(prompt("Dame Nº2"));
+            let resultado = num1 + num2;
+            return resultado; // Hay que poner siempre return, es la salida de las funciones
+        }
+
+        // Función resta (NE1S) --> El más difícil, aquí llamamos a los datos y luego lo imprimimos.
+        function resta(num1, num2) {
+            let resultado = num1 + num2;
+            return resultado;
+        }
+
+
+        // Función producto (0E0S)
+        function producto() {
+            let num1 = paserInt(prompt("Dame Nº1"));
+            let num2 = parseInt(prompt("Dame Nº2"));
+            let resultado = num1 * num2;
+            alert(resultado); // El alert se pone xq no tiene una salida, si tuviera salida se pone return.
+        }
+
+        // Función división (NE0S) --> El más fácil
+        function division(num1, num2) {
+            let resultado = num1 / num2;
+            alert(resutado);
+        }
+
 
         function iniciar() {
-           let opcion = 0;
-           while (opcion < 5) {
-            opcion = parseInt(prompt(`--- MENU PRINCIPAL ---
+            let opcion = 0;
+            while (opcion < 5) {
+                opcion = parseInt(prompt(`--- MENU PRINCIPAL ---
                          1. sumar
                          2. restar
                          3. multiplicar
                          4. dividir
                          5. salir`));
-           }
-                alert("Se acabo el programa!");
+
+                // switch = varios if
+                switch (opcion) {
+                    case 1:
+                        alert(suma()); // se pone así xq tiene 0 entrada 1 salida
+                        break;
+                    case 2:
+                        let numero1 = paserInt(prompt("Dame Nº1"));
+                        let numero2 = paserInt(prompt("Dame Nº2"));
+                        // Los nombres de las variables en parámetro DA IGUAL. Solo vale POSICIONES
+                        alert(resta(numero1, numero2));
+                        break;
+                    case 3:
+                        producto();// se pone asi xq tiene 0 entrada/salida
+                        break;
+                    case 4:
+                        let num1 = paserInt(prompt("Dame Nº1"));
+                        let num2 = paserInt(prompt("Dame Nº2"));
+                        division(num1, num2);// se pone asi xq tiene varias entradas y una salida
+                        break;
+                    default:
+                        alert("Opción incorecta!");
+                        break;
+                }
+            }
+            alert("Se acabo el programa!");
         }
 
 
