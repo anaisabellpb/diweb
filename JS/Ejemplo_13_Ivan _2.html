@@ -1,60 +1,54 @@
-<!--localhost/Curso/JS/Ejemplo_13_Ivan_2_BUCLE FOR PIRAMIDE.html-->
+<!-- Ejemplo_13_Ivan_BucleForPares.html -->
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>JS</title>
     <link rel="stylesheet" href="bootstrap.min.css">
     <script>
-
-        /* 2. Escribir la siguiente pirámide pide el número de niveles de la pirámide*/
-
+        
         function iniciar() {
-            // A. Pedir niveles
-            let niveles = parseInt(prompt("Dame niveles"));
-            let piramide = "";
+            /* 1. Pide 2 números enteros.
+            Imprime en un alert los pares entre ambos*/
+            
+            // A. Pedir enteros
+            let num1 = parseInt(prompt("Dame Nº1:"));
+            let num2 = parseInt(prompt("Dame Nº2:"));
 
-            // B. Pasar de un nivel a otro
-            for (let i = 1; i <= niveles; i++) {
-                // C. Pintar tantos asteriscos como el nivel actual
-                // indices: 1º ->i;  2º -> j; 3º-> k
-                for (let j = 1; j <= i; j++) {
-                    piramide += "*";
-                }
-                piramide += "\n";
+            // B. Comprobar que num2 > num1
+            // Si no es así, intercambiamos variables
+            if(num2 < num1) {
+                let aux = num1;
+                num1 = num2;
+                num2 = aux;
             }
-            alert(`${piramide}`);
+
+            // C. Comprobar si num1 es par
+            // En caso contrario, sumo 1
+            if(num1 % 2 != 0) {
+                num1++;
+            }
+
+            let pares = "";
+            for(let i = num1; i <= num2; i += 2)   {
+                //pares += i + "\n";
+                pares += `${i} \n`;
+            }
+
+            alert(` ${pares}`);
         }
-
-
-
-
-        /**let altura = 5;
-        let piramide = "";
-
-
-        for (let i = 1; i <= altura; i++) {
-            let espacios = "".repeat(altura - i);
-            let asteriscos = "*".repeat(i * 2 - 1);
-            piramide += espacios + asteriscos + "\n";
-
-        }
-        console.log(piramide);
-        alert(piramide);
-    }*/
-
-
-
-
+        
+        
     </script>
 </head>
 
 <body>
     <main class="m-3 p-3">
-        <form action="#" method="post">
-            <button type="submit" class="btn btn-primary" onclick="iniciar()">Iniciar</button>
+        <form action="#" method="post" class="form">
+            <button type="submit" class="btn btn-success" 
+            onclick="iniciar()">Iniciar</button>
         </form>
     </main>
 </body>

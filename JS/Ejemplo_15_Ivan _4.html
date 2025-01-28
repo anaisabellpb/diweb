@@ -9,38 +9,27 @@
     <link rel="stylesheet" href="bootstrap.min.css">
     <script>
 
-        /* 2. Escribir la siguiente pirámide pide el número de niveles de la pirámide*/
-
+        
         function iniciar() {
             // A. Pedir niveles
             let numeros = [3, 5, 7, 2, 8];
             let suma = 0;
+
+            /* Usando For clásico
+            for (let i = 0; i < numeros.length; i++) {
+            const elemento = numeros[i];
+            //suma = suma + elemento;
+            suma += elemento;
+            }
+                        */
+
             for (const i in numeros) {
-                    const elemento = numeros[i];
-                    suma += elemento;
- 
+                const elemento = numeros[i];
+                suma += elemento;
+
             }
             alert(`La suma de elementos del array = ${suma}`);
         }
-
-
-
-
-        /**let altura = 5;
-        let piramide = "";
-
-
-        for (let i = 1; i <= altura; i++) {
-            let espacios = "".repeat(altura - i);
-            let asteriscos = "*".repeat(i * 2 - 1);
-            piramide += espacios + asteriscos + "\n";
-
-        }
-        console.log(piramide);
-        alert(piramide);
-    }*/
-
-
 
 
     </script>
