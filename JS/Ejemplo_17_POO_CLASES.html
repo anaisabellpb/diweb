@@ -1,0 +1,62 @@
+<!--localhost/Curso/JS/Ejemplo_17_POO_CLASES.html-->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS POO CLASES</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <script>
+        // Las clases son los modelos para crear los objetos. 
+        // Definen atributos y métodos. 
+        // Por conversión, el nombre empieza en MYÚSCULAS.
+
+        class Camion {
+            // Defino los atributos
+            modelo = "";            // string
+            potencia = 0;           // int
+            electrico = true;       // booleano
+            precio = 138600.55;     // float
+
+            // Métodos
+            // El más importante es el constructor
+            constructor(modelo, nuevaPotencia) {
+                // this -> Valor de un objeto específico
+                this.modelo = modelo;
+                this.potencia = nuevaPotencia;
+            }
+            // Método "normal"
+            hacerDescuento(porcentaje) {
+                let miDescuento = this.precio * porcentaje / 100;
+                this.precio -= miDescuento;  // Otra forma de ponerlo es -> this.precio = this.precio - miDescuento;
+            }
+        }
+
+        //Función principal, aqui es donde se crea  los objetos.
+        function iniciar() {
+            // Creo dos caminones
+            // Para usar el constructos, usaremos NEW
+            let camion1 = new Camion("Volvo FH Aero", 360);
+            let camion2 = new Camion("Volvo FH Electric", 540);
+
+            // El FH Electric ESTA DE OFERTA!!!
+            camion2.hacerDescuento(5);
+
+            // Pintamos los camiones
+            alert(`Camión1: \n ${JSON.stringify(camion1, null, 2)}`);
+            alert(`Camión2: \n ${JSON.stringify(camion2, null, 2)}`);
+        }
+
+    </script>
+</head>
+
+<body>
+    <main class="m-3 p-3">
+        <form action="#" method="post">
+            <button type="submit" class="btn btn-primary" onclick="iniciar()">Camión</button>
+        </form>
+    </main>
+</body>
+
+</html>
