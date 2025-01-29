@@ -1,0 +1,31 @@
+<!--Ejemplos_17_columnas,html-->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Columnas</title>
+    <style>
+        p {
+            /*column-count: 3; te pone las columnas iguales con el tamaño que quepa*/
+            column-width: 150px;/* este es incomplatible si esta puesto count, el width lo distribuye según coja 
+            la medida*/
+            column-rule: solid 2px;
+            column-gap: 50px;/* pone espacio entre las columnas no se uqeda tan juntas*/
+            column-rule-color: brown;/* pone las líneas divisorias que hemos puesto, de otro color*/
+        }
+    </style>
+</head>
+
+<body>
+    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Libero enim eveniet officia odit,
+        porro quo! Dolores, libero illo quia expedita totam voluptate nesciunt accusamus doloremque
+        natus maxime odit incidunt alias. Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+        Libero enim eveniet officia odit, porro quo! Dolores, libero illo quia expedita totam voluptate
+        nesciunt accusamus doloremque natus maxime odit incidunt alias. Lorem ipsum dolor sit, amet
+        consectetur adipisicing elit. Libero enim eveniet officia odit, porro quo! Dolores, libero
+        illo quia expedita totam voluptate nesciunt accusamus doloremque natus maxime odit incidunt alias.</p>
+</body>
+
+</html>

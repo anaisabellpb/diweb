@@ -1,0 +1,45 @@
+<!--Ejemplo_11_AlineaciónVertical-->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Alineación Vertical</title>
+    <style>
+        p {
+            border: 1px solid blue;
+            /*ponemos un borde alrededor de los párrafos*/
+            height: 100px;
+            /*el alto del recuadro*/
+            width: 60%;
+            /*El cuadro se acorta a mitad de la pantalla no coge toda*/
+
+        }
+
+        p:nth-of-type(2) span {
+            vertical-align: top;
+        }
+
+        p:nth-of-type(3) span {
+            vertical-align: super;
+        }
+
+        p:nth-of-type(4) span {
+            vertical-aling: 1.5em;
+        }
+
+        img {
+            border: 1px dashed green;
+        }
+    </style>
+</head>
+
+<body>
+    <p><img src="cara-feliz.png" alt="#">Párrafo con fragmento<span>Baselina</span></p>
+    <p><img src="cara-feliz.png" alt="#">Párrafo con fragmento<span>Top</span></p>
+    <p><img src="cara-feliz.png" alt="#">Párrafo con fragmento<span>Super</span></p>
+    <p><img src="cara-feliz.png" alt="#">Párrafo con fragmento<span>+1em</span></p>
+</body>
+
+</html>
