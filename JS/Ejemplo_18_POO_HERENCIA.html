@@ -1,0 +1,91 @@
+<!--localhost/Curso/JS/Ejemplo_18_POO_HERENCIA.html-->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS POO HERENCIA</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <script>
+        // Con la herencia puedo reutilizar código  
+        // Defino una clase padre (o superclase) va a crear otras clases
+
+        class Vehiculo {
+            // Attributos
+            modelo = "";
+            precio = 0.0;
+            velocidad = 0;
+
+            // EL constructor 
+            constructor(modelo, precio) {
+                this.modelo = modelo;
+                this.precio = precio;
+            }
+
+            // Métodos, para pintar el objeto
+            acelerar(aceleracion) {
+                this.velociad += aceleracion;
+            }
+
+            frenar(frenado) {
+                this.velocidad -= frenado;
+            }
+
+            imprimir() {
+                return JSON.stringify(this, null, 2);
+            }
+
+        }
+
+        class Moto extends Vehiculo { // Al poner el extends Vehiculo hereda moto los 3 atributos y los 3 métodos de la clase Vehiculo que es la superclase 
+            // Atributo propio de moto es ruedas
+            ruedas = 2;
+
+            // El constructor de moto
+            // Usamos la palabra reservada super
+            // Super, aquí es el construtor del padre
+            constructor(modelo, precio) { // EL 1º modelo pasa al 2º modelo, y este, hereda del this.modelo = modelo de vehiculo
+                super(modelo, precio);
+            }
+        }
+
+        class Coche extends Vehiculo {
+            // Atributo propio
+            ruedas = 4;
+
+            // El construtor
+            constructor(modelo, precio) {
+                super(modelo, precio);
+            }
+        }
+
+
+        //Función principal
+        function iniciar() {
+            // Creamos lo objetos, y se hereda de las clases hijas
+            let motoAlfonso = new Moto("Piaggio zip", 600);
+            let cocheMJose = new Coche("Nissan Micra", 8000);
+            motoAlfonso.acelerar(50);
+            cocheMJose.acelerar(100);
+
+            // Ve a la guardia civil y baja velocidad
+            cocheMJose.frenar(20);
+
+            // Pintamos los vehículos de la peña!
+            alert(`Moto Alfonso: \n ${JSON.stringify(motoAlfonso, null, 2)}`);
+            alert(`Coche María José: \n ${JSON.stringify(cocheMJose, null, 2)}`);
+        }
+
+    </script>
+</head>
+
+<body>
+    <main class="m-3 p-3">
+        <form action="#" method="post">
+            <button type="submit" class="btn btn-primary" onclick="iniciar()">Camión</button>
+        </form>
+    </main>
+</body>
+
+</html>
