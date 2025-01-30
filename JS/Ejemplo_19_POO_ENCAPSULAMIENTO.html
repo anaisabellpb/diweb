@@ -1,0 +1,105 @@
+<!--localhost/Curso/JS/Ejemplo_19_POO_ENCAPSULAMIENTO.html-->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <title>JS POO ENCAPSULAMIENTO</title>
+
+    <script>
+        // Encapsulamiento (2020): hacer privados atributos y/o métodos
+        // Para acceder: setter (modificadores) / getter (accesores)
+        // Evitan valores erróneos o accesos NO AUTORIZADOS
+
+        // Clase padre Animal
+        class Animal {
+            // Atributos privados: usamos #
+            #raza = "";
+            #edad = 0;
+
+            // Constructor (siempre público, xq sino no podemos construir el objeto), los atributos los hacemos privados poniendole la # delante.
+            constructor(raza, edad) {
+                this.#raza = raza;
+                // this.edad(edad);  ->  OJO, asi escrito será en JAVA / PHP 
+                // En JS usar el setter es como poner un atribubo
+                // Para evitar que me toquen el constructor, que está en privado
+                // y, tiene el setter hecho más abajo, para que no modifiquen la regla que he puesto sobre la edad.
+                // pasa de esto -> this.#edad = edad;   a esto -> this.edad = edad;
+                this.edad = edad;
+            }
+
+            // Método privado (poner # delante)
+            #mostrarInfo() {
+                // Me construyo mi propio JSON personalizado, en este 1º método que es privado
+                return {
+                    Raza: this.#raza,
+                    Edad: this.edad, // al igual que el setter en construtor uso el getter d ela edad sin #
+                    // pasa de esto ->  Edad: this.#edad, A ESTO ->  Edad: this.edad, 
+                    // Además devuelvo el tipo de Animal que es.
+                    Tipo: this.construtor.name,
+                }
+            }
+
+            // Defino los setter y getter, son públicos
+            // NO es obligatorio hacerlo para todo!
+
+            // El setter
+            set edad(edad) {// la edad que esta entre () es la edad del =
+                if (edad > 0) {
+                    this.#edad = edad;
+                }
+
+            }
+            // El getter (que es público)
+            get edad() {
+                return this.#edad;
+            }
+            // Hacemos la salida pero pública
+            imprimir() {
+                return JSON.stringify(this.#mostrarInfo());
+            }
+
+        }
+        // Clase hija
+        class Perro extends Animal { // Con el extends hereda todos los atributoa del padre en este caso Animal
+            //Atributos propios (privados)
+            #sonido = "";
+
+            // Constructor
+            constructor(raza, edad) {
+                super(raza, edad);
+                this.#sonido = "GUAU!!";
+            }
+
+            // Método público para imprimir
+            imprimir() {
+                // Parse, preformatea lo que viene del padre, y nose usa JSON.stringify
+                let datos = JSON.parse(super.imprimir());
+                // Añado mi propio atributo y le pongo el nombre que quiero: Sonido (S MAYÚS)
+                datos.sonidoAnimal = this.#sonido;
+                return JSON.stringify(datos, null, 2);
+            }
+
+        }
+
+        // Función principal
+        function iniciar() {
+            let Paco = new Perro("Galgo Enano", 1);
+
+            alert(`Perrito Paco: \n ${Paco.imprimir()}`);
+        }
+
+    </script>
+</head>
+
+<body>
+    <main class="m-3 p-3">
+        <form action="#" method="post">
+            <button type="submit" class="btn btn-primary" onclick="iniciar()">Animal</button>
+        </form>
+    </main>
+</body>
+
+</html>

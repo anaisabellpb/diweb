@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <title>Ejercicio POO</title>
+    <script>
+        // Definición de la clase Persona
+        class Persona {
+            nombre = "";
+            edad = 0;
+            ciudad = "";
+            constructor(nombre, edad, ciudad) {
+                this.nombre = nombre;
+                this.edad = edad;
+                this.ciudad = ciudad;
+            }
+
+            imprimir() { // Es público
+                return JSON.stringify(this, null, 2);
+            }
+        }
+
+        // Clase Alumno que hereda de Persona
+        class Alumno extends Persona {
+            constructor(nombre, edad, ciudad, curso, nota) {
+                super(nombre, edad, ciudad);
+                this.curso = curso;
+                this.nota = nota;
+            }
+        }
+
+        // Clase Profesor que hereda de Persona
+        class Profesor extends Persona {
+            constructor(nombre, edad, ciudad, materia, salario) {
+                super(nombre, edad, ciudad);
+                this.materia = materia;
+                this.salario = salario;
+            }
+
+        }
+
+        // Función para mostrar la información
+        function iniciar() {
+            let alumno = new Alumno("Carlos", 20, "Madrid", "Matemáticas", 2500.0);
+            let profesor = new Profesor("Ana", 45, "Sevilla", "ARTE", 2500.0);
+
+            // Pintamos
+            alert(`alumno: \n ${JSON.stringify(alumno, null, 2)}`);
+            alert(`profesor: \n ${JSON.stringify(profesor, null, 2)}`);
+        }
+    </script>
+</head>
+
+<body>
+    <main class="m-3 p-3">
+        <form action="#" method="post">
+            <button type="submit" class="btn btn-primary" onclick="iniciar()">Enviar</button>
+        </form>
+    </main>
+</body>
+
+</html>

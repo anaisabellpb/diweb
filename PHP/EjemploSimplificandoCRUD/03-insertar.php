@@ -11,7 +11,7 @@ $alerta = "Mensaje...";
 // Solo si se envía el formulario, se definen las variables del alert
 if (isset($_REQUEST['enviar'])) {
     //Llamamos a la base de datos
-    $conexion = conectarBBDD();
+    $conexion = 'conectarBBDD'();
 
     $referencia = $_REQUEST['Referencias'] ?? '';
     $descripcion = $_REQUEST['Descripcion'] ?? '';
