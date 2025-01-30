@@ -38,7 +38,7 @@
                     Edad: this.edad, // al igual que el setter en construtor uso el getter d ela edad sin #
                     // pasa de esto ->  Edad: this.#edad, A ESTO ->  Edad: this.edad, 
                     // Además devuelvo el tipo de Animal que es.
-                    Tipo: this.construtor.name,
+                    Clase: this.construtor.name,
                 }
             }
 
@@ -78,7 +78,7 @@
                 // Parse, preformatea lo que viene del padre, y nose usa JSON.stringify
                 let datos = JSON.parse(super.imprimir());
                 // Añado mi propio atributo y le pongo el nombre que quiero: Sonido (S MAYÚS)
-                datos.sonidoAnimal = this.#sonido;
+                datos.SonidoAnimal = this.#sonido;
                 return JSON.stringify(datos, null, 2);
             }
 
