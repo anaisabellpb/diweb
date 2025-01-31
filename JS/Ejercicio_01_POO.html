@@ -10,61 +10,71 @@
 
     <script>
 
-        class Persona {
-            #nombre = "";
-            #ciudad = "";
-            #edad = 0;
+        class Persona {// Clase padre, también puedes ponerlo todo privado, ya más abajo esta el set y get
+            // Atributos
+            nombre = "";
+            ciudad = "";
+            #edad = 0; // Privado
 
-            
+
             constructor(nombre, ciudad, edad) {
-                this.#nombre = nombre;
-                this.#ciudad = ciudad;
-                this.edad = edad;
+                this.nombre = nombre;
+                this.ciudad = ciudad;
+                this.edad = edad;// la almohadilla se la quitamos xq ya hemos imprimido
             }
 
-            #mostrarInfo() {
-              
+            // Método protected! OJO, en UML se pone #
+            _mostrarInfo() {
                 return {
-                    Nombre: this.#nombre,
-                    Ciudad: this.#ciudad,
+                    Nombre: this.nombre,
+                    Ciudad: this.ciudad,
                     Edad: this.edad,
 
                     Clase: this.constructor.name
                 }
             }
 
-            set edad(edad) {
+            set edad(edad) { // Llevan parámetros y no return
                 if (edad > 0) {
                     this.#edad = edad;
                 }
             }
 
-            get edad() {
+            get edad() {// LO que va dentro del () se llama parámetros, no lleva, pero si un return
                 return this.#edad;
             }
 
-            imprimir() {
-                return JSON.stringify(this.#mostrarInfo(), null, 2);
+            imprimir() {// JSON personalizado
+                return JSON.stringify(this._mostrarInfo());
             }
 
         }
 
-        class Alumno extends Persona {
-            #curso = "";
-            #nota = 0;
+        class Alumno extends Persona {// Clase hija
+            // Atributos
+            curso = "";
+            #nota = 0; //Privado
 
             constructor(nombre, ciudad, edad, curso, nota) {
                 super(nombre, ciudad, edad);
-                this.#curso = curso;
+                this.curso = curso;
                 this.nota = nota;
             }
 
-            #mostrarInfo() {
+            #mostrar() {// No lleva parámetros de entrada, xq es una salida
                 return {
-                    Curso: this.#curso,
-                    Nota: this.nota,
+                    // Para personalizar la salida JSON en las clases hija usaremos super.
 
-                    Clase: this.constructor.name
+                    // Si lo queremos en público ponemos lo de debajo:
+                    //let datos = JSON.parse(super.imprimir());
+                    //datos.curso = this.curso;
+                    //datos.nota = this.#nota:
+                    //return JSON.stringify(datos, null, 2);
+
+                    
+                   ...super._mostrarInfo(),// Esto esta asi por lo del protected de arriba de padre
+                   Curso: this.curso,
+                   Nota: this.nota
                 }
             }
 
@@ -78,26 +88,26 @@
                 return this.#nota;
             }
 
-            imprimir() {
-                return JSON.stringify(this.#mostrarInfo(), null, 2);
+            imprimir() {// NO hemos puesto mostrarInfo xq ese es el nombre para el padre y para este hijo es solo mostrar
+                return JSON.stringify(this.#mostrar(), null, 2);
             }
 
         }
 
-        class Profesor extends Persona {
-            #materia = "";
+        class Profesor extends Persona {// Clase hija
+            materia = "";
             #salario = 0;
 
             constructor(nombre, ciudad, edad, materia, salario) {
                 super(nombre, ciudad, edad);
-                this.#materia = materia;
+                this.materia = materia;
                 this.salario = salario;
             }
 
             #mostrarInfo() {
 
                 return {
-                    Materia: this.#materia,
+                    Materia: this.materia,
                     Salario: this.salario,
 
                     Clase: this.constructor.name
@@ -110,7 +120,7 @@
                 }
             }
 
-            get nota() {
+            get salario() {
                 return this.#salario;
             }
 
@@ -121,10 +131,10 @@
         }
 
         function iniciar() {
-            let Alumno1 = new Alumno("Juan Ruiz", 20, "Sevilla", "Historia", 7.5);
+            let Juan = new Alumno("Juan Ruiz", 20, "Sevilla", "DIWEB", 8);
             let Profesor1 = new Profesor("Sandra Gómez", 40, "Sevilla", "Biología", 1400);
 
-            alert(`Juan Ruiz: \n ${Alumno1.imprimir()}`);
+            alert(`Datos Alumno: \n ${Juan.imprimir()}`);
             alert(`Sandra Gómez: \n ${Profesor1.imprimir()}`);
         }
 
