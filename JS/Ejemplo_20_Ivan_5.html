@@ -1,0 +1,142 @@
+<!--localhost/Curso/JS/Ejemplo_20_Ivan_5.html-->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <title>Encapsulamiento</title>
+
+    <script>
+
+        class Persona {
+            #nombre = "";
+            #ciudad = "";
+            #edad = 0;
+
+            
+            constructor(nombre, ciudad, edad) {
+                this.#nombre = nombre;
+                this.#ciudad = ciudad;
+                this.edad = edad;
+            }
+
+            #mostrarInfo() {
+              
+                return {
+                    Nombre: this.#nombre,
+                    Ciudad: this.#ciudad,
+                    Edad: this.edad,
+
+                    Clase: this.constructor.name
+                }
+            }
+
+            set edad(edad) {
+                if (edad > 0) {
+                    this.#edad = edad;
+                }
+            }
+
+            get edad() {
+                return this.#edad;
+            }
+
+            imprimir() {
+                return JSON.stringify(this.#mostrarInfo(), null, 2);
+            }
+
+        }
+
+        class Alumno extends Persona {
+            #curso = "";
+            #nota = 0;
+
+            constructor(nombre, ciudad, edad, curso, nota) {
+                super(nombre, ciudad, edad);
+                this.#curso = curso;
+                this.nota = nota;
+            }
+
+            #mostrarInfo() {
+                return {
+                    Curso: this.#curso,
+                    Nota: this.nota,
+
+                    Clase: this.constructor.name
+                }
+            }
+
+            set nota(nota) {
+                if (nota >= 0 && nota <= 10) {
+                    this.#nota = nota;
+                }
+            }
+
+            get nota() {
+                return this.#nota;
+            }
+
+            imprimir() {
+                return JSON.stringify(this.#mostrarInfo(), null, 2);
+            }
+
+        }
+
+        class Profesor extends Persona {
+            #materia = "";
+            #salario = 0;
+
+            constructor(nombre, ciudad, edad, materia, salario) {
+                super(nombre, ciudad, edad);
+                this.#materia = materia;
+                this.salario = salario;
+            }
+
+            #mostrarInfo() {
+
+                return {
+                    Materia: this.#materia,
+                    Salario: this.salario,
+
+                    Clase: this.constructor.name
+                }
+            }
+
+            set salario(salario) {
+                if (salario >= 0) {
+                    this.#salario = salario;
+                }
+            }
+
+            get nota() {
+                return this.#salario;
+            }
+
+            imprimir() {
+                return JSON.stringify(this.#mostrarInfo(), null, 2);
+            }
+
+        }
+
+        function iniciar() {
+            let Alumno1 = new Alumno("Juan Ruiz", 20, "Sevilla", "Historia", 7.5);
+            let Profesor1 = new Profesor("Sandra Gómez", 40, "Sevilla", "Biología", 2400);
+
+            alert(`Juan Ruiz: \n ${Alumno1.imprimir()}`);
+            alert(`Sandra Gómez: \n ${Profesor1.imprimir()}`);
+        }
+
+    </script>
+</head>
+
+<body>
+    <main class="m-3 p-3">
+        <form action="#" method="post">
+            <button type="submit" class="btn btn-primary" onclick="iniciar()">Persona</button>
+        </form>
+    </main>
+</body>
+
+</html>
