@@ -1,0 +1,128 @@
+<!--Ejercicio_02_Boletin de jercicios pdf.JS.html-->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boletin JS</title>
+    <script>
+         //Función menu_calculin -> Sin entrada y con Salida
+         function menu_calculin(){
+            let cadena =` \t 1. Calcular cuadadro
+          2. Calcular 20%
+          3. Calcular la potencia
+          4. Salir
+          Elije opción:`;
+            return parseInt(prompt(cadena));
+            return;
+         }
+
+        // Función Hola Mundo  -> Con entrada / Con salida (NE1S) EL MÁS DIFÍCIL
+        function holaMundo(veces) {
+            let cadena = "";
+            for (let i = 0; i <= veces; i++) { //Usamos for para que repita una y otra vez
+                cadena += "Hola mundo \n";  
+            }
+            return cadena;
+        }
+
+        // Función Tabla Multiplicar N -> Sin entrada / Con salida (0E1S)
+        function tablaM() {
+            let num = parseInt(prompt("Dime la tabla MUltiplicar"));
+            // NO ME DA ERROR, son funciones distintas
+            // A la zona de donde se usa una varibale -> ámbito
+            let cadena = "";
+            for (let i = 1; i <= 10; i++) {
+                cadena += `${num} x ${i} = ${num*i} \n`;   
+            }
+            return cadena;
+        }
+
+        // Función tu nombre -> Sin entrada / Sin salida (0E0S) ES MÁS FÁCIL
+        function tuNombre() {
+            let xxx = prompt("Dime tu nombre: ");
+            let yyy = prompt("Dime tu 1er Apellido: ");
+            let zzz = prompt("Dime tu 2º Apellido: ");
+            alert(`Te llamas ${xxx} ${yyy} ${zzz}`);
+        }
+
+        // Función calculín -> Con entrada / Sin salida (NE0S)
+        function calculin(opcion) {
+            switch (opcion) {
+                case 1:
+                    let num1 = parseInt(prompt("Dame Nº"));
+                    alert(`El cuadrado de ${num1} es: ${num1*num1}`);
+                    break;
+                case 2:
+                    let num2 = parseInt(prompt("Dame Nº"));
+                    alert(`El 20% de ${num2} es: ${num2*0.2}`);
+                    break;
+                case 3:
+                    let base = parseInt(prompt("Dame Base"));
+                    let exponente = parseInt(prompt("Dame exponente"));
+                    let resultado = base;
+                    for (let i = 1; i < exponente; i++) {
+                        resultado = resultado * base;
+                        // También se puede poner asi -> resultado *= base;   
+                    }
+                    alert(`El resultado es: ${resultado}`);
+                    break;
+            }
+        }
+
+        function menu() {
+            let cadena =` \t 1. Hola Mundo N veces
+         2. Tabla de multiplicar N
+         3. Dime tu nombre
+         4. Calculín
+         5. Salir
+         Elije opción:`;
+            return parseInt(prompt(cadena));
+        }
+
+        function principal() {
+            let opcion = 0;
+            while (opcion < 5) { // Si es menor que 5 cumple la condicción y entra en el bucle
+                opcion = menu();
+                /* Si en la funcción hay entrada, aquí (switch) ira uno o varios promt. 
+                Si hay salida, habra 1 alert! */
+                switch (opcion) {
+                    case 1: 
+                    let veces =  0;
+                    while(veces <1 || veces > 20){
+                        veces = parseInt(prompt("Dime veces (1-20):"));
+                    }
+                    alert(holaMundo(veces));
+                    break;
+
+                    case 2: 
+                    alert(tablaM());
+                    break;
+
+                    case 3: 
+                    tuNombre();
+                    break;
+                    
+                    case 4: 
+                    let opcion_calculin = menu_calculin();
+                    // Si has elegido 1,2 o 3...
+                    if(opcion_calculin >=1 || opcion_calculin <=3) { // va del 1 al 3, el menu que hemos hecho
+                        calculin(opcion_calculin);
+                    }
+                    break;
+
+                    default: alert("Fin del programa"); break;
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <form action="#" method="post">
+        <button type="submit" onclick="principal()">Iniciar</button>
+    </form>
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<!--Ejercicio_08_y_09_Boletin de jercicios pdf.JS.html-->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boletin de ejercicios 8 y 9</title>
+    <script>
+        class Producto {// El nombre del objeto va la primera en mayúscula
+            // se pone class en vez de let xq es más fácil mantener un class, es lo que se suele hacer ahora
+            // Atributos
+            nombre ="";
+            precio = 0.0;
+            stock = 0;
+
+            constructor(nombre, precio, stock) {
+                this.nombre = nombre;
+                this.precio = precio;
+                this.stock = stock;
+            }
+
+            importeEnStock() {
+                return this.precio * this.stock;
+            }
+
+        }
+       function principal() {// El objeto se pone siempre en minúscula
+           let producto = new Producto("Auriculares BT", 23, 44);
+           alert(JSON.stringify(producto, null, 2));
+           console.log(producto.importeEnStock());
+           for (let i =1; i <= 3; i++) {
+            producto.stock --;
+           }
+
+           producto.precio = producto.precio * 1.05;
+           alert(JSON.stringify(producto, null, 2));  
+       }
+   </script>
+</head>
+<body>
+    <form action="#" method="post">
+        <button type="submit" onclick="principal()">Iniciar</button>
+    </form>
+</body>
+</html>

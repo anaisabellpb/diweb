@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boletín de ejercicios 8 y 9</title>
+    <script>
+        class Producto {
+            // Atributos
+            nombre = "";
+            precio = 0.0;
+            stock = 0;
+    
+            constructor(nombre, precio, stock) {
+                this.nombre = nombre;
+                this.precio = precio;
+                this.stock = stock;
+            }
+    
+            // Método para calcular el importe en stock
+            importeEnStock() {
+                return this.precio * this.stock;
+            }
+    
+            // Método para decrementar el stock
+            decrementarStock(cantidad) {
+                this.stock -= cantidad;
+            }
+    
+            // Método para incrementar el precio
+            incrementarPrecio(porcentaje) {
+                this.precio += this.precio * (porcentaje / 100);
+            }
+        }
+    
+        function principal(event) {
+            event.preventDefault(); // Evitar que el formulario se envíe y la página se recargue
+
+            // Crear el objeto 'Auriculares BT'
+            const producto = new Producto("Auriculares BT", 23, 44);
+    
+            // Mostrar el producto
+            console.log(`Producto: ${producto.nombre}`);
+            console.log(`Precio: ${producto.precio} €`);
+            console.log(`Stock: ${producto.stock} unidades`);
+    
+            // Mostrar el importe en stock
+            const importeInicial = producto.importeEnStock();
+            console.log(`Importe en stock inicial: ${importeInicial} €`);
+    
+            // Decrementar el stock 3 veces
+            producto.decrementarStock(3);
+    
+            // Aumentar el precio un 5%
+            producto.incrementarPrecio(5);
+    
+            // Mostrar el nuevo importe en stock después de los cambios
+            const importeFinal = producto.importeEnStock();
+            console.log(`Importe en stock final: ${importeFinal} €`);
+        }
+    
+        // Asegúrate de añadir el evento cuando se cargue la página
+        window.addEventListener('DOMContentLoaded', (event) => {
+            const formulario = document.querySelector('form');
+            formulario.addEventListener('submit', principal);
+        });
+    </script>
+</head>
+<body>
+    <form action="#">
+        <button type="submit">Iniciar</button>
+    </form>
+</body>
+</html>
