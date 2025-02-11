@@ -1,0 +1,79 @@
+<!--Ejercicio 16 (04 para iván) DOM Boletin de jercicios pdf.JS.html-->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boletin de ejercicios 16 -> 04 versión Iván</title>
+</head>
+
+<body>
+    <h1 id="titular">Titulo1</h1>
+    <p id="principal">Párrafo principal</p>
+    <p class="secundario">Párrafo 2.1</p>
+    <section>
+        <p class="secundario">Párrafo 2.2</p>
+        <p class="secundario">Párrafo 2.3</p>
+    </section>
+    <section>
+        <p>Volumen prisma</p>
+        <label for="base">Base:</label>
+        <input type="number" name="base" id="base"><br>
+        <label for="altura">Altura:</label>
+        <input type="number" name="altura" id="altura"><br>
+    </section>
+    <!-- MUY IMPORTANTE! Para trabajar con el DOM, tiene que estar tosa la estructura CARGADA!! -->
+    <Script>
+        function imprimeH1() {
+            // document -> objeto documento (página web)
+            // getElementById -> Método del objeto; devuelve 1 objeto
+            // textContent -> Atributo del objeto: contenido texto
+            let h1 = document.getElementById("titular").textContent;
+            alert(h1);
+            console.log(document.querySelector("#titular").textContent); // si quitamos el último .textContent devuelve todos los atributos
+        }
+
+        function imprimeParrafos() {
+            // esto -> let parrafos = document.getElementsByClassName("secundario") es para solo las clases
+            // esto -> let parrafos = document.querySelectorAll("p"); llama a todas las etiquetas p es cuando es un array
+            let parrafos = document.getElementsByTagName("p");
+            let cadena = "";
+            // for...of (foreach moderno)
+            for (const p of parrafos) {
+                cadena += p.textContent + "\n";
+            }
+            alert(cadena);
+        }
+
+        function volumenPrisma() {
+            let base = document.querySelector("#base").value;// en el examen pedir al usuario la base y la altura
+            let altura = document.querySelector("#altura").value;
+            alert(`El volumen del prisma es ${base * altura}`);
+
+            // Como es en el examen pide al usuario
+            base = parseInt(promt("Por favor, dame la Base:"));
+            altura = parseInt(promt("Por favor, dame la Altura:"));
+            alert(`El volumen del prisma es ${base * altura}`);
+        }
+
+        function principal() {
+            let cadena = ` \t 1. Imprime h1
+         2. Imprime párrafos <p>
+         3. Volumen prisma
+         4. Salir
+         Elije opción:`;
+            let opcion = parseInt(prompt(cadena));
+            switch (opcion) {
+                case 1: imprimeH1();       break;
+                case 2: imprimeParrafos(); break;
+                case 3: volumenPrisma();   break;
+                default:
+                    break;
+            }
+        }
+    </Script>
+    <button type="submit" onclick="principal()">Iniciar</button>
+</body>
+
+</html>
