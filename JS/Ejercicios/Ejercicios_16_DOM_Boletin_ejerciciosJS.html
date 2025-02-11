@@ -12,9 +12,11 @@
     <h1 id="titular">Titulo1</h1>
     <p id="principal">Párrafo principal</p>
     <p class="secundario">Párrafo 2.1</p>
-    <section>
-        <p class="secundario">Párrafo 2.2</p>
-        <p class="secundario">Párrafo 2.3</p>
+    <section id="contenedor">
+        <p id="prin">Párrafo principal</p>
+        <p class="secun">Pár 2.1</p>
+        <p class="secun">Pár 2.2</p>
+        <p class="secun">Pár 2.3</p>
     </section>
     <section>
         <p>Volumen prisma</p>
@@ -22,6 +24,8 @@
         <input type="number" name="base" id="base"><br>
         <label for="altura">Altura:</label>
         <input type="number" name="altura" id="altura"><br>
+        <label for="text">Color:</label>
+        <input type="color" name="color" id="color"><br>
     </section>
     <!-- MUY IMPORTANTE! Para trabajar con el DOM, tiene que estar tosa la estructura CARGADA!! -->
     <Script>
@@ -57,19 +61,44 @@
             alert(`El volumen del prisma es ${base * altura}`);
         }
 
+        function agregaParrafo() {
+            let parrafo = prompt("Dame un texto");// con esto le pedimos algo al usuario 
+            let p = document.createElement("p"); // document.createElement Es para crear un objeto en DOM
+            p.textContent = parrafo;
+            let section = document.querySelector("#contenedor");// Lleva # xq es un id en el html, tiene que ir igual escrito
+            section.appendChild(p);// Para agregar al hijo que en esta caso es p de createElement
+
+        }
+
+        function quitaParrafo() {
+            let parrafo = parseInt(promt("Que párrafo quieres eliminar 1-4?"));// El parseInt(promt es para pasar a un entero, y pedirle a un usuario
+            let parrafos = document.querySelectorAll("p");
+            parrafos[parrafo-1].parentNode.removeChild(parrafos[parrafo-1]);
+        }
+
+        function cambiaFondo() {
+            let rgb = document.getElementById("color").value;
+            document.body.style.backgroundColor = rgb;
+        }
+
         function principal() {
             let cadena = ` \t 1. Imprime h1
          2. Imprime párrafos <p>
          3. Volumen prisma
-         4. Salir
+         4. Añadir párrafo
+         5. Eliminar párrafo
+         6. Cambiar Fondo
+         7. Salir
          Elije opción:`;
             let opcion = parseInt(prompt(cadena));
             switch (opcion) {
                 case 1: imprimeH1();       break;
                 case 2: imprimeParrafos(); break;
                 case 3: volumenPrisma();   break;
-                default:
-                    break;
+                case 4: agregaParrafo();   break;
+                case 5: quitaParrafo();    break;
+                case 6: cambiaFondo();     break;
+                default: alert("Fin del progrma"); break;
             }
         }
     </Script>
