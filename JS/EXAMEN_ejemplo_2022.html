@@ -18,6 +18,27 @@
             this.bateria = 40;
             this.velocidad = 0;
         }
+
+        // Métodos
+        acelerar(velocidad) {
+            this.velocidad = this.velocidad + velocidad;
+            if(velocidad >=10 && velocidad < 30) { // esto son intervalos hay una en el examen
+                this.bateria = this.bateria * 0.99; // equivale al -1% this.bateria * 1 / 100
+            }
+            if (velocidad >=30 && velocidad < 50) { 
+                this.bateria = this.bateria * 0.98; // equivale al -2% this.bateria * 2 / 100
+            }
+        }
+
+        frenar(velocidad) {
+            this.velociad = this.velocidad - velocidad;
+            if(velocidad <=10 && velocidad > 30) { 
+                this.bateria = this.bateria * 1.005; // equivale al +0.5% 
+            }
+            if (velocidad <=30 && velocidad > 50) { 
+                this.bateria = this.bateria * 1.01; // equivale al +1% 
+            }
+        }
     }
 
     function nomina() {
@@ -42,11 +63,27 @@
     }
 
     
-
     function crearCoche() {
+        let miKona = new Coche("Hyundai Kona");
 
+        // Pintamos el coche con JSON.stringify
+        alert(JSON.stringify(miKona, null, 2));
+        miKona.acelerar(35);
+        alert(JSON.stringify(miKona, null, 2));
+        miKona.frenar(20);
+        alert(JSON.stringify(miKona, null, 2));
     }
 
+    function ec2Grado(a,b,c) {
+        // Ej: x² -5x +6 = 0 -> x1= 2 y x2= 3
+        let discriminante = (b*b) - (4*a*c);
+        let x1 = 0;
+        let x2 = 0;
+
+        alert(x1);
+        alert(x2);
+
+    }
 
     function menu() {
         let cadena = ` \t 1. Nómina
@@ -62,7 +99,12 @@
             switch (opcion) {
                 case 1: alert(nomina());        break;
                 case 2: crearCoche();           break;
-                case 3: ec2Grado(a, b, c);      break;
+                case 3: 
+                let a = parseInt(promt("Dame A:"));
+                let b = parseInt(promt("Dame B:"));
+                let c = parseInt(promt("Dame C:"));
+                ec2Grado(a, b, c);      
+                break;
                 case 4: tablasMultiplicar(x,y); break;
                 default: alert("Fin");          break;
             }
