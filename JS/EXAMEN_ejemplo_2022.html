@@ -76,13 +76,19 @@
 
     function ec2Grado(a,b,c) {
         // Ej: x² -5x +6 = 0 -> x1= 2 y x2= 3
-        let discriminante = (b*b) - (4*a*c);
+        // Raiz cuadrada: math.sqrt()
         let x1 = 0;
         let x2 = 0;
 
-        alert(x1);
-        alert(x2);
-
+        let discriminante = (b*b) - (4*a*c);
+        if(discriminante <0) {
+            alert("No hay salución");
+        } else { 
+            x1 = (-b + math.sqrt(discriminante)) / (2*a);
+            x2 = (-b - math.sqrt(discriminante)) / (2*a);
+            alert(x1);
+            alert(x2);
+        }
     }
 
     function menu() {
@@ -100,9 +106,9 @@
                 case 1: alert(nomina());        break;
                 case 2: crearCoche();           break;
                 case 3: 
-                let a = parseInt(promt("Dame A:"));
-                let b = parseInt(promt("Dame B:"));
-                let c = parseInt(promt("Dame C:"));
+                let a = parseInt(prompt("Dame A:"));
+                let b = parseInt(prompt("Dame B:"));
+                let c = parseInt(prompt("Dame C:"));
                 ec2Grado(a, b, c);      
                 break;
                 case 4: tablasMultiplicar(x,y); break;
