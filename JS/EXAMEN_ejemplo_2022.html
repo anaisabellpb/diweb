@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examen JS ejemplo 2022</title>
+</head>
+<script>
+    // Defino las clases van arriba del todo
+    class Coche {
+        modelo = "";            
+        bateria = 0;           
+        velocidad = 0;      
+
+        constructor(modelo) {
+            this.modelo = modelo;
+            this.bateria = 40;
+            this.velocidad = 0;
+        }
+    }
+
+    function nomina() {
+        let anual = parseFloat(prompt("Dame sueldo mensual"));
+        let mensual = anual / 12;
+       
+
+        // En funcióndel bruto, defino el orcentaje irpf
+        let irpf = 0;
+        // En caso de intervales se emplea AND
+        if(anual > 10000 && anual < 20000) {
+            irpf = 15;
+        } else if (anual >= 20000 && anual < 30000) {
+            irpf = 25;
+        } else if (anual >= 30000 && anual <= 40000) {
+            irpf = 35;
+        }
+
+        //Lo de abajo es: Sueldo Neto = 2334 - (2334 * 25%) - (2334 * 6.4%) = 1602 Netos / Mes
+        let neto = mensual - (irpf * mensual/100) - (mensual * 0.064) 
+        return neto;
+    }
+
+    
+
+    function crearCoche() {
+
+    }
+
+
+    function menu() {
+        let cadena = ` \t 1. Nómina
+         2. Coche
+         3. Ec2Grado
+         4. TablasMultiplicar
+         5. Salir
+         Elije opción:`;
+
+        let opcion = 0;
+        while (opcion <5) {// es while xq quiere un bucle que no pare
+            opcion = parseInt(prompt(cadena));
+            switch (opcion) {
+                case 1: alert(nomina());        break;
+                case 2: crearCoche();           break;
+                case 3: ec2Grado(a, b, c);      break;
+                case 4: tablasMultiplicar(x,y); break;
+                default: alert("Fin");          break;
+            }
+            
+        }
+        
+    }
+
+</script>
+
+<body>
+    <form action="#" method="post">
+        <button type="submit" onclick="menu()">Menu</button>
+    </form>
+</body>
+
+</html>
