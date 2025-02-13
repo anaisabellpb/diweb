@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Volumen</title>
+</head>
+
+<script>
+    function calcularVolumen() {
+        let opcion = 0;
+        let cadena = ` \t 1. Calcular Volumen
+         2. Salir
+         Elije opción:`;
+        
+        while (opcion < 2) {
+            opcion = parseInt(prompt(cadena));
+            switch (opcion) {
+                case 1:
+                    calcularFigura();
+                    break;
+                default:
+                    alert("Fin");
+                    break;
+            }
+        }
+    }
+
+    function calcularFigura() {
+        let figura = 0;
+        let mensaje = ` \t 1. Cuadrado
+         2. Rectángulo
+         3. Volver
+         Elije opción:`;
+        
+        while (figura < 3) {
+            figura = parseInt(prompt(mensaje));
+            switch (figura) {
+                case 1:
+                    let lado = parseFloat(prompt("Ingrese el lado del cuadrado:"));
+                    if (isNaN(lado) || lado <= 0) {
+                        alert("Por favor, ingrese un valor válido");
+                        return;
+                    }
+                    let areaCuadrado = lado * lado;
+                    alert("El área del cuadrado es: " + areaCuadrado);
+                    break;
+                case 2:
+                    let ancho = parseFloat(prompt("Ingrese el ancho del rectángulo:"));
+                    let largo = parseFloat(prompt("Ingrese el largo del rectángulo:"));
+                    if (isNaN(ancho) || isNaN(largo) || ancho <= 0 || largo <= 0) {
+                        alert("Por favor, ingrese valores válidos");
+                        return;
+                    }
+                    let areaRectangulo = ancho * largo;
+                    alert("El área del rectángulo es: " + areaRectangulo);
+                    break;
+                default:
+                    alert("Volviendo al menú principal");
+                    return;
+            }
+        }
+    }
+</script>
+
+<body>
+    <form action="#" method="post">
+        <button type="button" onclick="calcularVolumen()">Menu</button>
+    </form>
+</body>
+
+</html>
+

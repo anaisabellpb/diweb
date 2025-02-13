@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examen JS ejemplo 2022</title>
+</head>
+
+<script>
+    // Defino las clases van arriba del todo
+    class Coche {
+        modelo = "";
+        bateria = 0;
+        velocidad = 0;
+
+        constructor(modelo) {
+            this.modelo = modelo;
+            this.bateria = 40;
+            this.velocidad = 0;
+        }
+
+        // Métodos
+        acelerar(velocidad) {
+            this.velocidad = this.velocidad + velocidad;
+            if (velocidad > 10 && velocidad < 30) { // esto son intervalos hay una en el examen
+                this.bateria = this.bateria * 0.99; // equivale al -1% this.bateria * 1 / 100
+            }
+            if (velocidad >= 30 && velocidad < 50) {
+                this.bateria = this.bateria * 0.98; // equivale al -2% this.bateria * 2 / 100
+            }
+        }
+
+        frenar(velocidad) {
+            this.velocidad = this.velocidad - velocidad;
+            if (velocidad > 10 && velocidad < 30) {
+                this.bateria = this.bateria * 1.005; // equivale al +0.5%
+            }
+            if (velocidad >= 30 && velocidad > 50) {
+                this.bateria = this.bateria * 1.01; // equivale al +1%
+            }
+        }
+    }
+
+    function nomina() {
+        let anual = parseFloat(prompt("Dame sueldo anual:"));
+        let mensual = anual / 12;
+
+        // En función del bruto, defino el porcentaje IRPF
+        let irpf = 0;
+        // En caso de intervalos se emplea AND
+        if (anual > 10000 && anual < 20000) {
+            irpf = 15;
+        } else if (anual >= 20000 && anual < 30000) {
+            irpf = 25;
+        } else if (anual >= 30000 && anual <= 40000) {
+            irpf = 35;
+        }
+
+        // Lo de abajo es: Sueldo Neto = 2334 - (2334 * 25%) - (2334 * 6.4%) = 1602 Netos / Mes
+        let neto = mensual - (irpf * mensual / 100) - (mensual * 0.064)
+        return neto;
+    }
+
+    function crearCoche() {
+        let miKona = new Coche("Hyundai Kona");
+
+        // Pintamos el coche con JSON.stringify
+        alert(JSON.stringify(miKona, null, 2));
+        miKona.acelerar(35);
+        alert(JSON.stringify(miKona, null, 2));
+        miKona.frenar(20);
+        alert(JSON.stringify(miKona, null, 2));
+    }
+
+    function ec2Grado(a, b, c) {
+        // Ej: x² -5x +6 = 0 -> x1= 2 y x2= 3
+        // Raiz cuadrada: math.sqrt()
+        let x1 = 0;
+        let x2 = 0;
+
+        let discriminante = (b * b) - (4 * a * c);
+        if (discriminante < 0) {
+            alert("No hay solución");
+        } else {
+            x1 = (-b + Math.sqrt(discriminante)) / (2 * a);
+            x2 = (-b - Math.sqrt(discriminante)) / (2 * a);
+            alert(x1);
+            alert(x2);
+        }
+    }
+
+    function tablasMultiplicar(x, y) {
+    // Asegurar que x sea menor que y
+    let min = Math.min(x, y);
+    let max = Math.max(x, y);
+
+    // Verificar que los números están entre 1 y 10
+    if (min < 1 || max > 10) {
+        alert("Los valores deben estar entre 1 y 10.");
+        return;
+    }
+
+    // Verificar que los números estén separados por al menos 3 posiciones
+    if (max - min < 3) {
+        alert("Los números deben estar separados al menos por 3 posiciones.");
+        return;
+    }
+
+    // Generar 3 números aleatorios únicos dentro del rango [min, max]
+    let numeros = new Set();
+    while (numeros.size < 3) {
+        let randomNum = Math.floor(Math.random() * (max - min + 1)) + min;
+        numeros.add(randomNum);
+    }
+
+    // Convertir el Set a un Array
+    let numerosArray = Array.from(numeros);
+
+    // Generar las tablas de multiplicar
+    let resultado = "Tablas de multiplicar:\n";
+    numerosArray.forEach(num => {
+        resultado += `Tabla del ${num}:\n`;
+        for (let i = 1; i <= 5; i++) {
+            resultado += `${num} x ${i} = ${num * i}\n`;
+        }
+        resultado += "\n"; // Separar cada tabla con una línea en blanco
+    });
+
+    // Mostrar en alert (o modificar para mostrar en HTML si prefieres)
+    alert(resultado);
+}
+
+
+    function menu() {
+        let cadena = ` \t 1. Nómina
+         2. Coche
+         3. Ec2Grado
+         4. TablasMultiplicar
+         5. Salir
+         Elije opción:`;
+
+        let opcion = 0;
+        while (opcion < 5) { // es while porque quiere un bucle que no pare
+            opcion = parseInt(prompt(cadena));
+            switch (opcion) {
+                case 1: alert(nomina()); break;
+                case 2: crearCoche(); break;
+                case 3:
+                    let a = parseInt(prompt("Dame A:"));
+                    let b = parseInt(prompt("Dame B:"));
+                    let c = parseInt(prompt("Dame C:"));
+                    ec2Grado(a, b, c);
+                    break;
+                    case 4:
+                    let x = Number(prompt("Dame el primer número:"));
+                    let y = Number(prompt("Dame el segundo número:"));
+                    if (!isNaN(x) && !isNaN(y)) { 
+                        tablasMultiplicar(x, y);
+                    } else {
+                        alert("Por favor, ingresa números válidos.");
+                    }
+                    break;
+                default: alert("Fin"); break;
+            }
+        }
+    }
+</script>
+
+<body>
+    <form action="#" method="post">
+        <button type="submit" onclick="menu()">Menu</button>
+    </form>
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prisma</title>
+    <script>
+        function calcularVolumenPrisma() {
+            // Obtener los valores de largo, ancho y altura desde los campos del formulario
+            let largo = parseFloat(document.getElementById("largo").value);
+            let ancho = parseFloat(document.getElementById("ancho").value);
+            let altura = parseFloat(document.getElementById("altura").value);
+
+            // Verificar que los valores sean válidos
+            if (isNaN(largo) || isNaN(ancho) || isNaN(altura) || largo <= 0 || ancho <= 0 || altura <= 0) {
+                alert("Por favor, ingresa valores numéricos positivos.");
+                return;
+            }
+
+            // Calcular el volumen
+            let volumen = largo * ancho * altura;
+
+            // Mostrar el resultado en un mensaje
+            alert(`El volumen del prisma es: ${volumen} unidades cúbicas`);
+        }
+    </script>
+</head>
+
+<body>
+    <h2>Calcular Volumen de un Prisma</h2>
+
+    <label for="largo">Largo de la base:</label>
+    <input type="number" id="largo" step="any"><br><br>
+
+    <label for="ancho">Ancho de la base:</label>
+    <input type="number" id="ancho" step="any"><br><br>
+
+    <label for="altura">Altura del prisma:</label>
+    <input type="number" id="altura" step="any"><br><br>
+
+    <button onclick="calcularVolumenPrisma()">Calcular Volumen</button>
+</body>
+
+</html>
+
