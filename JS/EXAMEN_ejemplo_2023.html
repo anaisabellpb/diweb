@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examen JS 2023</title>
+    <script> 
+    // En la zona de arriba del todo van las clases
+        class EntradaFutbol {
+            partido = "";
+            liga = true;
+            #precio = 100.00;
+
+            constructor(partido, liga, precio) {
+                this.partido = partido;
+                this.liga = liga;
+                // this.#precio = precio;
+                this.precio = precio; // Este precio es un método
+
+            }
+            // Método set/get
+            set precio(unPrecio) {
+                if (unPrecio >0) {
+                    this.#precio = unPrecio;
+                }
+            }
+            get precio() {
+                return this.#precio;
+            }
+
+            // Resto de métodos
+            // Si los métodos son estáticos no hay que crear un objeto de la clase para usarlos
+            static leerEntrada() {
+                let partido = prompt("Dame partido:");
+                let liga = confirm("Es de liga?( Aceptar->Si, Cancelar->No)");
+                let precio = parseFloat(prompt("Dime precio:"));
+
+                // Usamos el constructor para devolver el objeto
+                return new EntradaFutbol(partido, liga, precio);
+            }
+
+            static mostrarEntrada(entrada) { // ponemos static xq tenemos que crear un objeto de la propia clase
+                alert(JSON.stringify({
+                    Partido: entrada.partido,
+                    Liga: entrada.liga,
+                    Precio: `${entrada.precio} €`// aqui estamos usando el el precio del método
+                }, null, 2));
+            }
+
+            // Estos métodos NO son estáticos
+            partidoUEFA() {
+                // this.#precio *= 1.15;
+                if(!this.liga) {
+                    this.#precio = this.#precio * 1.15;
+                }  
+            }
+
+            partidoEspecial() {
+                this.#precio = this.#precio * 1.25;
+            }
+        }
+      
+        // Math.Pi
+        function verPI() {
+            let veoveo = confirm("¿Deseas ver de verdad el valor de PI?")
+            if (veoveo) {
+                alert(`El valor de PI es:${Math.PI}`);
+            } else {
+                alert("Tu te lo pierdes....");
+            }
+        }
+
+        function volumenPrisma() {
+            let areaBase = parseFloat(prompt("Dame área base:"));
+            let altura = parseInt(prompt("Dame altura"));
+            return `Volumen Prisma = ${areaBase * altura}`;
+        }
+
+        function verPrimo() { 
+            // Pedir a JS que genere aleatorio del 1-100
+            // La máquina me dirá si ese número es primo o no
+            let semilla = Math.random(); // Pseudoaleatorio del 0 al 1
+            let max = 100; // cambiamos los números max y min solo
+            let min = 1;
+            // Math.floor -> Trunca decimales. Ej: 45.68 -> 45, es decir elimina los decimales
+            // Math.round -> Redondea decimal. Ej: 45.68 -> 46, al alza
+            let aleatorio = Math.floor(semilla * (max - min + 1) + min);
+            alert(aleatorio);
+            
+            // Un número es primo si sólo tiene 1-2 divisores
+            let divisores = 0;
+            for (let i = 1; i <= aleatorio; i++) {
+                let resto = aleatorio % i;
+                if(resto == 0) { 
+                    divisores++; //esto es igual a -> divisores = divisores + 1;
+                }
+                
+            }
+            // Comprueba divisores
+            if(divisores <3) {
+                alert(`El aleatorio ${aleatorio} es primo!`);
+            } else {
+                alert(`El aleatorio ${aleatorio} NO es primo!`);
+            }
+        }
+
+        function futbol() {
+            // Voy a crearme una entrada Gante - Betis
+            let entrada1 = EntradaFutbol.leerEntrada(); // Esta es el objeto (entrada1) de lo de static
+            entrada1.partidoUEFA();
+            EntradaFutbol.mostrarEntrada(entrada1)
+         }
+
+
+        function menu() {
+            let cadena = ` \t 1. Ver PI
+         2. Volumen prisma
+         3. Ver primo
+         4. Futbol
+         5. Reservas
+         6. Salir
+         Elije opción:`;
+
+            let opcion = 0;
+            while (opcion < 5) {// es while xq quiere un bucle que no pare
+                opcion = parseInt(prompt(cadena));
+                switch (opcion) {
+                    case 1: verPI();                break;// El PI va entero en mayúscula xq es una constante
+                    case 2: alert(volumenPrisma()); break;// Lleva un alert xq en la función hay un return
+                    case 3: verPrimo();             break;
+                    case 4: futbol();               break;
+                    case 5: reservas();             break;
+                    default: alert("Fin");          break;
+                }
+
+            }
+        }
+
+
+        
+    </script>
+</head>
+
+<body>
+    <main class="m-3 p-3">
+        <form action="#" method="post">
+            <button type="submit" onclick="menu()">Iniciar menu</button>
+        </form>
+    </main>
+</body>
+
+</html>
