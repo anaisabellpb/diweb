@@ -60,6 +60,96 @@
                 this.#precio = this.#precio * 1.25;
             }
         }
+
+        class Reservas {
+            cliente = "";
+            entrada = "2024-03-04";
+            #dias = 3; // el encapsulamiento es la  #
+
+            // Construtor parcial
+            constructor(cliente) {
+                this.cliente = cliente;
+                // this.entrada = "2024-03-04"; se pone asi xq tienen parámetros
+                // this.dias = 3;
+            }
+
+            // Setter y getter
+
+            set dias (diasReservas) {
+                if (diasReservas >1) { // La reserva mínima es 2 días
+                    this.#dias = diasReservas;
+                }
+            }
+
+            get dias () {
+                return this.#dias;
+            }
+
+            // NO me hace falta instanciar para usar este método
+            //  instanciar = crear objeto
+            static leerReserva() {
+                let cliente = promt("Dime tu nombre:");
+                // let reserva = new Reservas(cliente); se puede poner asi pero la otra forma es la práctica
+                // return reserva;
+                return new Reservas(cliente);
+            }
+
+            // ASI VA EN EL EXAMEN
+            mostrarInfo() {
+            return {
+                Cliente: this.cliente,
+                Entrada: this.entrada,
+                Dias:`${this.dias} dias`,
+                Tipo: this.constructor.name
+            }
+                }
+
+
+            imprimeReserva(reserva) {
+                 return JSON.stringify(this.mostrarInfo(),null, 2);
+
+            }
+
+        }
+
+        class Facturas extends Reservas {
+                // Atributos
+                importe = 100.00; // Este es valor por defecto
+                spa = false;
+
+                // Constructor entero va todos los atributos
+                constructor(cliente, importe, spa) {
+                    super(cliente);
+                    this.importe = importe;
+                    this.spa = spa;
+                    if(spa == true) {
+                        this.importe += 40;
+                    }
+                }
+
+                // Métodos adicionales
+                static descuente (porcentaje) {
+                    this.importe -= this.importe * porcentaje / 100;
+                }
+
+                static leerFactura () {
+                    let cliente = prompt("Dime tu nombre");
+                    let importe = parseFloat(prompt("Dime el importe"));
+                    let spa = confirm("Desea spa? (Aceptar->Si)");
+                    return new Facturas(cliente, importe, spa);
+                }
+
+                // ASI VA EN EL EXAMEN
+                imprimirFactura() {
+                    // Creo un JSON propio, empezando por el de mi padre
+                    let miJSON = JSON.parse(super.imprimeReserva());
+                    // Meto en ese JSON mis campos...
+                    miJSON.importe_Factura = this.importe;
+                    miJSON.SPA = this.spa;
+                    return JSON.stringify(miJSON, null, 2);
+                }
+                
+            }
       
         // Math.Pi
         function verPI() {
@@ -112,6 +202,16 @@
             EntradaFutbol.mostrarEntrada(entrada1)
          }
 
+         function reservas(cliente) {
+            // Parámetro de entrada: cliente
+            // Salida: impresión 
+            let importe = parseFloat(prompt("Dame importe"));
+            let spa = confirm("Desea Spa?(Aceptar->Si)");
+            let nuevaFactura = new Facturas(cliente, importe, spa);
+            return nuevaFactura.imprimirFactura();
+
+         }
+
 
         function menu() {
             let cadena = ` \t 1. Ver PI
@@ -130,7 +230,7 @@
                     case 2: alert(volumenPrisma()); break;// Lleva un alert xq en la función hay un return
                     case 3: verPrimo();             break;
                     case 4: futbol();               break;
-                    case 5: reservas();             break;
+                    case 5: alert(reservas());      break;
                     default: alert("Fin");          break;
                 }
 
