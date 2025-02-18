@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS-EX2024</title>
+    <script>
+
+        class BiciElectrica {
+            modelo = "";
+            bateria = 0;
+            velocidad = 0;
+
+            constructor(modelo) {
+                this.modelo = modelo;
+                this.bateria = 40;
+                this.velocidad = 0;
+            }
+
+            acelerar(velocidad) {
+                this.velocidad += velocidad;
+                if (velocidad >= 10 && velocidad < 30) {
+                    this.bateria *= 0.99;
+                } else if (velocidad >= 30 && velocidad < 50) {
+                    this.bateria *= 0.98;
+                }
+            }
+
+            frenar(velocidad) {
+                this.velocidad -= velocidad;
+                if (velocidad >= 10 && velocidad < 30) {
+                    this.bateria *= 1.005;
+                } else if (velocidad >= 30 && velocidad < 50) {
+                    this.bateria *= 1.01;
+                }
+            }
+
+            mostrar() {
+                return JSON.stringify({
+                    Modelo: this.modelo,
+                    Bateria: `${this.bateria.toFixed(2)} Kwh`,
+                    Velocidad: `${this.velocidad} km/h`
+                }, null, 2);
+            }
+
+        }
+
+        class Reserva {
+            nombre = "";
+            noches = 0;
+            #precio = 0.0;
+
+            constructor(nombre, noches, precio) {
+                this.nombre = nombre;
+                this.noches = noches;
+                this.#precio = precio;
+            }
+
+            #mostrarInfo() {
+                return {
+                    Nombre: this.nombre,
+                    Noches: this.noches,
+                    Precio: `${this.#precio.toFixed(2)} €`,
+                    TotalReserva: `${(this.#precio * this.noches).toFixed(2)} €`,
+                    Tipo: this.constructor.name
+                };
+            }
+
+            set Precio(precio) {
+                if (precio > 0) {
+                    this.#precio = precio;
+                }
+            }
+
+            get Precio() {
+                return this.#precio;
+            }
+
+
+            imprimir() {
+                return JSON.stringify(this.#mostrarInfo(), null, 2);
+            }
+        }
+
+        class ReservaEstandar extends Reserva {
+            constructor(nombre, noches) {
+                super(nombre, noches, 95.90);
+            }
+
+            imprimirEstandar() {
+                alert(this.info() + ' | Beneficio: Desayuno Incluido');
+            }
+        }
+
+        class ReservaVIP extends Reserva {
+            spa = false;
+
+            constructor(nombre, noches, spa) {
+                super(nombre, noches, 145.90);
+                this.spa = spa;
+                if (spa) {
+                    this.Precio = this.Precio * 1.1;
+                }
+            }
+
+            imprimirVIP() {
+                alert(this.info() + ' | Beneficio: Desayuno y GIM Incluidos');
+            }
+        }
+
+
+        function submenuVolumenes() {
+            const opcion = promptFloat("Volúmenes:\n1. Prisma\n2. Cilindro\n3. Cono\n4. Esfera");
+            switch (opcion) {
+                case 1:
+                    let base = prompt("Base del prisma:");
+                    let altura = prompt("Altura del prisma:");
+                    alert(`Volumen Prisma: ${base * altura}`);
+                    break;
+
+                case 2:
+                    let radio = prompt("Radio del cilindro:");
+                    let alturaCil = prompt("Altura del cilindro:");
+                    alert(`Volumen Cilindro: ${Math.PI * radio ^ 2 * alturaCil}`);
+                    break;
+
+                case 3:
+                    let areaBase = prompt("Área base del cono:");
+                    let alturaCono = prompt("Altura del cono:");
+                    alert(`Volumen Cono: ${(1 / 3) * areaBase * alturaCono}`);
+                    break;
+                case 4:
+                    let radioEsfera = prompt("Radio de la esfera:");
+                    alert(`Volumen Esfera: ${(4 / 3) * Math.PI * Math.pow(radioEsfera, 3)}`);
+                    break;
+            }
+        }
+
+        function tablasMultiplicar(num) {
+            let resultado = '';
+            for (let i = 10; i >= 1; i--) {
+                resultado += `${num} x ${i} = ${num * i}\n`;
+            }
+            alert(resultado);
+
+        }
+
+        function biciElectrica() {
+            let miBici = new BiciElectrica("Xiaomi Electric Bike");
+            alert(JSON.stringify(miBici, null, 2));
+            miBici.acelerar(35);
+            alert(JSON.stringify(miBici, null, 2));
+            miBici.frenar(20);
+            alert(JSON.stringify(miBici, null, 2));
+        }
+
+        function islantilla() {
+            let reserva1 = new ReservaEstandar("Iván Rodriguez", 3);
+            alert(reserva1.imprimirEstandar());
+            let reserva2 = new ReservaVIP("Luis Andrés Diez", 5, true);
+            alert(reserva2.imprimirVIP());
+            let reserva3 = new ReservaVIP("Pablo Valentín Diez", 7, false);
+            alert(reserva3.imprimirVIP());
+        }
+
+        function menu() {
+            let cadena = ` 
+            1. Tablas
+            2. Volúmenes
+            3. BiciElectrica
+            4. Islantilla
+            5. Salir
+            Elige opción:`;
+
+            let opcion = 0;
+            while (opcion < 5) {
+                opcion = parseInt(prompt(cadena));
+                switch (opcion) {
+                    case 1: let num = prompt("Ingrese un número:");
+                    tablasMultiplicar(num);
+                        break;
+                    case 2: subMenuVolumenes(); break;
+                    case 3: biciElectrica(); break;
+                    case 4: islantilla(); break;
+                    default: alert("Fin"); break;
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <main>
+        <button onclick="menu()">Iniciar menú</button>
+    </main>
+</body>
+
+</html>
