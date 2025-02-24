@@ -14,7 +14,14 @@ if(isset($_REQUEST['enviar'])){
     // Para probarlo: Poner en Fila = 4 y columna = 3
     $mensaje = "El elemento es: {$matriz[$fila] [$columna]}";
 }
-
+$mensaje .= "<br> Matriz <br>"; 
+// Para imprimir la matriz (doble foreach)
+foreach ($matriz as $fila) {
+    foreach ($fila as $columna) {
+        $mensaje .= $columna . "\t";
+    }
+    $mensaje .= "<br>";
+}
 ?>
 <!DOCTYPE html>
 <html lang="eS">
