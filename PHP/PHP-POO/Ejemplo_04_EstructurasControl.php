@@ -70,7 +70,7 @@ if (isset($_REQUEST['enviar'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="bootstrap.min.css">
-    <title>Arrays/Vectores PHP</title>
+    <title>Estructuras/Control PHP</title>
 </head>
 
 <body>
