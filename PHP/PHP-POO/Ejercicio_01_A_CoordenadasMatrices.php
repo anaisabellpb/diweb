@@ -1,5 +1,5 @@
 <?php   
-// PHP-POO/Ejercicio_01_CoordenadasMatrices.php
+// PHP-POO/Ejercicio_01_A_CoordenadasMatrices.php
 /*  Sea el array de coordenadas con valores (x,y), 
     siendo x=fila (empezando por 0) e y=columna (empezando por 0)
     Sacar la suma en el alert de los elementos designados en coordenadas
