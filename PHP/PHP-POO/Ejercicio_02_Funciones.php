@@ -10,32 +10,32 @@
 $PI = 3.1416;
 $resultado = 0;
 $mensaje = "";
+$n1 = 0;
+$n2 = 0;
+
 
 // vPrisma - Tipo 0E0S (La más facil)
-function prisma(){
-    global $mensaje, $areaBase, $altura;
-        $resultado = $areaBase * $altura;
+function prisma()
+{
+    global $resultado, $mensaje, $n1, $n2;
+    $resultado = $n1 * $n2;
     $mensaje = "El volumen del prisma es $resultado";
 }
 
 // vCilindro - Tipo NE0S
-function cilindro($PI, $radio, $altura){
-    global $mensaje;
-    $resultado = $PI * $radio ^ 2 * $altura;
-
+function cilindro($n1, $n2)
+{
+    global $PI, $resultado, $mensaje;
+        $resultado = $PI * $n1 * $n1 * $n2;
+    
     $mensaje = "El volumen del cilindro es $resultado";
-
 }
 
 // vCono - Tipo 0E1S
-function cono(){
-    
-}
+function cono() {}
 
 // VEsfera - Tipo NE1S (la más dificil)
-function esfera(){
-    
-}
+function esfera() {}
 
 // Se activan las funciones al pulsar enviar
 // Usamos un switch con los value de los option del select  
@@ -45,9 +45,11 @@ if (isset($_REQUEST['enviar'])) {
     $n2 =  $_REQUEST['n2'];
 
     switch ($solucion) {
-        case 'prisma': prisma();
+        case 'prisma':
+            prisma();
             break;
-        case 'cilindro':cilindro($PI, $radio, $altura);
+        case 'cilindro':
+            cilindro($PI, $n1, $n2);
             break;
         case 'cono':
             break;

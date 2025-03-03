@@ -1,0 +1,44 @@
+***********************************************GIT HUB******************************************
+
+#COMANDOS PARA LA CONSOLA#😵️
+
+º ls = MUESTRA LISTA DE CAPERTA ó ARCHIVOS
+º ls -a = MUESTRA CARPETA ó ARCHIVOS OCULTOS
+º pwd = MUESTRA LA RUTA DÓNDE ESTAMOS POSICIONADOS
+º cd = MUEVE CARPETA ó ARCHIVOS AL DIRECTORIO
+º clear = LIMPIA LA PANTALLA
+º git status = MUESTRA EL ESTADO ACTUAL EN QUE SE ENCUENTRA LA CARPETA ó ARCHIVOS
+º git add . = SUBE TODO A LA NUBE
+º git add archivo1.txt = SUBE SÓLO ESE ARCHIVO ESPECÍFICO
+º git commit -m "" = ENTRE LAS COMILLAS PONEMOS UN DEL CAMBIO REALIZADO
+º git rm archivo1.txt = BORRA ESE ARCHIVO
+º git restore archivo1.txt = RECUPERA ESE ARCHIVO
+º git status -s = MUESTRA LA LISTA DE LOS ARCHIVOS (SIMPLIFICADA)
+º git diff = MUESTRA LOS CAMBIOS DE LA LISTA (SIMPLIFICADA) "SE SALE DE ESA PANTALLA PULSANDO LA LETRA Q"
+º git log --online = MUESTRA HISTORIAL DE LOS CAMBIOS "SE SALE DE ESA PANTALLA PULSANDO LA LETRA Q"
+º mv = MUEVE ARCHIVOS
+º mv archivo1.txt archivo2.txt =MUEVE ó CAMBIA EL NOMBRE A LOS ARCHIVOS
+
+#ABRIR UNA RAMA NUEVA#🤪️
+ 
+º git branch = VERIFICA EN LA RAMA EN LA QUE NOS ENCONTRAMOS
+º git checkout -b ramapepito = CREAMOS UNA RAMA NUEVA
+º cat archivo3.txt = MUESTRA EL CONTENIDO DEL ARCHIVO DE LA RAMA NUEVA
+
+#VOLVER A LA RAMA PINCIPAL#😅️
+
+º git chekout main =CAMBIAMOS A LA RAMA PRINCIPAL
+º git merge ramapepito =LLEVAMOS LOS CAMBIOS DE LA (ramapepito) A LA RAMA PRINCIPAL (main)
+
+
+
+ 
+
+=
+º ls =
+º ls =
+
+
+
+
+
