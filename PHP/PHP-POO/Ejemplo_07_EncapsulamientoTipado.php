@@ -9,7 +9,6 @@ require("errores.php");
     - Tipado: Definir tipos de datos para entrada o salida
  */
 
-
 // Encapsulamiento de atributos -> página 84 manual
 class camion
 {
@@ -90,7 +89,6 @@ if (isset($_REQUEST['enviar'])) {
     <section class="alert alert-success m-3 p-3 mb-4 w-50">
         <pre class="mb-0"><?php echo $mensaje; ?></pre>
     </section>
-
     <!-- Formulario -->
     <section>
         <h4 class="m-3 p-3">Formulario de Vehículo</h4>
@@ -109,9 +107,7 @@ if (isset($_REQUEST['enviar'])) {
                 <label for="decimal" class="w-50">Precio (€)</label>
                 <input type="number" name="decimal" id="decimal" step="0.1" class="w-50" required>
             </nav>
-
             <hr class="bg-danger p-1">
-
             <p>¿Es eléctrico?</p>
             <section class="form-check">
                 <input type="radio" name="booleano" id="1" class="form-check-input" value="1" checked>
@@ -121,17 +117,12 @@ if (isset($_REQUEST['enviar'])) {
                 <input type="radio" name="booleano" id="0" class="form-check-input" value="0">
                 <label for="0" class="form-check-label">No</label>
             </section>
-
             <hr class="bg-danger p-1">
-
             <section class="d-flex justify-content-center">
                 <button type="submit" name="enviar" class="btn btn-primary mt-3 w-50">Enviar</button>
             </section>
-
         </form>
     </section>
 
-
 </body>
-
 </html>
