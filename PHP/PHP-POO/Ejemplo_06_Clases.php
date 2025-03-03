@@ -66,56 +66,51 @@ if (isset($_REQUEST['enviar'])) {
 </head>
 
 <body>
-    <main class="container mt-5">
-
-        <section class="alert alert-success p-3 mb-4 w-100 text-center">
-            <p class="mb-0"><?php echo $mensaje; ?></p>
+        <section class="alert alert-success m-3 p-3 mb-4 w-50">
+            <pre class="mb-0"><?php echo $mensaje; ?></pre>
         </section>
 
         <!-- Formulario -->
         <section>
-            <h4 class="text-center mb-4">Formulario de Vehículo</h4>
+            <h4 class="m-3 p-3">Formulario de Vehículo</h4>
         </section>
-                <form action="#" method="post" class="bg-light p-4 rounded shadow-sm border border-secondary">
-                    <fieldset class="mb-3">
-                        <fieldset class="mb-3">
-                            <label for="texto" class="form-label">Modelo</label>
-                            <input type="text" name="texto" id="texto" class="form-control" required>
-                        </fieldset>
+        <section class="m-3 p-3 w-50 bg-secondary text-white">
+            <form action="#" method="post">
+                <nav class="d-flex mb-3">
+                    <label for="texto" class="w-50">Modelo</label>
+                    <input type="text" name="texto" id="texto" class="w-50" required>
+                </nav>
+                <nav class="d-flex mb-3">
+                    <label for="entero" class="w-50">Potencia (CV)</label>
+                    <input type="number" name="entero" id="entero" class="w-50" required>
+                </nav>
+                <nav class="d-flex mb-3">
+                    <label for="decimal" class="w-50">Precio (€)</label>
+                    <input type="number" name="decimal" id="decimal" step="0.1" class="w-50"required>
+                </nav>
 
-                        <fieldset class="mb-3">
-                            <label for="entero" class="form-label">Potencia (CV)</label>
-                            <input type="number" name="entero" id="entero" class="form-control" required>
-                        </fieldset>
+                <hr class="bg-danger p-1">
 
-                        <fieldset class="mb-3">
-                            <label for="decimal" class="form-label">Precio (€)</label>
-                            <input type="number" name="decimal" id="decimal" step="0.1" class="form-control" required>
-                        </fieldset>
+                <p>¿Es eléctrico?</p>
+                <section class="form-check">
+                    <input type="radio" name="booleano" id="1" class="form-check-input" value="1" checked>
+                    <label for="1" class="form-check-label">Sí</label>
+                </section>
+                <section class="form-check">
+                    <input type="radio" name="booleano" id="0" class="form-check-input" value="0">
+                    <label for="0" class="form-check-label">No</label>
+                </section>
 
+                <hr class="bg-danger p-1">
 
-                        <hr class="bg-danger p-1">
+                <section class="d-flex justify-content-center">
+                    <button type="submit" name="enviar" class="btn btn-primary mt-3 w-50">Enviar</button>
+                </section>
 
-                        <p>¿Es eléctrico?</p>
-                        <div class="form-check">
-                            <input type="radio" name="booleano" id="1" class="form-check-input" value="1" checked>
-                            <label for="1" class="form-check-label">Sí</label>
-                        </div>
-                        <div class="form-check">
-                            <input type="radio" name="booleano" id="0" class="form-check-input" value="0">
-                            <label for="0" class="form-check-label">No</label>
-                        </div>
+            </form>
+        </section>
 
-                        <hr class="bg-danger p-1">
-
-                        <section class="d-flex justify-content-center">
-                            <button type="submit" name="enviar" class="btn btn-primary mt-3 w-50">Enviar</button>
-                        </section>
-                    </fieldset>
-                </form>
-
-          
-    </main>
+ 
 </body>
 
 </html>
