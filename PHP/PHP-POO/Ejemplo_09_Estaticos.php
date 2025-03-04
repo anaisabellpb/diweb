@@ -103,7 +103,13 @@ if (isset($_REQUEST['enviar'])) {
     $miTren2 = TrenCarretera::leeTren("Mercedes", $potencia, $precio, $electrico, true);
     $mensaje .= "<br> Mi tren2! <br>" . $miTren2;
 
+    // $miTrenX = new TrenCarretera($modelo, 750, $precio, true, true);
+    // $mensaje .= "<br> Mi trenX! <br>" . $miTrenX;
+
     $mensaje .= "<br> Nº Trenes: " . TrenCarretera::$numtrenes; // Línea añadida del stático
+    // $numtrenes, nos va a dar el número total de trenes, en este caso dos: $miTren y $miTren2
+    // si desmarcamos del comentario $miTrenX, ya $numtrenes contaría tres trenes no dos  
+
 }
 
 ?>
