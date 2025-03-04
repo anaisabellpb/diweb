@@ -1,27 +1,20 @@
 <?php
 require("errores.php");
 
-// PHP-POO/Ejemplo_07_EncapsulamientoTipado.php
-/*  - Encapsulamiento: oculta atributos y métodos
-       - Se emplea public | protected | private
-       - protected -> visible sólo para desendientes
-       - private -> visible sólo para la propia clase
-    - Tipado: Definir tipos de datos para entrada o salida
- */
+// PHP-POO/Ejemplo_08_Herencia.php      VERSIÓN MÍA 
 
-// Encapsulamiento de atributos -> página 84 manual
-class camion
+/*  - Mecanismo para heredar atributos y métodos -> (Pág 103 manual)
+    - Se emplea extends dentro de la clase
+    - En los métodos, para agregar elementos se usa -> parent::
+*/
+
+class camion // Esta será la clase PADRE
 {
-    // Atributos. Añadimos visibilidad -> public
-    // Tipamos las entradas de atributos poniendo lo que es: string | int | float | bool
-    // Para el encapsulamiento hacemos los o a un atributo PRIVADO Ej: precio
-    public string $modelo = "";        // Cadena de caracteres (String)
-    public int $potencia = 0;          // Entero (int)
-    private float $precio = 0.0;       // Decimal (float), esta en privado
-    public bool $electrico = true;     // Booleano (booleano)
+    public string $modelo = "";
+    public int $potencia = 0;
+    private float $precio = 0.0;
+    public bool $electrico = true;
 
-    // El constructor, método mas important, DEFINIDO COMPLETO (tiene todos los parámetros)
-    // En el constructor tipamos las entradas y usamos el setter
     public function __construct(string $modelo, int $potencia, float $precio, bool $electrico)
     {
         $this->modelo = $modelo;
@@ -30,11 +23,8 @@ class camion
         $this->electrico = $electrico;
     }
 
-    // Método __toString(): tipamos la salida se hace con string
     public function __toString(): string
     {
-        // El objeto lo codificamos (encode) en formato JSON
-        // texto -> JSON (encode); JSON -> texto (decode)
         return json_encode([
             'Modelo Camión'   => $this->modelo,
             'Potencia'        => $this->potencia,
@@ -43,23 +33,44 @@ class camion
         ], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
     }
 
-    // Al atributo privado le definimos el set/get
-    // El setter es público y la salida es: void (sin salida)
-    public function setPrecio(float $precio): void// Aqui estamos pasando el atributo y está tipado
+    public function setPrecio(float $precio): void
     {
-        if ($precio > 0) {// Aqui ponemos el valor mínimo del camión
+        if ($precio > 0) {
             $this->precio = $precio;
         }
     }
-
-     // El getter es público y la salida es: tipo (Aquí float)
-     // No tiene parámetros de entrada
-     public function getPrecio (): float {
+    public function getPrecio(): float
+    {
         return $this->precio;
-     }
+    }
 }
 
-// Script pricipal
+// Definimos la clase HIJA con extends, y el nombre con camelcase
+class TrenCarretera extends Camion
+{
+    // Atributos (propios)
+    public bool $remolque2;
+
+    // El constructor (añadimos datos al padre)
+    // bool $remolque2 = true -> esto es un parámetro opcional
+    public function __construct(string $modelo, int $potencia, float $precio, bool $electrico, bool $remolque2 = true)
+    {
+        parent::__construct($modelo, $potencia, $precio, $electrico);
+        $this->remolque2 = $remolque2;
+    }
+
+    // Igual con el __toString
+    public function __toString(): string
+    {
+        // json_decode -> para ocnvertir un JSON a STRING, en este caso es un array
+        $miJSON = json_decode(parent::__toString(), true); // al tener el JSON del padre lo convierto a string
+        // Al string le añadimos otra línea
+        $miJSON['Tiene 2ºRemolque?'] = $this->remolque2 ? "Si" : "No";
+        // Y ahora convertimos el resultado a JSON, (que antes era un STRING)
+        return json_encode($miJSON, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+    }
+}
+
 $mensaje = "Mensajes";
 
 if (isset($_REQUEST['enviar'])) {
@@ -67,11 +78,13 @@ if (isset($_REQUEST['enviar'])) {
     $potencia = $_REQUEST['entero'];
     $precio = $_REQUEST['decimal'];
     $electrico = $_REQUEST['booleano'];
+    $remolque2 = isset($_REQUEST['remolque2']) ? $_REQUEST['remolque2'] == '1' : true; // '1' significa sí, '0' no
 
-    // Creamos el camión, pintamos el objeto.
     $MiCamion = new Camion($modelo, $potencia, $precio, $electrico);
-    // Imprime el camión
-    $mensaje = $MiCamion;
+    $mensaje = $MiCamion; // Clase padre
+    // $miTren = new TrenCarretera($modelo, $potencia, $precio, $electrico, false);
+    $miTren = new TrenCarretera($modelo, $potencia, $precio, $electrico, $remolque2);
+    $mensaje .= "<br> Mi tren! <br>" . $miTren;
 }
 
 ?>
@@ -119,11 +132,23 @@ if (isset($_REQUEST['enviar'])) {
                 <label for="0" class="form-check-label">No</label>
             </section>
             <hr class="bg-danger p-1">
+            <nav class="d-flex mb-3">
+                <label for="remolque2" class="w-50">¿Tiene 2º Remolque?</label>
+                <select name="remolque2" id="remolque2" class="w-50">
+                    <option value="" selected></option>
+                    <option value="1">Sí</option>
+                    <option value="0">No</option>
+                </select>
+            </nav>
+            <hr class="bg-danger p-1">
             <section class="d-flex justify-content-center">
                 <button type="submit" name="enviar" class="btn btn-primary mt-3 w-50">Enviar</button>
             </section>
+
+            </select>
         </form>
     </section>
 
 </body>
+
 </html>
