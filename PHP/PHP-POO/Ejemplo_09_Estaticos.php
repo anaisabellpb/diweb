@@ -1,12 +1,13 @@
 <?php
 require("errores.php");
 
-// PHP-POO/Ejemplo_08_Herencia.php      VERSIÓN MÍA 
+// PHP-POO/Ejemplo_09_Estaticos.php     
 
-/*  - Mecanismo para heredar atributos y métodos -> (Pág 103 manual)
-    - Se emplea extends dentro de la clase
-    - En los métodos, para agregar elementos se usa -> parent::
+/* - Atributos/Métodos estáticos (Pág 115 manual): 
+      - Son aquellos que se pueden usar sin instanciar
+      - Pertenecen a la clase, no al OBJETO! 
 */
+
 
 class camion // Esta será la clase PADRE
 {
@@ -50,6 +51,8 @@ class TrenCarretera extends Camion
 {
     // Atributos (propios)
     public bool $remolque2;
+    
+    public static int $numtrenes = 0;  // Este es el atributo estático
 
     // El constructor (añadimos datos al padre)
     // bool $remolque2 = true -> esto es un parámetro opcional
@@ -57,6 +60,9 @@ class TrenCarretera extends Camion
     {
         parent::__construct($modelo, $potencia, $precio, $electrico);
         $this->remolque2 = $remolque2;
+
+        // El atributo estático se usa con -> self::
+        self::$numtrenes ++; // Al crear un tren, suma 1
     }
 
     // Igual con el __toString
@@ -69,6 +75,13 @@ class TrenCarretera extends Camion
         // Y ahora convertimos el resultado a JSON, (que antes era un STRING)
         return json_encode($miJSON, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
     }
+
+    // Creamos un método estático (static)
+    public static function leeTren(string $modelo, int $potencia,float $precio, bool $electrico, 
+          bool $remolque2) : TrenCarretera {
+            return new TrenCarretera($modelo, $potencia, $precio, $electrico, $remolque2);  
+    }
+
 }
 
 $mensaje = "Mensajes";
@@ -85,6 +98,12 @@ if (isset($_REQUEST['enviar'])) {
     // $miTren = new TrenCarretera($modelo, $potencia, $precio, $electrico, false);
     $miTren = new TrenCarretera($modelo, $potencia, $precio, $electrico, $remolque2);
     $mensaje .= "<br> Mi tren! <br>" . $miTren;
+
+    // Aquí usamos el método estático
+    $miTren2 = TrenCarretera::leeTren("Mercedes", $potencia, $precio, $electrico, true);
+    $mensaje .= "<br> Mi tren2! <br>" . $miTren2;
+
+    $mensaje .= "<br> Nº Trenes: " . TrenCarretera::$numtrenes; // Línea añadida del stático
 }
 
 ?>
