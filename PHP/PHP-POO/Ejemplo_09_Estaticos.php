@@ -107,7 +107,6 @@ if (isset($_REQUEST['enviar'])) {
     $mensaje .= "<br> Nº Trenes: " . TrenCarretera::$numtrenes; // Línea añadida del stático
     // $numtrenes, nos va a dar el número total de trenes, en este caso dos: $miTren y $miTren2
     // si desmarcamos del comentario $miTrenX, ya $numtrenes contaría tres trenes no dos  
-
 }
 
 ?>
