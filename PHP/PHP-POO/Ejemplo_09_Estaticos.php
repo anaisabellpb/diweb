@@ -77,8 +77,29 @@ class TrenCarretera extends Camion
 
     // Creamos un método estático (static)
     public static function leeTren(string $modelo, int $potencia,float $precio, bool $electrico, 
-          bool $remolque2) : TrenCarretera {
+          bool $remolque2) : TrenCarretera { //  : Returntype 
             return new TrenCarretera($modelo, $potencia, $precio, $electrico, $remolque2);  
+    }
+
+    // Otro método estático. Incluye arrays!
+    public static function crearFlota(
+        string $modelo, int $potencia, float $precio, int $numtrenes // bool $electrico, bool $remolque2 saldrán true
+    ):string { // No va tipado xq no esta : Returntype, pero ponemos :string
+        $flota = []; //Array vacío
+
+        // Creo N trenes, eso si, TODOS IGUALES!
+        for ($i=0; $i < $numtrenes; $i++) { 
+            $nuevoTren = TrenCarretera::leeTren($modelo, $potencia, $precio, true, true);
+            $flota[] = $nuevoTren;
+        }
+
+        // Devuelvo el string con el JSON de todos los trenes
+        $mensaje = "";
+        foreach ($flota as $num => $tren) {
+            $mensaje .= "Tren Nº" . ($num+1). "<br> $tren";
+        }
+
+        return $mensaje; // al poner :string ahy que poner este mensaje
     }
 }
 
@@ -101,12 +122,18 @@ if (isset($_REQUEST['enviar'])) {
     $miTren2 = TrenCarretera::leeTren("Mercedes", $potencia, $precio, $electrico, true);
     $mensaje .= "<br> Mi tren2! <br>" . $miTren2;
 
-    // $miTrenX = new TrenCarretera($modelo, 750, $precio, true, true);
-    // $mensaje .= "<br> Mi trenX! <br>" . $miTrenX;
+    //$miTrenX = new TrenCarretera($modelo, 750, $precio, true, true);
+    //$mensaje .= "<br> Mi trenX! <br>" . $miTrenX;
 
     $mensaje .= "<br> Nº Trenes: " . TrenCarretera::$numtrenes; // Línea añadida del stático
     // $numtrenes, nos va a dar el número total de trenes, en este caso dos: $miTren y $miTren2
-    // si desmarcamos del comentario $miTrenX, ya $numtrenes contaría tres trenes no dos  
+    // si desmarcamos del comentario $miTrenX, ya $numtrenes contaría tres trenes no dos
+    
+    // Vamos a crear una flota de trenes de Carretera
+    $flota = TrenCarretera::crearFlota("Volvo FH Electric", $potencia, 450000.95, 5);
+    $mensaje .= "<br> Mi FLOTA!: <br> $flota";
+
+    $mensaje .= "<br> Nº Trenes: " . TrenCarretera::$numtrenes; // A mi me sale nº total de trenes 7 xq $miTrenX no esta desmarcado
 }
 
 ?>
