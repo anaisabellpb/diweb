@@ -8,7 +8,6 @@ require("errores.php");
       - Pertenecen a la clase, no al OBJETO! 
 */
 
-
 class camion // Esta será la clase PADRE
 {
     public string $modelo = "";
@@ -81,7 +80,6 @@ class TrenCarretera extends Camion
           bool $remolque2) : TrenCarretera {
             return new TrenCarretera($modelo, $potencia, $precio, $electrico, $remolque2);  
     }
-
 }
 
 $mensaje = "Mensajes";
