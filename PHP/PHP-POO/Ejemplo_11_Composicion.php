@@ -97,7 +97,7 @@ class TrenCarretera extends Camion
 
         // El atributo estático se usa con -> self::
         self::$numtrenes++; // Al crear un tren, suma 1
-        
+
         $this->motorTren = new Motor("Volvo", 3000); //Esto es de la composición
     }
 
@@ -108,6 +108,9 @@ class TrenCarretera extends Camion
         $miJSON = json_decode(parent::__toString(), true); // al tener el JSON del padre lo convierto a string
         // Al string le añadimos otra línea
         $miJSON['¿Tiene 2ºRemolque?'] = $this->remolque2 ? "Si" : "No";
+
+        $miJSON['Motor'] = json_decode($this->motorTren);// Esto es de la Composición
+
         // Y ahora convertimos el resultado a JSON, (que antes era un STRING)
         return json_encode($miJSON, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
     }
