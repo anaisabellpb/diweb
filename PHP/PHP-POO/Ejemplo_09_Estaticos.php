@@ -118,7 +118,7 @@ if (isset($_REQUEST['enviar'])) {
     $miTren = new TrenCarretera($modelo, $potencia, $precio, $electrico, $remolque2);
     $mensaje .= "<br> Mi tren! <br>" . $miTren;
 
-    // Aquí usamos el método estático
+    // Aquí usamos el método estático, lo sacamos son los dos ::
     $miTren2 = TrenCarretera::leeTren("Mercedes", $potencia, $precio, $electrico, true);
     $mensaje .= "<br> Mi tren2! <br>" . $miTren2;
 

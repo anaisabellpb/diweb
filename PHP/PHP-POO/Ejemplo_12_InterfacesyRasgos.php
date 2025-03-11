@@ -50,7 +50,7 @@ trait tBonito
 
 abstract class camion // Esta será la clase PADRE, le hemos puesto abstract delante de classs
 {
-    public string $modelo = "";
+    public string $modelo = "";// Esta inicializado, es decir su valor por defecto.
     public int $potencia = 0;
     private float $precio = 0.0;
     public bool $electrico = true;
