@@ -1,68 +1,6 @@
 <?php
 require("errores.php");
 
-// Clase abstracta Deportista
- 
-
-    abstract public function federarse(): string;
-
-    // Getter para obtener la identidad
-    public function getIdentidad(): string
-    {
-        return $this->identidad;
-    }
-
-    // Getter para obtener la edad
-    public function getEdad(): int
-    {
-        return $this->edad;
-    }
-
-    // Getter para obtener el sexo
-    public function getSexo(): string
-    {
-        return $this->sexo ? "Hombre" : "Mujer";
-    }
-
-    public function __toString(): string
-    {
-        return json_encode([ // Transforma un JSON en string
-            'Identidad' => $this->getIdentidad(),
-            'Edad' => $this->getEdad(),
-            'Sexo' => $this->getSexo()
-        ], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
-    }
-}
-
-// Clase Club para Composición
-class Club
-{
-    private string $denominacion;
-    private int $fundacion;
-
-    // Constructor completo
-    public function __construct(string $denominacion, int $fundacion)
-    {
-        $this->denominacion = $denominacion;
-        $this->fundacion = $fundacion;
-    }
-
-    // Métodos getters
-    public function getDenominacion(): string
-    {
-        return $this->denominacion;
-    }
-
-    public function getFundacion(): int
-    {
-        return $this->fundacion;
-    }
-
-    public function __toString(): string
-    {
-        return $this->denominacion . " - Fundación " . $this->fundacion;
-    }
-}
 
 // Clase Futbolista
 class Futbolista extends Deportista implements Eventos
@@ -147,7 +85,8 @@ trait Partido
 }
 
 // 3º Clase padre: Deportista
-abstract class Deportista {
+abstract class Deportista
+{
     protected string $identidad = "";
     protected int $edad = 0;
     protected bool $sexo = true;
@@ -157,6 +96,31 @@ abstract class Deportista {
         $this->identidad = $identidad;
         $this->edad = $edad;
         $this->sexo = $sexo;
+    }
+
+    public function __toString(): string
+    {
+        return json_encode([
+            "Identidad:" => $this->identidad,
+            "Edad:" => $this->edad,
+            "Sexo" => $this->sexo ? "Mehir" : "Hombre"
+        ], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+    }
+
+    // Definir el método abstrato
+    abstract public function federarse(): void;
+}
+
+// 4º La composición: class club
+class club
+{
+    public string $denominacion = "";
+    public int $fundacion = 1890;
+
+    public function __construct(string $denominacion, int $fundacion)
+    {
+        $this->denominacion = $denominacion;
+        $this->fundacion = $fundacion;
     }
 }
 
