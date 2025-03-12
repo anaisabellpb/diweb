@@ -235,7 +235,7 @@ if (isset($_REQUEST['solucion'])) {
     </section>
     <section class="m-3 p-3 w-50 bg-secondary text-white">
         <form action="#" method="post">
-            <nav class="d-flex mb-3">
+            <!--<nav class="d-flex mb-3">
                 <label for="texto" class="w-50">Identidad</label>
                 <input type="text" name="texto" id="texto" class="w-50" required>
             </nav>
@@ -254,10 +254,10 @@ if (isset($_REQUEST['solucion'])) {
                     <option value="1">Masculino</option>
                     <option value="0">Femenino</option>
                 </select>
-            </nav>
+            </nav>-->
             <hr class="bg-danger p-1">
             <section class="d-flex justify-content-center">
-                <button type="submit" name="enviar" class="btn btn-primary mt-3 w-50">Enviar</button>
+                <button type="submit" name="solucion" class="btn btn-primary mt-3 w-50">Enviar</button>
             </section>
         </form>
     </section>
