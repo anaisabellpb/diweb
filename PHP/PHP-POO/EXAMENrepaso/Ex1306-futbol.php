@@ -1,46 +1,6 @@
 <?php
 require("errores.php");
 
-
-// Clase Futbolista
-class Futbolista extends Deportista implements Eventos
-{
-    use Partido; // Usamos el trait Partido
-
-    public int $dorsal;
-    private Club $club; // Composición con la clase Club
-
-    public function __construct(string $identidad, int $edad, bool $sexo, int $dorsal, Club $club)
-    {
-        parent::__construct($identidad, $edad, $sexo);
-        $this->dorsal = $dorsal;
-        $this->club = $club;
-    }
-
-    public function federarse(): string
-    {
-        return "Estoy Federado como Futbolista";
-    }
-
-    public function concentrarse(): string
-    {
-        return "Concentrado!";
-    }
-
-    public function viajar(): string
-    {
-        return "Viajo!";
-    }
-
-    public function __toString(): string
-    {
-        $miJSON = json_decode(parent::__toString(), true);
-        $miJSON['Dorsal'] = $this->dorsal;
-        $miJSON['Club'] = $this->club->__toString();
-        return json_encode($miJSON, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
-    }
-}
-
 // Simulación del formulario y la recolección de datos
 $mensaje = "";
 if (isset($_REQUEST['elegir'])) {
@@ -103,7 +63,7 @@ abstract class Deportista
         return json_encode([
             "Identidad:" => $this->identidad,
             "Edad:" => $this->edad,
-            "Sexo" => $this->sexo ? "Mehir" : "Hombre"
+            "Sexo" => $this->sexo ? "Mujer" : "Hombre"
         ], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
     }
 
@@ -131,23 +91,128 @@ class club
     }
 }
 
-// script principal
-if (isset($_REQUEST['enviar'])) {
-    $identidad = $_REQUEST['texto'];
-    $edad = $_REQUEST['edad'];
-    $sexo = $_REQUEST['sexo'];
-    $dorsal = $_REQUEST['dorsal']; // Se añadirá el dorsal al formulario
-    $club = new Club("Real Betis Balompié", 1907); // Simulación de un club (por ejemplo)
-    $futbolista = new Futbolista($identidad, $edad, $sexo == 1, $dorsal, $club); // Crear un futbolista con la composición del club
+// 5º Clase hija: futbolista
+class Futbolista extends Deportista implements Eventos {
+    use Partido;
 
-    $mensaje = json_encode([
-        "Identidad" => $futbolista->getIdentidad(),
-        "Edad" => $futbolista->getEdad(),
-        "Sexo" => $futbolista->getSexo(),
-        "Federación" => $futbolista->federarse(),
-        "Club" => $club->__toString(),
-        "Eventos" => $futbolista->viajar() . " - " . $futbolista->concentrarse() . " - " . $futbolista->jugarPartido(),
-    ], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+    // Atributo composición, lo metemos aqui
+    public Club $club;
+
+    // Defnimos el atributo privado y setter/getter
+    private int $dorsal = 0;
+    public function setDorsal(int $dorsal): void
+    {
+        if ($dorsal > 0) {
+            $this->dorsal = $dorsal;
+        }
+    }
+
+    public function getDorsal(): int
+    {
+        return $this->dorsal;
+    }
+
+    // Construtor
+    public function __construct(string $identidad, int $edad, bool $sexo, int $dorsal) // Club $club detrás de dorsal
+    {
+        parent::__construct($identidad, $edad, $sexo);
+        $this->setDorsal($dorsal); // Por que esta en privado más arriba
+        $this->club = new Club("Real Betis", 1907); // ASI es el examen sino se pondría
+        //$this->club = $club;
+    }
+
+    public function __toString(): string
+    {
+        $miJSON = json_decode(parent::__toString(), true);
+        $miJSON['Dorsal'] = $this->dorsal;
+        $miJSON['Club'] = json_decode ($this->club, true);
+        return json_encode($miJSON, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+    }
+
+    // Implementar los tre métodos obligatorios
+    public function concentrarse(): void
+    {
+       echo "Concentrado!";
+    }
+
+    public function viajar(): void
+    {
+        echo "Viajo!";
+    }
+
+    public function federarse(): void // El del padre
+    {
+        echo "Estoy Federado";
+    }
+ 
+}
+
+
+// 6º La otra clase hija: Entrenador
+class Entrenador extends Deportista implements Eventos {
+    use Partido;
+
+    // Atributo composición, lo metemos aqui
+    public Club $club;
+
+    // Defnimos el atributo privado y setter/getter
+    private int $inicioEntrenador = 0;
+    public function setInicioEntrenador(int $inicioEntrenador): void
+    {
+        if ($inicioEntrenador >2000) {
+            $this->inicioEntrenador = $inicioEntrenador;
+        }
+    }
+
+    public function getInicioEntrenador(): int
+    {
+        return $this->inicioEntrenador;
+    }
+
+    // Construtor
+    public function __construct(string $identidad, int $edad, bool $sexo, int $inicioEntrenador) 
+    {
+        parent::__construct($identidad, $edad, $sexo);
+        $this->setinicioEntrenador($inicioEntrenador); // Por que esta en privado más arriba
+        $this->club = new Club("Real Betis", 1907); // ASI es el examen sino se pondría
+        //$this->club = $club;
+    }
+
+    public function __toString(): string
+    {
+        $miJSON = json_decode(parent::__toString(), true);
+        $miJSON['Inicio Entrenador'] = $this->inicioEntrenador;
+        $miJSON['Club'] = json_decode ($this->club, true);
+        return json_encode($miJSON, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+    }
+
+    // Implementar los tre métodos obligatorios
+    public function concentrarse(): void
+    {
+       echo "Concentrado!";
+    }
+
+    public function viajar(): void
+    {
+        echo "Viajo!";
+    }
+
+    public function federarse(): void // El del padre
+    {
+        echo "Estoy Federado";
+    }
+ 
+}
+
+// script principal
+if (isset($_REQUEST['solucion'])) {
+    $deportistas = [];
+    $deportistas [] = new Futbolista("Isco", 32, false, 8);
+    $deportistas [] = new Entrenador("Pellegrini", 70, false, 2020);
+
+    foreach ($deportistas as $i => $deportista) {// $deportistas es el array
+        $mensaje .= "<br> $deportista <br>";
+    }
 }
 ?>
 
