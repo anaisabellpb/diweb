@@ -2,83 +2,7 @@
 require("errores.php");
 $mensaje = "Mensajes"; // Mensaje inicial
 
-class Geometria
-{
-    public $base = 0; // Base
-    public $altura = 0; // Altura
-
-    // Constructor que inicializa los valores de base y altura
-    public function __construct(int $base, int $altura)
-    {
-        $this->base = $base;
-        $this->altura = $altura;
-    }
-
-    // Método __toString() para representar la instancia como una cadena en formato JSON
-    public function __toString(): string
-    {
-        return json_encode([
-            'Base' => $this->base,
-            'Altura' => $this->altura
-        ], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
-    }
-}
-
-class Triangulo extends Geometria
-{
-    public function __construct(int $base, int $altura)
-    {
-        parent::__construct($base, $altura);
-    }
-
-    // Método para calcular el área del triángulo
-    public function area(): float
-    {
-        return ($this->base * $this->altura) / 2;
-    }
-
-    // Sobrescribir el método __toString() para mostrar la información como JSON
-    public function __toString(): string
-    {
-        $area = $this->area(); // Calcular el área
-        return json_encode([
-            'Figura' => 'Triángulo',
-            'Base' => $this->base,
-            'Altura' => $this->altura,
-            'Área' => $area
-        ], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
-    }
-}
-
-// Clase Rectangulo que hereda de Geometria
-class Rectangulo extends Geometria
-{
-    // Constructor heredado de la superclase
-    public function __construct(int $base, int $altura)
-    {
-        parent::__construct($base, $altura);
-    }
-
-    // Método __toString() heredado de la superclase
-    public function __toString(): string
-    {
-        $area = $this->area(); // Calcular el área
-        return json_encode([
-            'Figura' => 'Rectángulo',
-            'Base' => $this->base,
-            'Altura' => $this->altura,
-            'Área' => $area
-        ], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
-    }
-
-    // Método para calcular el área del rectángulo
-    public function area(): float
-    {
-        return $this->base * $this->altura;
-    }
-}
-
-// Si se envia el formulario....
+// Menu navegación
 if (isset($_REQUEST['elegir'])) {
     $opcion = $_REQUEST['opcion'];
     switch ($opcion) {
@@ -100,26 +24,90 @@ if (isset($_REQUEST['elegir'])) {
     }
 }
 
+class Geometria
+{
+    public int $base = 0;
+    public int $altura = 0;
+
+    // Constructor que inicializa los valores de base y altura
+    public function __construct(int $base, int $altura)
+    {
+        $this->base = $base;
+        $this->altura = $altura;
+    }
+
+    // Método __toString() para representar la instancia como una cadena en formato JSON
+    public function __toString(): string
+    {
+        return json_encode([
+            'Base' => $this->base,
+            'Altura' => $this->altura
+        ], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+    }
+}
+
+class Triangulo extends Geometria
+{ // Le hemos puesto un atributo propio no lo trae en el ejemplo
+    public string $color;
+
+    public function __construct(int $base, int $altura, string $color) // y en el parántesis seguido de altura, poner, string $color
+    {
+        parent::__construct($base, $altura);
+        $this->color = $color;
+    }
+
+    // Sobrescribir el método __toString()de triangulo para mostrar la información como JSON
+    public function __toString(): string
+    {
+        $miJSON = json_decode(parent::__toString(), true);
+        $miJSON['Color triangulo'] = $this->color; // Array asociativo con el elemento nuevo
+
+        return json_encode($miJSON, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+    }
+
+    // Método para calcular el área del triángulo
+    public function area(): string
+    {
+        return "El área del triángulo es: " . ($this->base * $this->altura) / 2;
+    }
+}
+
+
+class Rectangulo extends Geometria
+{ // atributo propio 
+    public string $textura;
+
+    public function __construct(int $base, int $altura, string $textura) // y en el parántesis seguido de altura, poner, string $color
+    {
+        parent::__construct($base, $altura);
+        $this->textura = $textura;
+    }
+
+    // Sobrescribir el método __toString()de triangulo para mostrar la información como JSON
+    public function __toString(): string
+    {
+        $miJSON = json_decode(parent::__toString(), true);
+        $miJSON['Textura rectángulo'] = $this->textura; // Array asociativo con el elemento nuevo
+
+        return json_encode($miJSON, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+    }
+
+    // Método para calcular el área del triángulo
+    public function area(): string
+    {
+        return "El área del rectángulo es: " . ($this->base * $this->altura);
+    }
+}
+
 // Script principal
 if (isset($_REQUEST['solucion'])) {
     // Recojo los datos del formulario
-    $figura = $_REQUEST['figura']; // Figuras como Triángulo o Rectángulo
-    $base = $_REQUEST['a']; // Base
-    $altura = $_REQUEST['h']; // Altura
-
-    // Determinar la figura seleccionada y crear la instancia correspondiente
-    if ($figura == 'triangulo') {
-        $figuraObj = new Triangulo($base, $altura); // Triángulo con base y altura
-    } elseif ($figura == 'rectangulo') {
-        $figuraObj = new Rectangulo($base, $altura); // Rectángulo con base y altura
-    } else {
-        $mensaje = "Figura no válida.";
-    }
-
-    // Mostrar el objeto (como cadena JSON)
-    if (isset($figuraObj)) {
-        $mensaje = $figuraObj;
-    }
+    $triangulo1 = new Triangulo(10, 5, "Rojo"); 
+    $rectangulo1 = new Rectangulo(10, 5, "Felpa");
+    $mensaje .= "<br> Triángulo <br>" . $triangulo1;
+    $mensaje .= "<br> " . $triangulo1->area();
+    $mensaje .= "<br> Rectángulo <br>" . $rectangulo1;
+    $mensaje .= "<br> " . $rectangulo1->area();
 }
 ?>
 <!--HTML-->
@@ -137,9 +125,9 @@ if (isset($_REQUEST['solucion'])) {
     <section aria-label="alerta" class="alert alert-success m-3 p-3 mb-4 w-50">
         <pre class="mb-0"><?php echo $mensaje; ?></pre>
     </section>
-    <form action="#" method="post">
-        <section aria-label="volumenes" class="m-3 p-3 w-50 bg-info text-white">
-            <nav class="d-flex mb-3">
+    <section aria-label="volumenes" class="m-3 p-3 w-50 bg-info text-white">
+        <form action="#" method="post">
+            <!--<nav class="d-flex mb-3">
                 <label for="a" class="w-50">Base</label>
                 <input type="number" name="a" id="a" class="w-50" min="1" required>
             </nav>
@@ -151,10 +139,10 @@ if (isset($_REQUEST['solucion'])) {
             <select name="figura" id="figura" class="form-control">
                 <option value="triangulo">Triángulo</option>
                 <option value="rectangulo">Rectángulo</option>
-            </select><br>
+            </select><br>-->
 
-            <button type="submit" name="solucion" class="btn btn-success">Solución Área</button>
-    </form>
+            <button type="submit" name="solucion" class="btn btn-success">Ver figuras</button>
+        </form>
     </section>
 
     <nav aria-label="navegacion" class="m-3 p-3 w-50 bg-primary">

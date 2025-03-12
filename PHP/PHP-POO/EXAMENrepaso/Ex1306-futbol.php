@@ -2,18 +2,7 @@
 require("errores.php");
 
 // Clase abstracta Deportista
-abstract class Deportista
-{
-    protected string $identidad = "";
-    protected int $edad = 0;
-    protected bool $sexo = true;
-
-    public function __construct(string $identidad, int $edad, bool $sexo)
-    {
-        $this->identidad = $identidad;
-        $this->edad = $edad;
-        $this->sexo = $sexo;
-    }
+ 
 
     abstract public function federarse(): string;
 
@@ -42,27 +31,6 @@ abstract class Deportista
             'Edad' => $this->getEdad(),
             'Sexo' => $this->getSexo()
         ], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
-    }
-}
-
-// Interfaz Eventos
-interface Eventos
-{
-    public function concentrarse(): string;
-    public function viajar(): string;
-}
-
-// Trait Partido
-trait Partido
-{
-    public function jugarPartido(): string
-    {
-        return "Voy a jugar";
-    }
-
-    public function dirigirPartido(): string
-    {
-        return "Soy el Mister";
     }
 }
 
@@ -157,6 +125,42 @@ if (isset($_REQUEST['elegir'])) {
             break;
     }
 }
+// 1º Empezamos por la interfaz
+interface Eventos
+{
+    public function concentrarse(): void;
+    public function viajar(): void;
+}
+
+// 2º Seguimos con el Trait
+trait Partido
+{
+    public function jugarPartido(): void
+    {
+        echo "Voy a jugar";
+    }
+
+    public function dirigirPartido(): void
+    {
+        echo "Soy el Mister";
+    }
+}
+
+// 3º Clase padre: Deportista
+abstract class Deportista {
+    protected string $identidad = "";
+    protected int $edad = 0;
+    protected bool $sexo = true;
+
+    public function __construct(string $identidad, int $edad, bool $sexo)
+    {
+        $this->identidad = $identidad;
+        $this->edad = $edad;
+        $this->sexo = $sexo;
+    }
+}
+
+// script principal
 if (isset($_REQUEST['enviar'])) {
     $identidad = $_REQUEST['texto'];
     $edad = $_REQUEST['edad'];
@@ -164,7 +168,7 @@ if (isset($_REQUEST['enviar'])) {
     $dorsal = $_REQUEST['dorsal']; // Se añadirá el dorsal al formulario
     $club = new Club("Real Betis Balompié", 1907); // Simulación de un club (por ejemplo)
     $futbolista = new Futbolista($identidad, $edad, $sexo == 1, $dorsal, $club); // Crear un futbolista con la composición del club
-    
+
     $mensaje = json_encode([
         "Identidad" => $futbolista->getIdentidad(),
         "Edad" => $futbolista->getEdad(),
@@ -178,12 +182,14 @@ if (isset($_REQUEST['enviar'])) {
 
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Examen1306</title>
     <link rel="stylesheet" href="bootstrap.min.css">
 </head>
+
 <body>
     <section class="alert alert-success m-3 p-3 mb-4 w-50">
         <pre class="mb-0"><?php echo $mensaje; ?></pre>
@@ -236,5 +242,5 @@ if (isset($_REQUEST['enviar'])) {
         </form>
     </nav>
 </body>
-</html>
 
+</html>

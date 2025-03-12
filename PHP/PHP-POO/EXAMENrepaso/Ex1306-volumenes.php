@@ -3,40 +3,6 @@
 require("errores.php");
 $mensaje = "Mensajes";
 
-
-class Geometria
-{
-    public $b = 0;
-    public $a = 0;
-
-    public function __construct($a, $b,)
-    {
-        $this->a = $a;
-        $this->b = $b;
-    }
-
-    public function __toString()
-    {
-        return json_encode([
-            'Base' => $this->b,
-            'Altura' => $this->a
-        ], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
-    }
-}
-
-class Triangulo extends Geometria
-{
-
-    public string $area;
-
-    public function __construct(int $a, int $b, string $area)
-    {
-        parent::__construct($a, $b);
-        $this->area = $area;
-    }
-}
-
-
 // Si se envia el formulerio....
 if (isset($_REQUEST['elegir'])) {
     $opcion = $_REQUEST['opcion'];
