@@ -122,6 +122,13 @@ class club
         $this->denominacion = $denominacion;
         $this->fundacion = $fundacion;
     }
+    public function __toString(): string
+    {
+        return json_encode([
+            "Denominacion:" => $this->denominacion,
+            "Fundacion:" => $this->fundacion
+        ], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+    }
 }
 
 // script principal
