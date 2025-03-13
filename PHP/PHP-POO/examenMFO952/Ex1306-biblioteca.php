@@ -143,8 +143,8 @@ class Libro extends Publicacion implements Prestamo {
 
 
 // 6º La otra clase hija: Entrenador
-class Revista extends Deportista implements Eventos {
-    use Partido;
+class Revista extends Publicacion implements Prestamo {
+    use Reservable;
 
     // Atributo composición, lo metemos aqui
     public Club $club;

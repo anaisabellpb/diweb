@@ -21,6 +21,9 @@ if (isset($_REQUEST['elegir'])) {
         case 'ej5':
             header('Location: Ex1306-biblioteca.php');
             break;
+        default:
+            # code...
+            break;
     }
 }
 
@@ -88,7 +91,7 @@ if (isset($_REQUEST['solucion'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Examen modelo formativo 0952</title>
+    <title>Examen MF0952</title>
     <link rel="stylesheet" href="bootstrap.min.css">
 
 
@@ -99,21 +102,7 @@ if (isset($_REQUEST['solucion'])) {
         class="alert alert-success m-3 p-3 w-50">
         <pre class="mb-0"><?php echo $mensaje; ?></pre>
     </section>
-    <nav aria-label="navegacion" class="m-3 p-3 w-50 bg-primary">
-        <form action="#" method="post">
-            <label for="opcion">Elige Opción:</label><br>
-            <select name="opcion" id="opcion" class="for-control">
-                <option value="ej1">Menú</option>
-                <option value="ej2">Volúmenes</option>
-                <option value="ej3">Anidi</option>
-                <option value="ej4">Media Geometrica</option>
-                <option value="ej5">Biblioteca</option>
-            </select><br>
-            <button type="submit" name="elegir" class="btn btn-success">Elegir</button>
-
-        </form>
-
-
+    
         <section aria-label="volumenes">
             <section class="m-3 p-3 w-50 bg-info text-white">
                 <form action="#" method="post">
@@ -144,3 +133,23 @@ if (isset($_REQUEST['solucion'])) {
 
                 </form>
             </section>
+
+           <nav aria-label="navegacion" class="m-3 p-3 w-50 bg-primary">
+        <form action="#" method="post">
+            <label for="opcion" class="form-label">Elige Opción:</label><br>
+            <select name="opcion" id="opcion" class="form-control">
+                <option value="ej1">Menu</option>
+                <option value="ej2">Volúmenes</option>
+                <option value="ej3">Anidi</option>
+                <option value="ej4">MediaGeom</option>
+                <option value="ej5">Biblioteca</option>
+            </select><br>
+
+            <button type="submit" name="elegir" name="elegir" class="btn btn-success">Elegir</button>
+
+        </form>
+
+    </nav>
+    </body>
+
+</html>
