@@ -139,21 +139,11 @@ class Libro extends Publicacion implements Prestamo {
     }
 
     // Implementar los tres métodos obligatorios
-    public function prestar(): void
-    {
-       echo "Publicación prestada!";
-    }
-
-    public function devolver(): void
-    {
-        echo "Publicación devuelta!";
-    }
- 
-}
+  
 
 
 // 6º La otra clase hija: Entrenador
-class Entrenador extends Deportista implements Eventos {
+class Revista extends Deportista implements Eventos {
     use Partido;
 
     // Atributo composición, lo metemos aqui
@@ -190,23 +180,8 @@ class Entrenador extends Deportista implements Eventos {
         return json_encode($miJSON, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
     }
 
-    // Implementar los tre métodos obligatorios
-    public function concentrarse(): void
-    {
-       echo "Concentrado!";
-    }
-
-    public function viajar(): void
-    {
-        echo "Viajo!";
-    }
-
-    public function federarse(): void // El del padre
-    {
-        echo "Estoy Federado";
-    }
- 
-}
+    // Implementar los tres métodos obligatorios
+    
 
 // script principal
 if (isset($_REQUEST['solucion'])) {
