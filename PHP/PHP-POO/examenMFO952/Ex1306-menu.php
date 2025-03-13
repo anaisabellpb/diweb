@@ -15,16 +15,13 @@ if (isset($_REQUEST['elegir'])) {
             header('Location: Ex1306-volumenes.php');
             break;
         case 'ej3':
-            header('Location: Ex1306-geometria.php');
+            header('Location: Ex1306-anidi.php');
             break;
         case 'ej4':
-            header('Location: Ex1306-tabMultiplicar.php');
+            header('Location: Ex1306-mediaGeom.php');
             break;
         case 'ej5':
-            header('Location: Ex1306-futbol.php');
-            break;
-        default:
-            # code...
+            header('Location: Ex1306-biblioteca.php');
             break;
     }
 }
@@ -39,7 +36,7 @@ if (isset($_REQUEST['elegir'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Examen MF0951</title>
+    <title>Examen MF0952</title>
     <link rel="stylesheet" href="bootstrap.min.css">
 </head>
 
@@ -53,9 +50,9 @@ if (isset($_REQUEST['elegir'])) {
             <select name="opcion" id="opcion" class="form-control">
                 <option value="ej1">Menu</option>
                 <option value="ej2">Volúmenes</option>
-                <option value="ej3">Geometría</option>
-                <option value="ej4">TablaMultiplicar</option>
-                <option value="ej5">Fútbol</option>
+                <option value="ej3">Anidi</option>
+                <option value="ej4">MediaGeom</option>
+                <option value="ej5">Biblioteca</option>
             </select><br>
 
             <button type="submit" name="elegir" name="elegir" class="btn btn-success">Elegir</button>
